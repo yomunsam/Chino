@@ -79,6 +79,10 @@ namespace Chino.IdentityServer.Pages.Account
 
                     return Redirect("/Index");
                 }
+                else
+                {
+                    return Redirect("/Index");
+                }
             }
 
             if (ModelState.IsValid)
@@ -123,6 +127,13 @@ namespace Chino.IdentityServer.Pages.Account
 
 
             return Page();
+        }
+
+
+        public async Task<IActionResult> OnCancelAsync()
+        {
+            await Task.CompletedTask;
+            return Redirect("/");
         }
     }
 }

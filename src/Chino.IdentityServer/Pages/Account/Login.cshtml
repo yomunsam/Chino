@@ -15,6 +15,7 @@
     <partial name="ValidationSummary" />
 
     <div class="row">
+        @*<div class="col-sm-6"></div>*@
         @if (Model.EnableLocalLogin)
         {
             <div class="col-sm-6">
@@ -47,7 +48,8 @@
                                 </div>
                             }
                             <button class="btn btn-primary" name="button" value="login">@L["btn_login"]</button>
-                            <button class="btn btn-secondary" name="button" value="cancel">@L["btn_cancel"]</button>
+                            <button class="btn btn-secondary" formnovalidate name="button" value="cancel">@L["btn_cancel"]</button> 
+                            @*  使用class "cancel" 可以跳过客户端的表单验证，或者使用"formnovalidate" *@
                         </form>
                     </div>
                 </div>

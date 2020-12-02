@@ -48,5 +48,6 @@ namespace Chino.IdentityServer.Pages.Account
 
             return Redirect("/");
         }
+
     }
 }
