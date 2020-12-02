@@ -129,4 +129,7 @@
   <data name="logout" xml:space="preserve">
     <value>退出登录</value>
   </data>
+  <data name="register" xml:space="preserve">
+    <value>注册</value>
+  </data>
 </root>

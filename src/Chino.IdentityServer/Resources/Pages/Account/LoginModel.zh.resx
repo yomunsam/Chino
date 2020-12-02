@@ -124,10 +124,16 @@
     <value>登录</value>
   </data>
   <data name="invalid_credentials_error_message" xml:space="preserve">
-    <value>用户名或密码无效</value>
+    <value>用户名或口令无效</value>
   </data>
   <data name="invalid_return_URL" xml:space="preserve">
     <value>重定向URL无效：{0}</value>
+  </data>
+  <data name="link_forget_password" xml:space="preserve">
+    <value>忘记密码</value>
+  </data>
+  <data name="link_register" xml:space="preserve">
+    <value>注册新用户</value>
   </data>
   <data name="login_by_account" xml:space="preserve">
     <value>使用账号登录</value>

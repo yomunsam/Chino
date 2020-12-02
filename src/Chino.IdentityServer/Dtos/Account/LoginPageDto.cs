@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Chino.IdentityServer.Pages.Account;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Chino.IdentityServer.Dtos.Account
 {
-    public class LoginDto
+    public class LoginPageDto
     {
         [Required(ErrorMessage = "username_required")]
         public string Username { get; set; }

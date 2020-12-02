@@ -8,55 +8,115 @@
 }
 
 <div class="login-page">
-    <div class="lead">
-        <h1>@L["title_login"]</h1>
-    </div>
 
-    <partial name="ValidationSummary" />
+    <div class="login-form pb-4 mb-4">
+        <div class="lead">
+            <h1 class="h3 mb-3 fw-normal">@L["title_login"]</h1>
+        </div>
+        <partial name="ValidationSummary" />
 
-    <div class="row">
-        @*<div class="col-sm-6"></div>*@
         @if (Model.EnableLocalLogin)
         {
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>@L["login_by_account"]</h3>
-                    </div>
-                    <div class="card-body">
-                        <form asp-route="Login">
-                            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
-                            <div class="form-group">
-                                <label asp-for="LoginDto.Username">@L["username"]</label>
-                                <input class="form-control" placeholder="@L["username"]" asp-for="LoginDto.Username" autofocus>
-                                <span asp-validation-for="LoginDto.Username" class="text-danger"></span>
+            <div class="card mt-1 shadow text-center">
+                <div class="card-header">
+                    <h3 class="h5">@L["login_by_account"]</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-route="Login">
+                        <div class="form-group">
+                            <label asp-for="LoginDto.Username" class="visually-hidden">@L["username"]</label>
+                            <input class="form-control input-username" placeholder="@L["username"]" asp-for="LoginDto.Username" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LoginDto.Password" class="visually-hidden">@L["password"]</label>
+                            <input type="password" class="form-control input-passwd" placeholder="@L["password"]" asp-for="LoginDto.Password" autocomplete="off">
+                        </div>
+                        <div class="form-group text-left">
+                            <div><span asp-validation-for="LoginDto.Username" class="text-danger"></span></div>
+                            <div><span asp-validation-for="LoginDto.Password" class="text-danger"></span></div>
+                        </div>
+
+                        @if (Model.AllowRememberLogin)
+                        {
+                            <div class="checkbox mb-3 mt-2 text-left">
+                                <label>
+                                    <input type="checkbox" asp-for="LoginDto.RememberLogin" /> @L["remember_login"]
+                                </label>
                             </div>
-                            <div class="form-group">
-                                <label asp-for="LoginDto.Password">@L["password"]</label>
-                                <input type="password" class="form-control" placeholder="@L["password"]" asp-for="LoginDto.Password" autocomplete="off">
-                                <span asp-validation-for="LoginDto.Password" class="text-danger"></span>
-                            </div>
-                            @if (Model.AllowRememberLogin)
-                            {
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" asp-for="LoginDto.RememberLogin">
-                                        <label class="form-check-label" asp-for="LoginDto.RememberLogin">
-                                            @L["remember_login"]
-                                        </label>
-                                    </div>
-                                </div>
-                            }
-                            <button class="btn btn-primary" name="button" value="login">@L["btn_login"]</button>
-                            <button class="btn btn-secondary" formnovalidate name="button" value="cancel">@L["btn_cancel"]</button> 
+                        }
+                        <div class="d-grid d-sm-block gap-2 mx-auto">
+                            <button class="btn btn-primary px-5" name="button" value="login">@L["btn_login"]</button>
+                            <button class="btn btn-secondary px-5" formnovalidate name="button" value="cancel">@L["btn_cancel"]</button>
                             @*  使用class "cancel" 可以跳过客户端的表单验证，或者使用"formnovalidate" *@
-                        </form>
-                    </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="card-footer text-muted">
+                    <a asp-page="Account/ForgetPassword" class="link-secondary">@L["link_forget_password"]</a> | <a asp-page="/Account/Register" class="link-secondary">@L["link_register"]</a>
                 </div>
             </div>
         }
     </div>
+    
+    
 </div>
+
+
+<style>
+
+    body {
+        background-color: #f5f5f5;
+    }
+
+    
+    .login-form{
+        width:100%;
+        max-width:380px;
+        margin:auto;
+    }
+
+
+    .login-form .form-control{
+        position:relative;
+        box-sizing:border-box;
+        height:auto;
+        padding:10px;
+        font-size:16px;
+    }
+
+    .login-form .form-control:focus{
+        z-index:2;
+    }
+
+    .login-form .checkbox{
+        font-weight: 400;
+    }
+
+    .login-form .input-username {
+        margin-bottom: -1px;
+        border-bottom-left-radius:0;
+        border-bottom-right-radius:0;
+    }
+
+    .login-form .input-passwd {
+        margin-bottom: 10px;
+        border-top-left-radius:0;
+        border-top-right-radius:0;
+    }
+
+    .login-form .card-footer{
+        font-size:small;
+    }
+
+    .login-form .card-footer a{
+        text-decoration:none;
+    }
+
+    .login-form .card-footer a:hover{
+        text-decoration:none;
+    }
+</style>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

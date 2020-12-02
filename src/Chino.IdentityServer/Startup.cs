@@ -62,8 +62,9 @@ namespace Chino.IdentityServer
                         var assemblyName = new AssemblyName(typeof(DataAnnotationResources).GetTypeInfo().Assembly.FullName);
                         return factory.Create($"DataAnnotation.{nameof(DataAnnotationResources)}", assemblyName.Name);
                     };
-                    
+
                 });
+                //.AddRazorRuntimeCompilation();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -120,6 +121,7 @@ namespace Chino.IdentityServer
         {
             if (env.IsDevelopment())
             {
+                //app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Chino.IdentityServer v1"));
@@ -134,6 +136,7 @@ namespace Chino.IdentityServer
             app.UseRouting();
             app.UseIdentityServer();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

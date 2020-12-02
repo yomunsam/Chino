@@ -117,19 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="error1" xml:space="preserve">
-    <value>エラー</value>
+  <data name="confirm_password_required" xml:space="preserve">
+    <value>パスワードを再確認してください。</value>
   </data>
-  <data name="hello" xml:space="preserve">
-    <value>こんにちは</value>
+  <data name="invalid_confirm_password" xml:space="preserve">
+    <value>パスワードが一致していないことを確認する</value>
   </data>
-  <data name="login" xml:space="preserve">
-    <value>登録</value>
+  <data name="invalid_email_address" xml:space="preserve">
+    <value>メールアドレスが無効です</value>
   </data>
-  <data name="logout" xml:space="preserve">
-    <value>ログアウト</value>
+  <data name="passwd_required" xml:space="preserve">
+    <value>パスワードは空です</value>
   </data>
-  <data name="register" xml:space="preserve">
-    <value>レジスタ</value>
+  <data name="username_required" xml:space="preserve">
+    <value>ユーザ名は空ではいけません。</value>
   </data>
 </root>

@@ -42,7 +42,7 @@ namespace Chino.IdentityServer.Pages.Account
 
 
         [BindProperty]
-        public LoginDto LoginDto { get; set; }
+        public LoginPageDto LoginDto { get; set; }
 
         [BindProperty]
         public string ReturnUrl { get; set; }

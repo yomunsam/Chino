@@ -27,6 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\DataAnnotation\DataAnnotationResources.ja.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\DataAnnotation\DataAnnotationResources.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\DataAnnotation\DataAnnotationResources.zh.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
