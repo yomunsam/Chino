@@ -1,4 +1,6 @@
-﻿.border-bottom {
+﻿@import url('../lib/open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+.border-bottom {
     border-bottom: 1px solid #e5e5e5;
 }
 

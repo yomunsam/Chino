@@ -120,6 +120,9 @@
   <data name="confirm_password_required" xml:space="preserve">
     <value>パスワードを再確認してください。</value>
   </data>
+  <data name="email_required" xml:space="preserve">
+    <value>電子メールフィールドが必要です。</value>
+  </data>
   <data name="invalid_confirm_password" xml:space="preserve">
     <value>パスワードが一致していないことを確認する</value>
   </data>

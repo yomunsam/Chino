@@ -11,7 +11,7 @@ namespace Chino.IdentityServer.Dtos.Account
         [Required(ErrorMessage = "username_required")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "email_required")]
         [EmailAddress(ErrorMessage = "invalid_email_address")]
         public string Email { get; set; }
 

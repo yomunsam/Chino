@@ -1,6 +1,131 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.Account.RegisterModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Account.RegisterModel> L
+
 @{
     ViewContext.ClientValidationEnabled = true;
     ViewData["Nav_ShowLogin/Out"] = false;
+}
+
+<div class="register-page pb-4 mb-4">
+    <div class="register-form">
+        <div class="lead">
+            <h1 class="h3 mb-3 fw-normal">@L["title_register"]</h1>
+        </div>
+
+        <partial name="ValidationSummary" />
+
+        <div class="card mt-1 shadow text-center">
+            <div class="card-header">
+                <h3 class="h5">@L["subTitle_register"]</h3>
+            </div>
+
+            <div class="card-body">
+                <form asp-route="Register">
+                    @*用户名*@
+                    <div class="form-group">
+                        <label asp-for="RegisterDto.UserName" class="visually-hidden">@L["username"]</label>
+                        <input class="form-control input-head" placeholder="@L["username"]" asp-for="RegisterDto.UserName" autofocus>
+                    </div>
+                    @*邮箱*@
+                    <div class="form-group">
+                        <label asp-for="RegisterDto.Email" class="visually-hidden">@L["email"]</label>
+                        <input type="email" class="form-control input-middle" placeholder="@L["email"]" asp-for="RegisterDto.Email" autofocus>
+                    </div>
+                    @*口令*@
+                    <div class="form-group">
+                        <label asp-for="RegisterDto.Password" class="visually-hidden">@L["password"]</label>
+                        <input type="password" class="form-control input-middle" placeholder="@L["password"]" asp-for="RegisterDto.Password" autofocus>
+                    </div>
+                    @*确认口令*@
+                    <div class="form-group">
+                        <label asp-for="RegisterDto.ConfirmPassword" class="visually-hidden">@L["comfirm_password"]</label>
+                        <input type="password" class="form-control input-end" placeholder="@L["comfirm_password"]" asp-for="RegisterDto.ConfirmPassword" autofocus>
+                    </div>
+
+                    @*表单验证错误都放在这儿*@
+                    <div class="form-group text-left">
+                        <div><span asp-validation-for="RegisterDto.UserName" class="text-danger"></span></div>
+                        <div><span asp-validation-for="RegisterDto.Email" class="text-danger"></span></div>
+                        <div><span asp-validation-for="RegisterDto.Password" class="text-danger"></span></div>
+                        <div><span asp-validation-for="RegisterDto.ConfirmPassword" class="text-danger"></span></div>
+                    </div>
+
+                    @*注册按钮*@
+                    <div class="d-grid d-sm-block gap-2 mx-auto">
+                        <button class="btn btn-primary px-5" name="button" value="login">@L["btn_register"]</button>
+                        <button class="btn btn-secondary px-5" formnovalidate name="button" value="cancel">@L["btn_cancel"]</button>
+                        @*  使用class "cancel" 可以跳过客户端的表单验证，或者使用"formnovalidate" *@
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-footer text-muted">
+                <a asp-page="Login" class="link-secondary">@L["link_login"]</a></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .register-form {
+        width: 100%;
+        max-width: 380px;
+        margin: auto;
+    }
+
+        .register-form .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+            .register-form .form-control:focus {
+                z-index: 2;
+            }
+
+        .register-form .input-head {
+            margin-bottom: -1px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .register-form .input-middle {
+            margin-bottom: -1px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .register-form .input-end {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .register-form .card-footer{
+            font-size:small;
+        }
+
+        .register-form .card-footer a {
+            text-decoration: none;
+        }
+
+        .register-form .card-footer a:hover {
+            text-decoration: none;
+        }
+
+</style>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
