@@ -1,5 +1,7 @@
 ﻿@inject IConfiguration configuration
 @inject CommonLocalizationService CL
+@inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
+
 @using IdentityServer4.Extensions
 
 @{ 
@@ -39,9 +41,12 @@
                             <li class="nav-item ml-lg-auto ml-md-auto">
                                 <a class="nav-link" asp-page="Account/Login">@CL["login"]</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-page="Account/Register">@CL["register"]</a>
-                            </li>
+                            if (AccountConfiguration.EnableRegister)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-page="Account/Register">@CL["register"]</a>
+                                </li>
+                            }
                         }
                     }
                     @*<li class="nav-item">

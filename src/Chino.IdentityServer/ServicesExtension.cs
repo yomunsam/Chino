@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Chino.IdentityServer.Configures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -88,5 +89,12 @@ namespace Chino.IdentityServer
                     throw new Exception($"Unknow database provider type: {providerType} - IdentityServer Operational");
             }
         }
+
+        public static void AddChinoConfigurations(this IServiceCollection services, IConfiguration configuration)
+        {
+            //Chino Account
+            services.AddSingleton(ChinoAccountConfiguration.GetConfiguration(configuration));
+        }
+
     }
 }

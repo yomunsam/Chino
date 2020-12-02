@@ -16,5 +16,9 @@ namespace Chino.IdentityServer.Pages.Account
         public void OnGet()
         {
         }
+
+
+
+
     }
 }

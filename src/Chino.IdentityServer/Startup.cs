@@ -111,7 +111,7 @@ namespace Chino.IdentityServer
             #endregion
             services.AddAuthentication();
 
-
+            services.AddChinoConfigurations(Configuration);
             services.AddSingleton<CommonLocalizationService>();
 
         }

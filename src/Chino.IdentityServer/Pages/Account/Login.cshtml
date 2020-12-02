@@ -1,6 +1,7 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.Account.LoginModel
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Account.LoginModel> L
+@inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
 
 @{
     ViewContext.ClientValidationEnabled = true;
@@ -53,7 +54,14 @@
 
                 </div>
                 <div class="card-footer text-muted">
-                    <a asp-page="Account/ForgetPassword" class="link-secondary">@L["link_forget_password"]</a> | <a asp-page="/Account/Register" class="link-secondary">@L["link_register"]</a>
+                    @if (AccountConfiguration.EnableRegister)
+                    {
+                        <a asp-page="Account/ForgetPassword" class="link-secondary">@L["link_forget_password"]</a> @("|") <a asp-page="/Account/Register" class="link-secondary">@L["link_register"]</a>
+                    }
+                    else
+                    {
+                        <a asp-page="Account/ForgetPassword" class="link-secondary">@L["link_forget_password"]</a>
+                    }
                 </div>
             </div>
         }
