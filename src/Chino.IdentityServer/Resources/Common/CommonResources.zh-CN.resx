@@ -117,40 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn_cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="btn_login" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="invalid_credentials_error_message" xml:space="preserve">
-    <value>Invalid username or password</value>
-  </data>
-  <data name="invalid_return_URL" xml:space="preserve">
-    <value>Invalid Redirect Url：{0}</value>
-  </data>
-  <data name="invalid_xxx" xml:space="preserve">
-    <value>Invalid {0}</value>
-  </data>
-  <data name="link_forget_password" xml:space="preserve">
-    <value>Forget password</value>
-  </data>
-  <data name="link_register" xml:space="preserve">
-    <value>Register new account</value>
-  </data>
-  <data name="login_by_account" xml:space="preserve">
-    <value>Account Login</value>
-  </data>
-  <data name="password" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="remember_login" xml:space="preserve">
-    <value>Remember Me</value>
-  </data>
-  <data name="title_login" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="xxx_required" xml:space="preserve">
-    <value>{0} is required.</value>
+  <data name="phone_number" xml:space="preserve">
+    <value>手机号</value>
   </data>
 </root>

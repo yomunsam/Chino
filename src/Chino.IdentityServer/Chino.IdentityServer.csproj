@@ -28,13 +28,13 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\DataAnnotation\DataAnnotationResources.ja.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\DataAnnotation\DataAnnotationResources.en.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\DataAnnotation\DataAnnotationResources.zh.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Pages\Account\LoginModel.zh.resx">
       <Generator></Generator>

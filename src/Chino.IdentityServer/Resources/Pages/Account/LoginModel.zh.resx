@@ -129,6 +129,9 @@
   <data name="invalid_return_URL" xml:space="preserve">
     <value>重定向URL无效：{0}</value>
   </data>
+  <data name="invalid_xxx" xml:space="preserve">
+    <value>无效的{0}</value>
+  </data>
   <data name="link_forget_password" xml:space="preserve">
     <value>忘记密码</value>
   </data>
@@ -147,7 +150,7 @@
   <data name="title_login" xml:space="preserve">
     <value>登录</value>
   </data>
-  <data name="username" xml:space="preserve">
-    <value>用户名</value>
+  <data name="xxx_required" xml:space="preserve">
+    <value>{0}不可为空</value>
   </data>
 </root>

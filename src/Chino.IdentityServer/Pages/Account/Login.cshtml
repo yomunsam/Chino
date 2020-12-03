@@ -1,7 +1,9 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.Account.LoginModel
+@using Chino.IdentityServer.Extensions.Configurations 
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Account.LoginModel> L
 @inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
+@inject CommonLocalizationService CL
 
 @{
     ViewContext.ClientValidationEnabled = true;
@@ -25,15 +27,15 @@
                 <div class="card-body">
                     <form asp-route="Login">
                         <div class="form-group">
-                            <label asp-for="LoginDto.Username" class="visually-hidden">@L["username"]</label>
-                            <input class="form-control input-username" placeholder="@L["username"]" asp-for="LoginDto.Username" autofocus>
+                            <label asp-for="IdentityString" class="visually-hidden">@AccountConfiguration.GetLoginInputText(CL)</label>
+                            <input class="form-control input-head" placeholder="@AccountConfiguration.GetLoginInputText(CL)" asp-for="IdentityString" autofocus required>
                         </div>
                         <div class="form-group">
                             <label asp-for="LoginDto.Password" class="visually-hidden">@L["password"]</label>
-                            <input type="password" class="form-control input-passwd" placeholder="@L["password"]" asp-for="LoginDto.Password" autocomplete="off">
+                            <input type="password" class="form-control input-end" placeholder="@L["password"]" asp-for="LoginDto.Password" autocomplete="off">
                         </div>
                         <div class="form-group text-left">
-                            <div><span asp-validation-for="LoginDto.Username" class="text-danger"></span></div>
+                            <div>@*<span asp-validation-for="LoginDto.Identity" class="text-danger"></span>*@</div>
                             <div><span asp-validation-for="LoginDto.Password" class="text-danger"></span></div>
                         </div>
 
@@ -101,13 +103,13 @@
         font-weight: 400;
     }
 
-    .login-form .input-username {
+    .login-form .input-head {
         margin-bottom: -1px;
         border-bottom-left-radius:0;
         border-bottom-right-radius:0;
     }
 
-    .login-form .input-passwd {
+    .login-form .input-end {
         margin-bottom: 10px;
         border-top-left-radius:0;
         border-top-right-radius:0;

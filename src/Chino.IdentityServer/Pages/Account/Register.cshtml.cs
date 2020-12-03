@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Dtos.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Chino.IdentityServer.Pages.Account
 {
+    [AllowAnonymous]
     public class RegisterModel : PageModel
     {
         private readonly ChinoAccountConfiguration m_AccountConfiguration;
@@ -21,14 +23,18 @@ namespace Chino.IdentityServer.Pages.Account
         [BindProperty]
         public RegisterPageDto RegisterDto { get; set; }
 
-        public IActionResult OnGetAsync()
+        [BindProperty]
+        public string ReturnUrl { get; set; }
+
+        public IActionResult OnGetAsync(string returnUrl = null)
         {
-            
             if (!m_AccountConfiguration.EnableRegister)
             {
                 //TODO: 等做好错误页之后，这里最好是跳转到错误页面
                 return Redirect("/");
             }
+
+            this.ReturnUrl = returnUrl;
 
             return Page();
         }

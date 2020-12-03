@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Dtos.Account;
+using Chino.IdentityServer.Extensions.Configurations;
 using Chino.IdentityServer.Extensions.Oidc;
 using Chino.IdentityServer.Models.User;
+using Chino.IdentityServer.Services;
 using IdentityServer4.Events;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
 using Nekonya;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace Chino.IdentityServer.Pages.Account
 {
@@ -26,18 +30,24 @@ namespace Chino.IdentityServer.Pages.Account
         private readonly UserManager<ChinoUser> m_UserManager;
         private readonly IEventService m_IdsEvent;
         private readonly IStringLocalizer<LoginModel> L;
+        private readonly ChinoAccountConfiguration m_AccountConfiguration;
+        private readonly CommonLocalizationService CL;
 
         public LoginModel(IIdentityServerInteractionService identityServerInteractionService,
             SignInManager<ChinoUser> signInManager,
             UserManager<ChinoUser> userManager,
             IEventService idsEvent,
-            IStringLocalizer<LoginModel> localizer)
+            IStringLocalizer<LoginModel> localizer,
+            CommonLocalizationService cl,
+            ChinoAccountConfiguration accountConfiguration)
         {
             m_IdsInteraction = identityServerInteractionService;
             m_SignInManager = signInManager;
             m_UserManager = userManager;
             m_IdsEvent = idsEvent;
             L = localizer;
+            m_AccountConfiguration = accountConfiguration;
+            CL = cl;
         }
 
 
@@ -46,6 +56,12 @@ namespace Chino.IdentityServer.Pages.Account
 
         [BindProperty]
         public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// 登录的身份验证字段，可能会传入UserName，也有可能是Email，或者别的什么玩意
+        /// </summary>
+        [BindProperty]
+        public string IdentityString { get; set; }
 
         public bool EnableLocalLogin { get; set; } = true;
 
@@ -59,6 +75,11 @@ namespace Chino.IdentityServer.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string button)
         {
+            if (this.IdentityString.IsNullOrEmpty())
+            {
+                ModelState.AddModelError(string.Empty, L["xxx_required", m_AccountConfiguration.GetLoginInputText(CL)]);
+            }
+
             var context = await m_IdsInteraction.GetAuthorizationContextAsync(ReturnUrl);
             if(button != "login")
             {
@@ -87,41 +108,46 @@ namespace Chino.IdentityServer.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var result = await m_SignInManager.PasswordSignInAsync(LoginDto.Username, LoginDto.Password, LoginDto.RememberLogin, lockoutOnFailure: true);
-                if (result.Succeeded)
+                //登录流程
+                var user = await this.FindUserByIdentityStringAsync(IdentityString);
+                if(user != null)
                 {
-                    var user = await m_UserManager.FindByNameAsync(LoginDto.Username);
-                    await m_IdsEvent.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId));
-
-                    if(context != null)
+                    //找到用户了
+                    var result = await m_SignInManager.PasswordSignInAsync(user, LoginDto.Password, LoginDto.RememberLogin, lockoutOnFailure: false);
+                    if (result.Succeeded)
                     {
-                        if (context.IsNativeClient())
+                        await m_IdsEvent.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id, user.UserName, clientId: context?.Client.ClientId));
+
+                        if (context != null)
                         {
-                            //The client is native, so this change in how to return the response is for better UX for the end user.
-                            //客户端是本地客户端，因此此更改返回响应的方式是为最终用户提供更好的UX。
-                            //TODO : 这边跳转往后有时间再写
+                            if (context.IsNativeClient())
+                            {
+                                //The client is native, so this change in how to return the response is for better UX for the end user.
+                                //客户端是本地客户端，因此此更改返回响应的方式是为最终用户提供更好的UX。
+                                //TODO : 这边跳转往后有时间再写
+                            }
+
+                            return Redirect(ReturnUrl);
                         }
 
-                        return Redirect(ReturnUrl);
-                    }
-
-                    //请求来自本地页面
-                    if (Url.IsLocalUrl(ReturnUrl))
-                    {
-                        return Redirect(ReturnUrl);
-                    }
-                    else if (ReturnUrl.IsNullOrEmpty())
-                    {
-                        return Redirect("/");
-                    }
-                    else
-                    {
-                        // user might have clicked on a malicious link - should be logged
-                        throw new Exception(L["invalid_return_URL", ReturnUrl]);
+                        //请求来自本地页面
+                        if (Url.IsLocalUrl(ReturnUrl))
+                        {
+                            return Redirect(ReturnUrl);
+                        }
+                        else if (ReturnUrl.IsNullOrEmpty())
+                        {
+                            return Redirect("/");
+                        }
+                        else
+                        {
+                            // user might have clicked on a malicious link - should be logged
+                            throw new Exception(L["invalid_return_URL", ReturnUrl]);
+                        }
                     }
                 }
 
-                await m_IdsEvent.RaiseAsync(new UserLoginFailureEvent(LoginDto.Username, "invalid credentials", clientId: context?.Client.ClientId));
+                await m_IdsEvent.RaiseAsync(new UserLoginFailureEvent(IdentityString, "invalid credentials", clientId: context?.Client.ClientId));
                 ModelState.AddModelError(string.Empty, L["invalid_credentials_error_message"]);
             }
 
@@ -130,10 +156,28 @@ namespace Chino.IdentityServer.Pages.Account
         }
 
 
+
         public async Task<IActionResult> OnCancelAsync()
         {
             await Task.CompletedTask;
             return Redirect("/");
         }
+
+        private async Task<ChinoUser> FindUserByIdentityStringAsync(string identityString)
+        {
+            ChinoUser user = null;
+            if (m_AccountConfiguration.CanLoginByEmail() && identityString.IndexOf('@') != -1 )
+            {
+                user = await m_UserManager.FindByEmailAsync(identityString);
+            }
+
+            if(user == null && m_AccountConfiguration.CanLoginByUserName())
+            {
+                user = await m_UserManager.FindByNameAsync(identityString);
+            }
+
+            return user;
+        }
+
     }
 }
