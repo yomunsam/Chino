@@ -117,28 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="confirm_password_required" xml:space="preserve">
-    <value>请再次输入密码</value>
+  <data name="Context" xml:space="preserve">
+    <value>糟糕，您所访问的页面不存在！</value>
   </data>
-  <data name="email_required" xml:space="preserve">
-    <value>邮箱不可为空</value>
+  <data name="GoBack" xml:space="preserve">
+    <value>返回之前的页面</value>
   </data>
-  <data name="identity_required" xml:space="preserve">
-    <value>身份信息不可为空</value>
+  <data name="ReturnHomePage" xml:space="preserve">
+    <value>前往首页</value>
   </data>
-  <data name="invalid_confirm_password" xml:space="preserve">
-    <value>确认密码不一致</value>
-  </data>
-  <data name="invalid_email_address" xml:space="preserve">
-    <value>邮件地址无效</value>
-  </data>
-  <data name="passwd_required" xml:space="preserve">
-    <value>口令不可为空</value>
-  </data>
-  <data name="phone_number_required" xml:space="preserve">
-    <value>电话号码不可为空</value>
-  </data>
-  <data name="username_required" xml:space="preserve">
-    <value>用户名不可为空</value>
+  <data name="Title" xml:space="preserve">
+    <value>页面丢失了</value>
   </data>
 </root>

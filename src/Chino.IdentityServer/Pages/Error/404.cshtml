@@ -1,0 +1,27 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Error._404Model
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Error._404Model> L
+@{
+    ViewData["Title"] = L["Title"];
+    ViewData["Nav_ShowLogin/Out"] = false;
+}
+
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet" async>
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" async>
+
+<link type="text/css" rel="stylesheet" href="~/css/404.css" />
+
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-title404">
+            <h1>404</h1>
+        </div>
+        <h2>@L["Context"]</h2>
+        @*<form class="notfound-search">
+                <input type="text" placeholder="Search...">
+                <button type="button">Search</button>
+            </form>*@
+        @*<a href="~/"><span class="arrow"></span>@L["ReturnHomePage"]</a>*@
+        <a href="javascript:history.go(-1)"><span class="arrow"></span>@L["GoBack"]</a>
+    </div>
+</div>

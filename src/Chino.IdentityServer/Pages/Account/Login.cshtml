@@ -8,6 +8,7 @@
 @{
     ViewContext.ClientValidationEnabled = true;
     ViewData["Nav_ShowLogin/Out"] = false;
+    ViewData["Title"] = L["title_login"];
 }
 
 <div class="login-page pb-4 mb-4">
@@ -28,14 +29,14 @@
                     <form asp-route="Login">
                         <div class="form-group">
                             <label asp-for="IdentityString" class="visually-hidden">@AccountConfiguration.GetLoginInputText(CL)</label>
-                            <input class="form-control input-head" placeholder="@AccountConfiguration.GetLoginInputText(CL)" asp-for="IdentityString" autofocus required>
+                            <input class="form-control input-head" placeholder="@AccountConfiguration.GetLoginInputText(CL)" asp-for="IdentityString" autofocus>
                         </div>
                         <div class="form-group">
                             <label asp-for="LoginDto.Password" class="visually-hidden">@L["password"]</label>
                             <input type="password" class="form-control input-end" placeholder="@L["password"]" asp-for="LoginDto.Password" autocomplete="off">
                         </div>
                         <div class="form-group text-left">
-                            <div>@*<span asp-validation-for="LoginDto.Identity" class="text-danger"></span>*@</div>
+                            <div>@*<span asp-validation-for="IdentityString" class="text-danger"></span>*@</div>
                             <div><span asp-validation-for="LoginDto.Password" class="text-danger"></span></div>
                         </div>
 

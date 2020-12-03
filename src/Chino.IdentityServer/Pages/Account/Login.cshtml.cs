@@ -67,9 +67,17 @@ namespace Chino.IdentityServer.Pages.Account
 
         public bool AllowRememberLogin { get; set; } = true;
 
-        public IActionResult OnGet(string returnUrl)
+        public async Task<IActionResult> OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl;
+            var context = await m_IdsInteraction.GetAuthorizationContextAsync(returnUrl);
+            if(context?.IdP != null)
+            {
+                AllowRememberLogin = false;
+                IdentityString = context?.LoginHint;
+            }
+
+
             return Page();
         }
 

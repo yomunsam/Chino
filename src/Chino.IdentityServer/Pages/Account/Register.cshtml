@@ -1,10 +1,13 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.Account.RegisterModel
+@using Chino.IdentityServer.Extensions.Configurations 
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Account.RegisterModel> L
+@inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
 
 @{
     ViewContext.ClientValidationEnabled = true;
     ViewData["Nav_ShowLogin/Out"] = false;
+    ViewData["Title"] = L["Title"];
 }
 
 <div class="register-page pb-4 mb-4">
@@ -21,17 +24,52 @@
             </div>
 
             <div class="card-body">
-                <form asp-route="Register">
+                <form asp-route="Register" method="post">
+                    @*隐藏表单(暂无)*@
+                    <input type="hidden" asp-for="ReturnUrl" />
+
                     @*用户名*@
-                    <div class="form-group">
-                        <label asp-for="RegisterDto.UserName" class="visually-hidden">@L["username"]</label>
-                        <input class="form-control input-head" placeholder="@L["username"]" asp-for="RegisterDto.UserName" autofocus>
-                    </div>
+                    @if (AccountConfiguration.UserName.Register)
+                    {
+                        <div class="form-group">
+                            <label asp-for="RegisterDto.UserName" class="visually-hidden">@L["username"]</label>
+                            <input class="form-control input-head" placeholder="@L["username"]" asp-for="RegisterDto.UserName" autofocus>
+                        </div>
+                    }
+
                     @*邮箱*@
-                    <div class="form-group">
-                        <label asp-for="RegisterDto.Email" class="visually-hidden">@L["email"]</label>
-                        <input type="email" class="form-control input-middle" placeholder="@L["email"]" asp-for="RegisterDto.Email" autofocus>
-                    </div>
+                    @if (AccountConfiguration.Email.Register)
+                    {
+                        <div class="form-group">
+                            <label asp-for="RegisterDto.Email" class="visually-hidden">@L["email"]</label>
+                            @if (AccountConfiguration.UserName.Register)
+                            {
+                                //这儿要判断的的是，如果上面的用户名输入框没显示，意味着邮箱输入框在最上面，就要有圆角了
+                                <input type="email" class="form-control input-middle" placeholder="@L["email"]" asp-for="RegisterDto.Email" autofocus>
+                            }
+                            else
+                            {
+                                <input type="email" class="form-control input-head" placeholder="@L["email"]" asp-for="RegisterDto.Email" autofocus>
+                            }
+                        </div>
+                    }
+
+                    @*手机号*@
+                    @if (AccountConfiguration.Phone.Register)
+                    {
+                        <div class="form-group">
+                            <label asp-for="RegisterDto.Phone" class="visually-hidden">@L["phone_number"]</label>
+                            @if (AccountConfiguration.UserName.Register || AccountConfiguration.Email.Register)
+                            {
+                                <input type="tel" class="form-control input-middle" placeholder="@L["phone_number"]" asp-for="RegisterDto.Phone" autofocus>
+                            }
+                            else
+                            {
+                                <input type="tel" class="form-control input-head" placeholder="@L["phone_number"]" asp-for="RegisterDto.Phone" autofocus>
+                            }
+                        </div>
+                    }
+
                     @*口令*@
                     <div class="form-group">
                         <label asp-for="RegisterDto.Password" class="visually-hidden">@L["password"]</label>
@@ -47,6 +85,7 @@
                     <div class="form-group text-left">
                         <div><span asp-validation-for="RegisterDto.UserName" class="text-danger"></span></div>
                         <div><span asp-validation-for="RegisterDto.Email" class="text-danger"></span></div>
+                        <div><span asp-validation-for="RegisterDto.Phone" class="text-danger"></span></div>
                         <div><span asp-validation-for="RegisterDto.Password" class="text-danger"></span></div>
                         <div><span asp-validation-for="RegisterDto.ConfirmPassword" class="text-danger"></span></div>
                     </div>

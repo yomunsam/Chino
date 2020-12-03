@@ -75,7 +75,10 @@ namespace Chino.IdentityServer
 
             services.AddChinoDatabase<ChinoApplicationDbContext>(this.Configuration);
 
-            services.AddIdentity<ChinoUser, IdentityRole>()
+            services.AddIdentity<ChinoUser, IdentityRole>(options =>
+            {
+                Configuration.GetSection("Chino:IdentityOptions").Bind(options);
+            })
                 .AddEntityFrameworkStores<ChinoApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -128,6 +131,8 @@ namespace Chino.IdentityServer
             }
 
             app.UseHttpsRedirection();
+
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
             app.UseStaticFiles();
 
