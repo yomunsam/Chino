@@ -29,7 +29,7 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@userDisplayName <b class="caret"></b></a>
 
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-page="Account/Logout">@CL["logout"]</a>
+                                    <a class="dropdown-item" asp-page="/Account/Logout">@CL["logout"]</a>
                                 </div>
                             </li>
                         }
@@ -39,12 +39,12 @@
                         @if (showSignInOut)
                         {
                             <li class="nav-item ml-lg-auto ml-md-auto">
-                                <a class="nav-link" asp-page="Account/Login">@CL["login"]</a>
+                                <a class="nav-link" asp-page="/Account/Login">@CL["login"]</a>
                             </li>
                             if (AccountConfiguration.EnableRegister)
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-page="Account/Register">@CL["register"]</a>
+                                    <a class="nav-link" asp-page="/Account/Register">@CL["register"]</a>
                                 </li>
                             }
                         }

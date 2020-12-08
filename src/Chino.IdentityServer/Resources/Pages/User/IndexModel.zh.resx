@@ -117,34 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="email" xml:space="preserve">
+  <data name="btn_editUserInfo" xml:space="preserve">
+    <value>编辑我的信息</value>
+  </data>
+  <data name="label_displayName" xml:space="preserve">
+    <value>显示名</value>
+  </data>
+  <data name="label_email" xml:space="preserve">
     <value>邮箱</value>
   </data>
-  <data name="error1" xml:space="preserve">
-    <value>出错了</value>
+  <data name="label_subjectId" xml:space="preserve">
+    <value>用户ID</value>
   </data>
-  <data name="hello" xml:space="preserve">
-    <value>你好</value>
-  </data>
-  <data name="login" xml:space="preserve">
-    <value>登录</value>
-  </data>
-  <data name="logout" xml:space="preserve">
-    <value>退出登录</value>
-  </data>
-  <data name="phone_number" xml:space="preserve">
-    <value>电话号码</value>
-  </data>
-  <data name="register" xml:space="preserve">
-    <value>注册</value>
-  </data>
-  <data name="username" xml:space="preserve">
+  <data name="label_userName" xml:space="preserve">
     <value>用户名</value>
-  </data>
-  <data name="user_nav_infos" xml:space="preserve">
-    <value>个人信息</value>
-  </data>
-  <data name="user_nav_passwd" xml:space="preserve">
-    <value>修改密码</value>
   </data>
 </root>

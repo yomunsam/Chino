@@ -29,6 +29,8 @@ namespace Chino.IdentityServer.SeedData
             public string WebSite { get; set; }
             public string NickName { get; set; }
 
+            public ICollection<string> Roles = new HashSet<string>();
+
             #endregion
         }
 

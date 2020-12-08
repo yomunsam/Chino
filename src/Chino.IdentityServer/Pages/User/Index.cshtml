@@ -1,0 +1,71 @@
+﻿@page
+@model Chino.IdentityServer.Pages.User.IndexModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.User.IndexModel> L
+@{
+    Layout = "_UserLayout";
+    ViewData["_CurrentPage"] = "userInfo";
+}
+
+<div class="card mb-3">
+    <div class="card-header text-right">
+        <a class="btn btn-outline-secondary btn-sm" href="/User/EditInfo">@L["btn_editUserInfo"]</a>
+    </div>
+    <div class="card-body">
+        @*显示名*@
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">@L["label_displayName"]</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.DisplayName
+            </div>
+        </div>
+        <hr>
+        @*用户名*@
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">@L["label_userName"]</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.UserName
+            </div>
+        </div>
+        <hr>
+        @*邮箱*@
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">@L["label_email"]</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.Email
+            </div>
+        </div>
+        <hr>
+
+        @*用户ID*@
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">@L["label_subjectId"]</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.SubjectId
+                <button class="btn btn-sm btn-outline-secondary ml-2" data-clipboard-text="@Model.SubjectId"><span class="oi oi-clipboard" title="Copy"></span></button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<environment include="Development">
+    @*开发模式下的JS引用之类的*@
+    <script src="~/lib/clipboardjs/clipboard.js"></script>
+</environment>
+<environment exclude="Development">
+    @*发布模式下的js引用之类的*@
+    <script src="~/lib/clipboardjs/clipboard.min.js"></script>
+</environment>
+
+<script>
+    new ClipboardJS(".btn");
+</script>

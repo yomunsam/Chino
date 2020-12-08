@@ -88,7 +88,8 @@ namespace Chino.IdentityServer.SeedData
                         Password = "Abc123456!",
                         Name = "Kirito Alice",
                         NickName = "Alice",
-                        WebSite = "https://alice.moe"
+                        WebSite = "https://alice.moe",
+                        
                     }
                 };
             }

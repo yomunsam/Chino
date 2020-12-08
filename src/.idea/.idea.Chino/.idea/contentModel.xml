@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\yomun\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\yomun\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Chino.-1498527884.00" t="ExcludeRecursive" />
+    <e p="D:\Meow\Chino\src" t="IncludeFlat">
+      <e p=".dockerignore" t="Include" />
+      <e p="Chino.IdentityServer" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="AutoMapper" t="Include">
+          <e p="AutoMapperProfile.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Chino.IdentityServer.csproj" t="IncludeRecursive" />
+        <e p="Configures" t="Include">
+          <e p="ChinoAccountConfiguration.cs" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="WeatherForecastController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="ChinoApplicationDbContext.cs" t="Include" />
+          <e p="Migrations" t="Include">
+            <e p="Chino" t="Include">
+              <e p="Application" t="Include">
+                <e p="20201127071428_InitChinoApp.cs" t="Include" />
+                <e p="20201127071428_InitChinoApp.Designer.cs" t="Include" />
+                <e p="ChinoApplicationDbContextModelSnapshot.cs" t="Include" />
+              </e>
+            </e>
+            <e p="IdentityServer" t="Include">
+              <e p="Configuration" t="Include">
+                <e p="20201127092341_InitConfigurations.cs" t="Include" />
+                <e p="20201127092341_InitConfigurations.Designer.cs" t="Include" />
+                <e p="ConfigurationDbContextModelSnapshot.cs" t="Include" />
+              </e>
+              <e p="PersistedGrant" t="Include">
+                <e p="20201127092347_InitPersisted.cs" t="Include" />
+                <e p="20201127092347_InitPersisted.Designer.cs" t="Include" />
+                <e p="PersistedGrantDbContextModelSnapshot.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="DataValidation" t="Include">
+          <e p="Attributes" t="Include">
+            <e p="RegisterRequiredAttribute.cs" t="Include" />
+          </e>
+          <e p="Enums" t="Include">
+            <e p="RegisterRequiredType.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Dockerfile" t="Include" />
+        <e p="Dtos" t="Include">
+          <e p="Account" t="Include">
+            <e p="LoginPageDto.cs" t="Include" />
+            <e p="RegisterPageDto.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Extensions" t="Include">
+          <e p="Configurations" t="Include">
+            <e p="ChinoAccountConfigurationExtensions.cs" t="Include" />
+          </e>
+          <e p="Oidc" t="Include">
+            <e p="OidcExtensions.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Gruntfile.js" t="Include" />
+        <e p="Models" t="Include">
+          <e p="Culture" t="Include">
+            <e p="CultureSwitcherModel.cs" t="Include" />
+          </e>
+          <e p="User" t="Include">
+            <e p="ChinoUser.cs" t="Include" />
+          </e>
+        </e>
+        <e p="node_modules\grunt" t="IncludeRecursive" />
+        <e p="node_modules\grunt-contrib-clean" t="IncludeRecursive" />
+        <e p="node_modules\grunt-contrib-concat" t="IncludeRecursive" />
+        <e p="node_modules\grunt-contrib-jshint" t="IncludeRecursive" />
+        <e p="node_modules\grunt-contrib-uglify" t="IncludeRecursive" />
+        <e p="node_modules\grunt-contrib-watch" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="Chino.IdentityServer.AssemblyInfo.cs" t="Include" />
+              <e p="Chino.IdentityServer.RazorAssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="package-lock.json" t="Include" />
+        <e p="package.json" t="Include" />
+        <e p="Pages" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Account" t="Include">
+            <e p="Login.cshtml" t="Include" />
+            <e p="Login.cshtml.cs" t="Include" />
+            <e p="Logout.cshtml" t="Include" />
+            <e p="Logout.cshtml.cs" t="Include" />
+            <e p="Register.cshtml" t="Include" />
+            <e p="Register.cshtml.cs" t="Include" />
+          </e>
+          <e p="Components" t="Include">
+            <e p="CultureSwitcher" t="Include">
+              <e p="default.cshtml" t="Include" />
+            </e>
+          </e>
+          <e p="Error" t="Include">
+            <e p="404.cshtml" t="Include" />
+            <e p="404.cshtml.cs" t="Include" />
+          </e>
+          <e p="Index.cshtml" t="Include" />
+          <e p="Index.cshtml.cs" t="Include" />
+          <e p="Shared" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="_UserLayout.cshtml" t="Include" />
+            <e p="_ValidationScriptsPartial.cshtml" t="Include" />
+            <e p="Footer.cshtml" t="Include" />
+            <e p="Nav.cshtml" t="Include" />
+            <e p="Redirect.cshtml" t="Include" />
+            <e p="Redirect.cshtml.cs" t="Include" />
+            <e p="ValidationSummary.cshtml" t="Include" />
+          </e>
+          <e p="User" t="Include">
+            <e p="EditInfo.cshtml" t="Include" />
+            <e p="EditInfo.cshtml.cs" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="Index.cshtml.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Common" t="Include">
+            <e p="CommonResources.cs" t="Include" />
+            <e p="CommonResources.en.resx" t="Include" />
+            <e p="CommonResources.ja.resx" t="Include" />
+            <e p="CommonResources.zh-CN.resx" t="Include" />
+            <e p="CommonResources.zh.resx" t="Include" />
+          </e>
+          <e p="DataAnnotation" t="Include">
+            <e p="DataAnnotationResources.cs" t="Include" />
+            <e p="DataAnnotationResources.en.resx" t="Include" />
+            <e p="DataAnnotationResources.ja.resx" t="Include" />
+            <e p="DataAnnotationResources.zh.resx" t="Include" />
+          </e>
+          <e p="Pages" t="Include">
+            <e p="Account" t="Include">
+              <e p="LoginModel.en.resx" t="Include" />
+              <e p="LoginModel.ja.resx" t="Include" />
+              <e p="LoginModel.zh.resx" t="Include" />
+              <e p="LogoutModel.zh.resx" t="Include" />
+              <e p="RegisterModel.zh.resx" t="Include" />
+            </e>
+            <e p="Error" t="Include">
+              <e p="_404Model.en.resx" t="Include" />
+              <e p="_404Model.ja.resx" t="Include" />
+              <e p="_404Model.zh.resx" t="Include" />
+            </e>
+            <e p="IndexModel.en.resx" t="Include" />
+            <e p="IndexModel.ja.resx" t="Include" />
+            <e p="IndexModel.zh.resx" t="Include" />
+            <e p="User" t="Include">
+              <e p="IndexModel.zh.resx" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="SeedData" t="Include">
+          <e p="SeedData.cs" t="Include" />
+          <e p="SeedDataJsonConfig.cs" t="Include" />
+        </e>
+        <e p="seedData.json" t="Include" />
+        <e p="Services" t="Include">
+          <e p="CommonLocalizationService.cs" t="Include" />
+        </e>
+        <e p="ServicesExtension.cs" t="Include" />
+        <e p="Startup.cs" t="Include" />
+        <e p="tempkey.jwk" t="Include" />
+        <e p="ViewComponents" t="Include">
+          <e p="CultureSwitcherViewComponent.cshtml.cs" t="Include" />
+        </e>
+        <e p="WeatherForecast.cs" t="Include" />
+        <e p="wwwroot" t="Include">
+          <e p="css" t="Include">
+            <e p="404.css" t="Include" />
+            <e p="chino-user.css" t="Include" />
+            <e p="chino.css" t="Include" />
+          </e>
+          <e p="debug.log" t="Include" />
+          <e p="img" t="Include">
+            <e p="default_avatar.png" t="Include" />
+          </e>
+          <e p="js" t="Include">
+            <e p="chino.js" t="Include" />
+          </e>
+          <e p="lib" t="Include">
+            <e p="bootstrap" t="Include">
+              <e p="dist" t="Include">
+                <e p="css" t="Include">
+                  <e p="bootstrap-grid.css" t="Include" />
+                  <e p="bootstrap-grid.css.map" t="Include" />
+                  <e p="bootstrap-grid.min.css" t="Include" />
+                  <e p="bootstrap-grid.min.css.map" t="Include" />
+                  <e p="bootstrap-reboot.css" t="Include" />
+                  <e p="bootstrap-reboot.css.map" t="Include" />
+                  <e p="bootstrap-reboot.min.css" t="Include" />
+                  <e p="bootstrap-reboot.min.css.map" t="Include" />
+                  <e p="bootstrap-utilities.css" t="Include" />
+                  <e p="bootstrap-utilities.css.map" t="Include" />
+                  <e p="bootstrap-utilities.min.css" t="Include" />
+                  <e p="bootstrap-utilities.min.css.map" t="Include" />
+                  <e p="bootstrap.css" t="Include" />
+                  <e p="bootstrap.css.map" t="Include" />
+                  <e p="bootstrap.min.css" t="Include" />
+                  <e p="bootstrap.min.css.map" t="Include" />
+                </e>
+                <e p="js" t="Include">
+                  <e p="bootstrap.bundle.js" t="Include" />
+                  <e p="bootstrap.bundle.js.map" t="Include" />
+                  <e p="bootstrap.bundle.min.js" t="Include" />
+                  <e p="bootstrap.bundle.min.js.map" t="Include" />
+                  <e p="bootstrap.esm.js" t="Include" />
+                  <e p="bootstrap.esm.js.map" t="Include" />
+                  <e p="bootstrap.esm.min.js" t="Include" />
+                  <e p="bootstrap.esm.min.js.map" t="Include" />
+                  <e p="bootstrap.js" t="Include" />
+                  <e p="bootstrap.js.map" t="Include" />
+                  <e p="bootstrap.min.js" t="Include" />
+                  <e p="bootstrap.min.js.map" t="Include" />
+                </e>
+              </e>
+              <e p="LICENSE" t="Include" />
+            </e>
+            <e p="clipboardjs" t="Include">
+              <e p="clipboard.js" t="Include" />
+              <e p="clipboard.min.js" t="Include" />
+            </e>
+            <e p="jquery" t="Include">
+              <e p="dist" t="Include">
+                <e p="jquery.js" t="Include" />
+                <e p="jquery.min.js" t="Include" />
+                <e p="jquery.min.map" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+            <e p="jquery-validation" t="Include">
+              <e p="dist" t="Include">
+                <e p="additional-methods.js" t="Include" />
+                <e p="additional-methods.min.js" t="Include" />
+                <e p="jquery.validate.js" t="Include" />
+                <e p="jquery.validate.min.js" t="Include" />
+              </e>
+              <e p="LICENSE.md" t="Include" />
+            </e>
+            <e p="jquery-validation-unobtrusive" t="Include">
+              <e p="jquery.validate.unobtrusive.js" t="Include" />
+              <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+            <e p="open-iconic" t="Include">
+              <e p="font" t="Include">
+                <e p="css" t="Include">
+                  <e p="open-iconic-bootstrap.min.css" t="Include" />
+                </e>
+                <e p="fonts" t="Include">
+                  <e p="open-iconic.eot" t="Include" />
+                  <e p="open-iconic.otf" t="Include" />
+                  <e p="open-iconic.svg" t="Include" />
+                  <e p="open-iconic.ttf" t="Include" />
+                  <e p="open-iconic.woff" t="Include" />
+                </e>
+              </e>
+              <e p="FONT-LICENSE" t="Include" />
+              <e p="ICON-LICENSE" t="Include" />
+              <e p="README.md" t="Include" />
+            </e>
+            <e p="vue" t="Include">
+              <e p="vue.js" t="Include" />
+              <e p="vue.min.js" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Chino.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
