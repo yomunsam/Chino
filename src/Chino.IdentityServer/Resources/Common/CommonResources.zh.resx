@@ -159,10 +159,19 @@
   <data name="username" xml:space="preserve">
     <value>用户名</value>
   </data>
+  <data name="user_nav_grants" xml:space="preserve">
+    <value>我的授权</value>
+  </data>
   <data name="user_nav_infos" xml:space="preserve">
     <value>个人信息</value>
   </data>
+  <data name="user_nav_myAccountData" xml:space="preserve">
+    <value>我的账号数据</value>
+  </data>
   <data name="user_nav_passwd" xml:space="preserve">
-    <value>修改密码</value>
+    <value>修改登录口令</value>
+  </data>
+  <data name="user_nav_twoFactorAuthentication" xml:space="preserve">
+    <value>双因素认证</value>
   </data>
 </root>

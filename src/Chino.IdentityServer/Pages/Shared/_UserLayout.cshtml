@@ -58,9 +58,11 @@
                     @*链接*@
                     <div class="card mt-3">
                         <div class="list-group">
-                            <a href="/User" class="list-group-item list-group-item-action @(IsPage("userInfo")?"active":string.Empty)" aria-current="@(IsPage("userInfo")?"true":"false")">@CL["user_nav_infos"]</a>
-                            <a href="/ChangePassword" class="list-group-item list-group-item-action @(IsPage("changePassword")?"active":string.Empty)" aria-current="@(IsPage("changePassword")?"true":"false")">@CL["user_nav_passwd"]</a>
-                            <a href="/ChangePassword" class="list-group-item list-group-item-action @(IsPage("changePassword")?"active":string.Empty)" aria-current="@(IsPage("changePassword")?"true":"false")">@CL["user_nav_passwd"]</a>
+                            <a asp-page="/User/Index" class="list-group-item list-group-item-action @(IsPage("userInfo")?"active":string.Empty)" aria-current="@(IsPage("userInfo")?"true":"false")">@CL["user_nav_infos"]</a>
+                            <a asp-page="/User/ChangePassword" class="list-group-item list-group-item-action @(IsPage("changePassword")?"active":string.Empty)" aria-current="@(IsPage("changePassword")?"true":"false")">@CL["user_nav_passwd"]</a>
+                            <a asp-page="/User/Grants" class="list-group-item list-group-item-action @(IsPage("grants")?"active":string.Empty)" aria-current="@(IsPage("grants")?"true":"false")">@CL["user_nav_grants"]</a>
+                            <a asp-page="/User/TwoFactorAuthentication" class="list-group-item list-group-item-action @(IsPage("twoFactorAuthentication")?"active":string.Empty)" aria-current="@(IsPage("twoFactorAuthentication")?"true":"false")">@CL["user_nav_twoFactorAuthentication"]</a>
+                            <a asp-page="/User/MyAccountData" class="list-group-item list-group-item-action @(IsPage("accountData")?"active":string.Empty)" aria-current="@(IsPage("accountData")?"true":"false")">@CL["user_nav_myAccountData"]</a>
 
                         </div>
                         
