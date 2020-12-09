@@ -117,22 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn_editUserInfo" xml:space="preserve">
-    <value>编辑我的信息</value>
+  <data name="counter_client_total" xml:space="preserve">
+    <value>客户端总数</value>
   </data>
-  <data name="label_email" xml:space="preserve">
-    <value>邮箱</value>
-  </data>
-  <data name="label_name" xml:space="preserve">
-    <value>您的名字</value>
-  </data>
-  <data name="label_nickName" xml:space="preserve">
-    <value>昵称</value>
-  </data>
-  <data name="label_subjectId" xml:space="preserve">
-    <value>用户ID</value>
-  </data>
-  <data name="label_userName" xml:space="preserve">
-    <value>用户名</value>
+  <data name="counter_users_total" xml:space="preserve">
+    <value>用户总数</value>
   </data>
 </root>

@@ -23,15 +23,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de1157ac-c002-4f3c-8a28-91eb5ad91724" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Chino.IdentityServer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Chino.IdentityServer.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chino/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chino/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chino/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chino/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Chino.IdentityServer.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Chino.IdentityServer.csproj.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Shared/Nav.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Shared/Nav.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Dashboard/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Dashboard/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Dashboard/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Dashboard/Index.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Shared/_DashboardLayout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Shared/_DashboardLayout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Shared/_UserLayout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Pages/Shared/_UserLayout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Pages/User/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Pages/User/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Pages/User/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Pages/User/Index.cshtml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Resources/Common/CommonResources.zh.resx" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Resources/Common/CommonResources.zh.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/SeedData/SeedData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/SeedData/SeedData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/SeedData/SeedDataJsonConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/SeedData/SeedDataJsonConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Resources/Pages/User/IndexModel.zh.resx" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Resources/Pages/User/IndexModel.zh.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/ServicesExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/ServicesExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/Startup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/seedData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/seedData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chino.IdentityServer/wwwroot/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/Chino.IdentityServer/wwwroot/debug.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +46,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/57288065-2238-46FD-BA33-B2CEDA9093F6/D2/PrincipalExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/57288065-2238-46FD-BA33-B2CEDA9093F6/D3/StringsExtensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1lMocJ8kSqeQ4f7xgQOkg4ibF2R" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -93,10 +103,15 @@
       <option name="presentableId" value="Default" />
       <updated>1607416401897</updated>
       <workItem from="1607416419850" duration="37000" />
+      <workItem from="1607488026655" duration="149000" />
+      <workItem from="1607489585792" duration="1264000" />
     </task>
     <servers />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -108,6 +123,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

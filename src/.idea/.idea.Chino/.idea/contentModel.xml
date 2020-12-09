@@ -57,6 +57,9 @@
             <e p="LoginPageDto.cs" t="Include" />
             <e p="RegisterPageDto.cs" t="Include" />
           </e>
+          <e p="PaginatedList" t="Include">
+            <e p="PaginatedListDto.cs" t="Include" />
+          </e>
         </e>
         <e p="Extensions" t="Include">
           <e p="Configurations" t="Include">
@@ -64,6 +67,9 @@
           </e>
           <e p="Oidc" t="Include">
             <e p="OidcExtensions.cs" t="Include" />
+          </e>
+          <e p="User" t="Include">
+            <e p="UserExtensions.cs" t="Include" />
           </e>
         </e>
         <e p="Gruntfile.js" t="Include" />
@@ -107,6 +113,20 @@
               <e p="default.cshtml" t="Include" />
             </e>
           </e>
+          <e p="Dashboard" t="Include">
+            <e p="Index.cshtml" t="Include" />
+            <e p="Index.cshtml.cs" t="Include" />
+            <e p="Roles.cshtml" t="Include" />
+            <e p="Roles.cshtml.cs" t="Include" />
+            <e p="User" t="Include">
+              <e p="Add.cshtml" t="Include" />
+              <e p="Add.cshtml.cs" t="Include" />
+              <e p="Delete.cshtml" t="Include" />
+              <e p="Delete.cshtml.cs" t="Include" />
+            </e>
+            <e p="Users.cshtml" t="Include" />
+            <e p="Users.cshtml.cs" t="Include" />
+          </e>
           <e p="Error" t="Include">
             <e p="404.cshtml" t="Include" />
             <e p="404.cshtml.cs" t="Include" />
@@ -114,6 +134,7 @@
           <e p="Index.cshtml" t="Include" />
           <e p="Index.cshtml.cs" t="Include" />
           <e p="Shared" t="Include">
+            <e p="_DashboardLayout.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
             <e p="_UserLayout.cshtml" t="Include" />
             <e p="_ValidationScriptsPartial.cshtml" t="Include" />
@@ -156,6 +177,10 @@
               <e p="LogoutModel.zh.resx" t="Include" />
               <e p="RegisterModel.zh.resx" t="Include" />
             </e>
+            <e p="Dashboard" t="Include">
+              <e p="IndexModel.zh.resx" t="Include" />
+              <e p="UsersModel.zh.resx" t="Include" />
+            </e>
             <e p="Error" t="Include">
               <e p="_404Model.en.resx" t="Include" />
               <e p="_404Model.ja.resx" t="Include" />
@@ -176,10 +201,19 @@
         <e p="seedData.json" t="Include" />
         <e p="Services" t="Include">
           <e p="CommonLocalizationService.cs" t="Include" />
+          <e p="Users" t="Include">
+            <e p="IUsersService.cs" t="Include" />
+            <e p="UsersService.cs" t="Include" />
+          </e>
         </e>
         <e p="ServicesExtension.cs" t="Include" />
         <e p="Startup.cs" t="Include" />
         <e p="tempkey.jwk" t="Include" />
+        <e p="Utils" t="Include">
+          <e p="PaginatedList" t="Include">
+            <e p="PaginatedList.cs" t="Include" />
+          </e>
+        </e>
         <e p="ViewComponents" t="Include">
           <e p="CultureSwitcherViewComponent.cshtml.cs" t="Include" />
         </e>
@@ -187,6 +221,7 @@
         <e p="wwwroot" t="Include">
           <e p="css" t="Include">
             <e p="404.css" t="Include" />
+            <e p="chino-dashboard.css" t="Include" />
             <e p="chino-user.css" t="Include" />
             <e p="chino.css" t="Include" />
           </e>
@@ -195,6 +230,7 @@
             <e p="default_avatar.png" t="Include" />
           </e>
           <e p="js" t="Include">
+            <e p="chino-dashboard.js" t="Include" />
             <e p="chino.js" t="Include" />
           </e>
           <e p="lib" t="Include">

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Chino.IdentityServer.Extensions.User;
 using Chino.IdentityServer.Models.User;
 using IdentityServer4.Extensions;
 using Microsoft.AspNetCore.Authorization;
@@ -11,7 +12,15 @@ namespace Chino.IdentityServer.Pages.User
     [Authorize]
     public class IndexModel : PageModel
     {
+        /// <summary>
+        /// Name
+        /// </summary>
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Nickname
+        /// </summary>
+        public string NickName { get; set; }
         public string SubjectId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
@@ -30,6 +39,7 @@ namespace Chino.IdentityServer.Pages.User
             SubjectId = this.User.GetSubjectId();
             UserName = user_info.UserName;
             Email = user_info.Email;
+            NickName = this.User.GetNickName();
 
             ViewData["Title"] = DisplayName ?? "User";
             return Page();

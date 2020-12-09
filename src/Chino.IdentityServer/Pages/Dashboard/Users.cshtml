@@ -1,0 +1,129 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Dashboard.UsersModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.UsersModel> L
+@using Chino.IdentityServer.Extensions.User
+@{
+    Layout = "_DashboardLayout";
+    ViewData["pageName"] = "users";
+}
+
+<div class="mt-3 container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                @*搜索框*@
+                <form method="get" class="row g-3 float-left mr-2">
+                    <div class="col-auto">
+                        @*<label>Search</label>*@
+                        <input class="form-control" asp-for="SearchText" type="text" id="search" name="search" value="@Model.SearchText" placeholder="@L["input_placeholder_search"]" />
+
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+                <a class="btn btn-outline-primary ml-2" asp-page="User/Add">@L["btn_add_user"]</a>
+            </div>
+
+            @*列表在这儿*@
+            <div class="mt-3">
+                <ul class="list-inline list">
+                    @*列表里面的一项*@
+                    @foreach (var user in Model.Users.Data)
+                    {
+                        <li class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="ml-2">
+                                    <div>
+                                        <h6 class="mb-0 mr-2 float-left" title="@L["tips_username"]">@user.UserName</h6>
+                                        <p class="ml-1 text-muted my-0" title="@L["tips_email"]">@user.Email</p>
+                                    </div>
+                                    <div class="d-flex flex-row mt-1 text-black-50">
+                                        <div title="@L["tips_userId"]">@user.Id</div>
+                                        <button class="btn btn-sm btn-outline-secondary ml-2 py-0 px-1" data-clipboard-text="@user.Id" title="@L["tips_copy_userId"]"><span class="oi oi-clipboard" title="Copy"></span></button>
+                                    </div>
+                                    <p class="d-flex flex-row text-black-50 mb-0" title="@L["tips_nickname_or_name"]">@(Model.UserClaims[user].GetNickName() ?? Model.UserClaims[user].GetName())</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="d-flex mr-2 btn-group">
+                                    <a href="#" class="btn btn-sm btn-primary" title="@L["tips_viewInfo"]"><span class="oi oi-magnifying-glass"></span></a>
+                                    <a asp-page="/Dashboard/User/Delete" asp-route-Id="@user.Id" asp- class="btn btn-sm btn-danger" title="@L["tips_delete"]"><span class="oi oi-trash"></span></a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+
+            @*分页*@
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item @(Model.Users.PageIndex <= 1 ? "disabled" : string.Empty)">
+                        <a class="page-link" href="?page=@(Model.Users.TotalPages -1)&search=@Model.SearchText" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    @if (Model.Users.TotalPages > 6)
+                    {
+                        //不能完全显示
+                        <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                        <li class="page-item"><a class="page-link">··</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=@(Model.Users.TotalPages -1)&search=@Model.SearchText">@(Model.Users.TotalPages -1)</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">@(Model.Users.TotalPages)</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=@(Model.Users.TotalPages + 1)&search=@Model.SearchText">@(Model.Users.TotalPages + 1)</a></li>
+                        <li class="page-item"><a class="page-link">··</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=@(Model.Users.TotalPages)&search=@Model.SearchText">Model.Users.TotalPages</a></li>
+                    }
+                    else
+                    {
+                        //完全显示
+                        for (int i = 1; i <= Model.Users.TotalPages; i++)
+                        {
+                            <li class="page-item @(Model.Users.PageIndex == i ? "active" : string.Empty)"><a class="page-link" href="@(Model.Users.PageIndex == i ? "#" : $"?page={i}&search={Model.SearchText}")">@i</a></li>
+                        }
+                    }
+
+                    <li class="page-item @(Model.Users.PageIndex == Model.Users.TotalPages ? "disabled" : string.Empty)">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<environment include="Development">
+    @*开发模式下的JS引用之类的*@
+    <script src="~/lib/clipboardjs/clipboard.js"></script>
+</environment>
+<environment exclude="Development">
+    @*发布模式下的js引用之类的*@
+    <script src="~/lib/clipboardjs/clipboard.min.js"></script>
+</environment>
+
+
+<script>
+    new ClipboardJS(".btn");
+</script>
+
+
+<style>
+    .list li {
+        list-style: none;
+        padding: 10px;
+        border: 1px solid #e3dada;
+        margin-top: 12px;
+        border-radius: 5px;
+        background: #fff;
+    }
+
+    .profile-image img {
+        margin-left: 3px
+    }
+</style>

@@ -2,9 +2,9 @@
 @inject CommonLocalizationService CL
 
 @{ 
-    string CurrentPage = (string)(ViewData["_CurrentPage"] ?? "unknow");
+    string pageName = (string)(ViewData["pageName"] ?? "unknow");
 
-    bool IsPage(string pageName) => pageName == CurrentPage;
+    bool IsPage(string name) => pageName == name;
 
 
 }

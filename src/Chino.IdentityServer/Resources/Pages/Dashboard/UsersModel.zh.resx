@@ -117,22 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn_editUserInfo" xml:space="preserve">
-    <value>编辑我的信息</value>
+  <data name="btn_add_user" xml:space="preserve">
+    <value>添加用户</value>
   </data>
-  <data name="label_email" xml:space="preserve">
+  <data name="input_placeholder_search" xml:space="preserve">
+    <value>搜索用户</value>
+  </data>
+  <data name="tips_copy_userId" xml:space="preserve">
+    <value>复制用户ID</value>
+  </data>
+  <data name="tips_delete" xml:space="preserve">
+    <value>删除该用户</value>
+  </data>
+  <data name="tips_email" xml:space="preserve">
     <value>邮箱</value>
   </data>
-  <data name="label_name" xml:space="preserve">
-    <value>您的名字</value>
+  <data name="tips_nickname_or_name" xml:space="preserve">
+    <value>用户昵称或姓名</value>
   </data>
-  <data name="label_nickName" xml:space="preserve">
-    <value>昵称</value>
-  </data>
-  <data name="label_subjectId" xml:space="preserve">
+  <data name="tips_userId" xml:space="preserve">
     <value>用户ID</value>
   </data>
-  <data name="label_userName" xml:space="preserve">
+  <data name="tips_username" xml:space="preserve">
     <value>用户名</value>
+  </data>
+  <data name="tips_viewInfo" xml:space="preserve">
+    <value>查看详情</value>
   </data>
 </root>

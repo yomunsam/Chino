@@ -1,8 +1,67 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.Dashboard.IndexModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.IndexModel> L
 @{
     Layout = "_DashboardLayout";
+    ViewData["pageName"] = "overview";
 }
 
+<div class="mt-3 container-fluid">
+    <div class="row">
+        @*卡片-用户数*@
+        <div class="col-lg-3 col-sm-6 col-12 px-0">
+            <div class="card shadow mx-1">
+                <div class="row g-0">
+                    <div class="col-4 text-center align-content-center justify-content-center">
+                        <span class="oi oi-people card-icon"></span>
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body pb-0 text-right">
+                            <h6 class="card-title">@L["counter_users_total"]</h6>
+                            <p class="card-count">@Model.UsersCount</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
 
-<p>这里是面板首页</p>
+        @*卡片-客户端*@
+        <div class="col-lg-3 col-sm-6 col-12 px-0">
+            <div class="card shadow mx-1">
+                <div class="row g-0">
+                    <div class="col-4 text-center align-content-center justify-content-center">
+                        <span class="oi oi-monitor card-icon"></span>
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body pb-0 text-right">
+                            <h6 class="card-title">@L["counter_client_total"]</h6>
+                            <p class="card-count">@Model.ClientsCount</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<style>
+    body {
+        background-color: #F5F7FA;
+    }
+
+    .card-icon{
+        font-size:3rem;
+        padding-top: 2rem;
+        opacity: 0.5;
+    }
+
+    .card-count {
+        font-size: 3rem;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+</style>

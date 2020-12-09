@@ -96,5 +96,6 @@ namespace Chino.IdentityServer
             services.AddSingleton(ChinoAccountConfiguration.GetConfiguration(configuration));
         }
 
+
     }
 }

@@ -3,7 +3,7 @@
 @inject IStringLocalizer<Chino.IdentityServer.Pages.User.IndexModel> L
 @{
     Layout = "_UserLayout";
-    ViewData["_CurrentPage"] = "userInfo";
+    ViewData["pageName"] = "userInfo";
 }
 
 <div class="card mb-3">
@@ -11,16 +11,7 @@
         <a class="btn btn-outline-secondary btn-sm" href="/User/EditInfo">@L["btn_editUserInfo"]</a>
     </div>
     <div class="card-body">
-        @*显示名*@
-        <div class="row">
-            <div class="col-sm-3">
-                <h6 class="mb-0">@L["label_displayName"]</h6>
-            </div>
-            <div class="col-sm-9 text-secondary">
-                @Model.DisplayName
-            </div>
-        </div>
-        <hr>
+
         @*用户名*@
         <div class="row">
             <div class="col-sm-3">
@@ -41,7 +32,6 @@
             </div>
         </div>
         <hr>
-
         @*用户ID*@
         <div class="row">
             <div class="col-sm-3">
@@ -52,6 +42,28 @@
                 <button class="btn btn-sm btn-outline-secondary ml-2" data-clipboard-text="@Model.SubjectId"><span class="oi oi-clipboard" title="Copy"></span></button>
             </div>
         </div>
+        <hr>
+        @*名字*@
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">@L["label_name"]</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.DisplayName
+            </div>
+        </div>
+        <hr>
+        @*Nickname*@
+        <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">@L["label_nickName"]</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                @Model.NickName
+            </div>
+        </div>
+        @*<hr>*@
+
     </div>
 
 </div>

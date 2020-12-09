@@ -5,6 +5,8 @@ using Chino.IdentityServer.Data;
 using Chino.IdentityServer.Models.User;
 using Chino.IdentityServer.Resources.DataAnnotation;
 using Chino.IdentityServer.Services;
+using Chino.IdentityServer.Services.Clients;
+using Chino.IdentityServer.Services.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -91,6 +93,13 @@ namespace Chino.IdentityServer
                 options.Events.RaiseSuccessEvents = true;
 
                 options.EmitStaticAudienceClaim = true;
+
+                options.UserInteraction = new IdentityServer4.Configuration.UserInteractionOptions
+                {
+                    LoginUrl = "/Account/Login",
+                    LogoutUrl = "/Account/Logout",
+                    LoginReturnUrlParameter = "returnUrl"
+                };
             })
                 .AddConfigurationStore(options =>
                 {
@@ -115,7 +124,11 @@ namespace Chino.IdentityServer
             services.AddAuthentication();
 
             services.AddChinoConfigurations(Configuration);
+
+            //Chino Services
             services.AddSingleton<CommonLocalizationService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IClientService, ClientService>();
 
         }
 

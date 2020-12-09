@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="dashboard_nav_api_resources" xml:space="preserve">
+    <value>Api 资源</value>
+  </data>
+  <data name="dashboard_nav_clients" xml:space="preserve">
+    <value>客户端</value>
+  </data>
+  <data name="dashboard_nav_identity_resources" xml:space="preserve">
+    <value>身份资源</value>
+  </data>
+  <data name="dashboard_nav_overview" xml:space="preserve">
+    <value>面板总览</value>
+  </data>
+  <data name="dashboard_nav_roles" xml:space="preserve">
+    <value>角色</value>
+  </data>
+  <data name="dashboard_nav_users" xml:space="preserve">
+    <value>用户</value>
+  </data>
   <data name="email" xml:space="preserve">
     <value>邮箱</value>
   </data>
