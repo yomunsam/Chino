@@ -141,4 +141,37 @@
   <data name="username" xml:space="preserve">
     <value>ユーザ名</value>
   </data>
+  <data name="dashboard_nav_api_resources" xml:space="preserve">
+    <value>Apiリソース</value>
+  </data>
+  <data name="user_nav_passwd" xml:space="preserve">
+    <value>パスワード変更</value>
+  </data>
+  <data name="user_nav_twoFactorAuthentication" xml:space="preserve">
+    <value>二因子認証</value>
+  </data>
+  <data name="user_nav_myAccountData" xml:space="preserve">
+    <value>個人データ</value>
+  </data>
+  <data name="user_nav_infos" xml:space="preserve">
+    <value>マイプロフィール</value>
+  </data>
+  <data name="user_nav_grants" xml:space="preserve">
+    <value>私の権限</value>
+  </data>
+  <data name="dashboard_nav_users" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="dashboard_nav_roles" xml:space="preserve">
+    <value>役割</value>
+  </data>
+  <data name="dashboard_nav_overview" xml:space="preserve">
+    <value>概要</value>
+  </data>
+  <data name="dashboard_nav_identity_resources" xml:space="preserve">
+    <value>アイデンティティ資源</value>
+  </data>
+  <data name="dashboard_nav_clients" xml:space="preserve">
+    <value>クライアント</value>
+  </data>
 </root>

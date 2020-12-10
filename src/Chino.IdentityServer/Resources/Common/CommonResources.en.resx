@@ -141,4 +141,37 @@
   <data name="username" xml:space="preserve">
     <value>UserName</value>
   </data>
+  <data name="dashboard_nav_clients" xml:space="preserve">
+    <value>Clients</value>
+  </data>
+  <data name="dashboard_nav_api_resources" xml:space="preserve">
+    <value>Api Resources</value>
+  </data>
+  <data name="dashboard_nav_identity_resources" xml:space="preserve">
+    <value>Identity Resources</value>
+  </data>
+  <data name="dashboard_nav_overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="dashboard_nav_roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="dashboard_nav_users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="user_nav_grants" xml:space="preserve">
+    <value>Persisted Grants</value>
+  </data>
+  <data name="user_nav_infos" xml:space="preserve">
+    <value>My profile</value>
+  </data>
+  <data name="user_nav_myAccountData" xml:space="preserve">
+    <value>My personal data</value>
+  </data>
+  <data name="user_nav_twoFactorAuthentication" xml:space="preserve">
+    <value>Two-factor authentication</value>
+  </data>
+  <data name="user_nav_passwd" xml:space="preserve">
+    <value>Change password</value>
+  </data>
 </root>

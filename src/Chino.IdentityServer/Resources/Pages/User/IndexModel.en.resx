@@ -1,0 +1,32 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="label_userName" xml:space="preserve">
+        <value>User name</value>
+    </data>
+    <data name="label_subjectId" xml:space="preserve">
+        <value>User ID</value>
+    </data>
+    <data name="label_nickName" xml:space="preserve">
+        <value>Nickname</value>
+    </data>
+    <data name="label_name" xml:space="preserve">
+        <value>Your name</value>
+    </data>
+    <data name="label_email" xml:space="preserve">
+        <value>Email address</value>
+    </data>
+    <data name="btn_editUserInfo" xml:space="preserve">
+        <value>Edit my information</value>
+    </data>
+</root>

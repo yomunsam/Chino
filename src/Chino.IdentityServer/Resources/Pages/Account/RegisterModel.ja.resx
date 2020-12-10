@@ -21,7 +21,7 @@
         <value>パスワード確認</value>
     </data>
     <data name="email" xml:space="preserve">
-        <value>電子メール</value>
+        <value>メールアドレス</value>
     </data>
     <data name="Error_DuplicateEmail" xml:space="preserve">
         <value>メール {0} が既に存在します。</value>

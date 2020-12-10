@@ -11,4 +11,31 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="btn_add_user" xml:space="preserve">
+        <value>Add user</value>
+    </data>
+    <data name="input_placeholder_search" xml:space="preserve">
+        <value>Search for users</value>
+    </data>
+    <data name="tips_copy_userId" xml:space="preserve">
+        <value>Copy user ID</value>
+    </data>
+    <data name="tips_delete" xml:space="preserve">
+        <value>Delete the user</value>
+    </data>
+    <data name="tips_email" xml:space="preserve">
+        <value>Email address</value>
+    </data>
+    <data name="tips_nickname_or_name" xml:space="preserve">
+        <value>User's nickname or name</value>
+    </data>
+    <data name="tips_userId" xml:space="preserve">
+        <value>User ID</value>
+    </data>
+    <data name="tips_username" xml:space="preserve">
+        <value>User name</value>
+    </data>
+    <data name="tips_viewInfo" xml:space="preserve">
+        <value>View details</value>
+    </data>
 </root>

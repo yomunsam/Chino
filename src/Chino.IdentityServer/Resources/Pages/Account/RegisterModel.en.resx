@@ -21,7 +21,7 @@
         <value>Confirm Password</value>
     </data>
     <data name="email" xml:space="preserve">
-        <value>Email</value>
+        <value>Email address</value>
     </data>
     <data name="Error_DuplicateEmail" xml:space="preserve">
         <value>Email {0} already exists.</value>
