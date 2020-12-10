@@ -1,0 +1,53 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="btn_cancel" xml:space="preserve">
+        <value>Cancel</value>
+    </data>
+    <data name="btn_register" xml:space="preserve">
+        <value>Register</value>
+    </data>
+    <data name="comfirm_password" xml:space="preserve">
+        <value>Confirm Password</value>
+    </data>
+    <data name="email" xml:space="preserve">
+        <value>Email</value>
+    </data>
+    <data name="Error_DuplicateEmail" xml:space="preserve">
+        <value>Email {0} already exists.</value>
+    </data>
+    <data name="Error_DuplicateUserName" xml:space="preserve">
+        <value>Username {0} alreay exists.</value>
+    </data>
+    <data name="link_login" xml:space="preserve">
+        <value>Existing account, go to login</value>
+    </data>
+    <data name="password" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="phone_number" xml:space="preserve">
+        <value>Phone Number</value>
+    </data>
+    <data name="subTitle_register" xml:space="preserve">
+        <value>Register new account</value>
+    </data>
+    <data name="Title" xml:space="preserve">
+        <value>Register</value>
+    </data>
+    <data name="title_register" xml:space="preserve">
+        <value>Register</value>
+    </data>
+    <data name="username" xml:space="preserve">
+        <value>UserName</value>
+    </data>
+</root>
