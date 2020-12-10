@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="d-flex flex-row mt-1 text-black-50">
                                         <div title="@L["tips_userId"]">@user.Id</div>
-                                        <button class="btn btn-sm btn-outline-secondary ml-2 py-0 px-1" data-clipboard-text="@user.Id" title="@L["tips_copy_userId"]"><span class="oi oi-clipboard" title="Copy"></span></button>
+                                        <button class="btn btn-sm btn-outline-secondary ml-2 py-0 px-1" data-clipboard-text="@user.Id" title="@L["tips_copy_userId"]"><span class="oi oi-clipboard"></span></button>
                                     </div>
                                     <p class="d-flex flex-row text-black-50 mb-0" title="@L["tips_nickname_or_name"]">@(Model.UserClaims[user].GetNickName() ?? Model.UserClaims[user].GetName())</p>
                                 </div>

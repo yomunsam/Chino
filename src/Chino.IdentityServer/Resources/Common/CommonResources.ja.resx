@@ -174,4 +174,7 @@
   <data name="dashboard_nav_clients" xml:space="preserve">
     <value>クライアント</value>
   </data>
+  <data name="nav_userpage" xml:space="preserve">
+    <value>マイホーム</value>
+  </data>
 </root>

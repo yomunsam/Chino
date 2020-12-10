@@ -9,6 +9,7 @@
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
     var cultureItems = LocOptions.Value.SupportedUICultures
         .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .OrderBy(item => item.Value)
         .ToList();
 
     //设置语言之后的跳转

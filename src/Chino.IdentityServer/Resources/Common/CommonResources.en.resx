@@ -174,4 +174,7 @@
   <data name="user_nav_passwd" xml:space="preserve">
     <value>Change password</value>
   </data>
+  <data name="nav_userpage" xml:space="preserve">
+    <value>My Home</value>
+  </data>
 </root>

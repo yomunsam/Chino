@@ -150,6 +150,9 @@
   <data name="logout" xml:space="preserve">
     <value>退出登录</value>
   </data>
+  <data name="nav_userpage" xml:space="preserve">
+    <value>我的主页</value>
+  </data>
   <data name="phone_number" xml:space="preserve">
     <value>电话号码</value>
   </data>

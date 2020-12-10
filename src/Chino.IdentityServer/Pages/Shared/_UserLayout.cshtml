@@ -2,6 +2,7 @@
 @inject CommonLocalizationService CL
 
 @{ 
+    ViewData["_layout"] = "user";
     string pageName = (string)(ViewData["pageName"] ?? "unknow");
 
     bool IsPage(string name) => pageName == name;
@@ -37,7 +38,7 @@
     <header>
         <partial name="Nav" />
     </header>
-    <div class="container">
+    <div class="container pb-5 mb-5 pb-md-0 mb-md-0">
         <div class="main-body">
 
             <div class="row gutters-sm">

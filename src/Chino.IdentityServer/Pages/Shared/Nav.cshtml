@@ -7,6 +7,15 @@
 @{ 
     string userDisplayName = Context.User?.GetDisplayName();
     bool showSignInOut = (bool)(ViewData["Nav_ShowLogin/Out"] ?? true);
+
+    bool IsUserLayout()
+    {
+        var layout = ViewData["_layout"];
+        if (layout == null)
+            return false;
+
+        return (string)layout == "user";
+    }
 }
 
 <div class="nav-page">
@@ -23,6 +32,9 @@
                 <ul class="navbar-nav flex-grow-1">
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li class="nav-item">
+                            <a class="nav-link @(IsUserLayout()?"active":string.Empty)" aria-current="page" asp-page="/User/Index">@CL["nav_userpage"]</a>
+                        </li>
                         @if (showSignInOut)
                         {
                             <li class="nav-item dropdown ml-lg-auto ml-md-auto">
