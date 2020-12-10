@@ -1,6 +1,7 @@
 ﻿@inject Microsoft.Extensions.Configuration.IConfiguration configuration
 @inject CommonLocalizationService CL
 @{ 
+    ViewData["_dashboard"] = true;
     string pageName = (string)(ViewData["pageName"] ?? "unknow");
 
     bool IsPage(string name) => name == pageName;
@@ -16,6 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@(ViewData["Title"] ?? "Chino") - @configuration["Chino:Dashboard:PageTitle"]</title>
 
+    <link rel="stylesheet" href="~/css/chino-dashboard.css" />
+
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
@@ -28,7 +31,6 @@
               crossorigin="anonymous" />
     </environment>
 
-    <link rel="stylesheet" href="~/css/chino-dashboard.css" />
 </head>
 <body>
     @*顶部导航栏*@
@@ -47,13 +49,13 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
     </header>
 
     <div class="container-fluid">
         <div class="row">
             @*左侧导航栏*@
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-3 col-xl-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         @*总览*@
@@ -103,15 +105,31 @@
             </nav>
 
             @*正文部分*@
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-9 ms-sm-auto col-lg-9 col-xl-10 px-md-4">
                 @RenderBody()
+
+
             </main>
+
+
         </div>
     </div>
 
     @*<div>
             @RenderBody()
         </div>*@
+
+    @*Footer*@
+    <div class="row p-0 m-0">
+        <div class="col-3 col-lg-3 col-xl-2">
+            &ensp;
+        </div>
+        <div class="col-12 col-md-9 col-lg-9 col-xl-10 p-0 m-0">
+            <partial name="Footer" />
+        </div>
+    </div>
+    
+    
 
 
     <environment include="Development">

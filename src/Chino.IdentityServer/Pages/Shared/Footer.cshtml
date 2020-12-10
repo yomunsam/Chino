@@ -1,10 +1,71 @@
 ﻿@inject IConfiguration configuration
+@using Nekonya
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Builder
+@inject IOptions<RequestLocalizationOptions> LocOptions
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        @*&copy; 2020 - TryI18N - <a asp-area="" asp-page="/Privacy">Privacy</a>*@
-        &copy; 2020 - @configuration["Chino:Title"]
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+
+    //设置语言之后的跳转
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+
+    bool IsDashboard()
+    {
+        var isDashboard = ViewData["_dashboard"];
+        if (isDashboard != null)
+            return (bool)isDashboard;
+        else
+            return false;
+    }
+}
+
+<link rel="stylesheet" href="~/css/chino-footer.css" />
+
+
+<footer class="border-top footer @(IsDashboard() ? "footer-dashboard-width" : "footer-100width") text-muted mt-auto">
+    
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span>Copyright &copy; @configuration["Chino:Footer:Copyright"]</span>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="LocalizationSelecter mt-0 mb-2 mt-md-2 float-md-right float-none">
+                        <form id="selectLanguageForm"
+                              method="post"
+                              asp-page="/Index" 
+                              asp-page-handler="SetCulture"
+                              asp-route-returnUrl="@returnUrl"
+                              >
+                            <select class="form-select form-control" 
+                                    id="cultureSelect"
+                                    name="culture" 
+                                    asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                                    asp-items="cultureItems"></select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
 
-<script src="~/js/chino.js" asp-append-version="true"></script>
+<script>
+    window.onload = function () {
+        var cultureSelect = document.getElementById("cultureSelect");
+        var cultureForm = document.getElementById("selectLanguageForm");
+
+        if (cultureSelect && cultureForm) {
+            cultureSelect.onchange = function () {
+                cultureForm.submit();
+            };
+        }
+    }
+</script>

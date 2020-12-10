@@ -11,6 +11,10 @@ body {
     vertical-align: text-bottom;
 }
 
+.footer {
+    background-color: #f1f1f1;
+}
+
 /*
  * Sidebar
  */

@@ -1,0 +1,44 @@
+﻿.footer {
+    position: absolute;
+    bottom: 0;
+    /*width: 100%;*/
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+    .footer .copyright {
+    }
+
+
+    .footer .LocalizationSelecter {
+        align-self: end;
+        width: 10rem;
+    }
+
+.footer-100width {
+    width: 100%;
+}
+
+.footer-dashboard-width {
+    width: 100%;
+}
+
+@media(min-width:768px) {
+    .footer-dashboard-width {
+        width: 75%;
+    }
+}
+
+@media(min-width:992px) {
+    .footer-dashboard-width {
+        width: 75%;
+        /*width: 83.3333%;*/
+    }
+}
+
+@media(min-width:1200px) {
+    .footer-dashboard-width {
+        /*width: 75%;*/
+        width: 83.3333%;
+    }
+}
