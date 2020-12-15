@@ -6,6 +6,7 @@ using Chino.IdentityServer.Models.User;
 using Chino.IdentityServer.Resources.DataAnnotation;
 using Chino.IdentityServer.Services;
 using Chino.IdentityServer.Services.Clients;
+using Chino.IdentityServer.Services.Roles;
 using Chino.IdentityServer.Services.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -129,6 +130,7 @@ namespace Chino.IdentityServer
             services.AddSingleton<CommonLocalizationService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<IRoleService, RoleService>();
 
         }
 

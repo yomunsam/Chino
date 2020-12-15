@@ -1,0 +1,30 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Dashboard.Role.AddModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.Role.AddModel> L
+@{
+    Layout = "_DashboardLayout";
+    ViewData["pageName"] = "roles";
+}
+
+
+<div class="mt-3 container">
+    <div class="card col-lg-6">
+        <div class=" card-header">
+            @L["header_addrole"]
+        </div>
+        <div class="card-body">
+            <partial name="ValidationSummary" />
+
+            <form method="post">
+                <input asp-for="ReturnUrl" class="visually-hidden" />
+
+                <label asp-for="AddRoleName" class="form-label">@L["label_roleName"]</label>
+                <input asp-for="AddRoleName" class="form-control" />
+                <div><span asp-validation-for="AddRoleName" class="text-danger"></span></div>
+
+
+                <button type="submit" class="btn btn-primary mt-2">@L["btn_add"]</button>
+            </form>
+        </div>
+    </div>
+</div>
