@@ -97,7 +97,7 @@ namespace Chino.IdentityServer.Pages.Account
             {
                 UserName = RegisterDto.UserName,
                 Email = RegisterDto.Email,
-                PhoneNumber = string.Format(RegisterDto.PhoneDialingCode, RegisterDto.PhoneNumber),
+                PhoneNumber = string.Format("{0}{1}",RegisterDto.PhoneDialingCode, RegisterDto.PhoneNumber),
                 //PhoneDialingCode = RegisterDto.PhoneDialingCode,
             };
 
