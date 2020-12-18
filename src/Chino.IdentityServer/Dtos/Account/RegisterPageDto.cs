@@ -15,9 +15,15 @@ namespace Chino.IdentityServer.Dtos.Account
         [RegisterRequired(RegisterRequiredType.Email)]
         public string Email { get; set; }
 
+        /// <summary>
+        /// 电话号码的国家区号
+        /// </summary>
+        [RegisterRequired(RegisterRequiredType.PhoneDialingCode)]
+        public string PhoneDialingCode { get; set; }
+
         [DataType(DataType.PhoneNumber)]
         [RegisterRequired(RegisterRequiredType.PhoneNumber)]
-        public string Phone { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "passwd_required")]
         [DataType(DataType.Password)]

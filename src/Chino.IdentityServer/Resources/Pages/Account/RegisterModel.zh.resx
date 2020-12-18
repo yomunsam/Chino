@@ -126,6 +126,9 @@
   <data name="comfirm_password" xml:space="preserve">
     <value>确认口令</value>
   </data>
+  <data name="country_calling_code" xml:space="preserve">
+    <value>电话国家代码</value>
+  </data>
   <data name="email" xml:space="preserve">
     <value>邮件地址</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Error_DuplicateUserName" xml:space="preserve">
     <value>用户名{0}已存在</value>
+  </data>
+  <data name="invalid_dialingCode" xml:space="preserve">
+    <value>电话国家代码 {0} 无效</value>
   </data>
   <data name="link_login" xml:space="preserve">
     <value>已有账号，前往登录</value>

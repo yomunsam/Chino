@@ -27,6 +27,35 @@ namespace Chino.IdentityServer.Extensions.Configurations
         public static bool CanLoginByPhone(this ChinoAccountConfiguration configuration)
             => configuration.Phone.Login;
 
+        public static bool RegisterByPhoneNumberOnly(this ChinoAccountConfiguration configuration)
+            => configuration.Phone.Register && !configuration.Email.Register && !configuration.UserName.Register;
+
+
+        /// <summary>
+        /// 在注册时候需要确认手机号
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static bool IsNeedToConfirmPhoneNumberWhenRegister(this ChinoAccountConfiguration configuration)
+            => configuration.Phone.Register && configuration.Phone.RegisterRequire && configuration.Phone.RequireConfirmedPhoneNumber;
+
+        /// <summary>
+        /// 在注册时需要确认电子邮件
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static bool IsNeedToConfirmEmailWhenRegister(this ChinoAccountConfiguration configuration)
+            => configuration.Email.Register && configuration.Email.RegisterRequire && configuration.Email.RequireConfirmedEmail;
+
+        /// <summary>
+        /// 在注册时需要确认电子邮件和手机号
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static bool IsNeedToConfirmEmailAndPhoneWhenRegister(this ChinoAccountConfiguration configuration)
+            => configuration.IsNeedToConfirmEmailWhenRegister() && configuration.IsNeedToConfirmPhoneNumberWhenRegister();
+
+
         /// <summary>
         /// 是否只有一种登录途径
         /// </summary>

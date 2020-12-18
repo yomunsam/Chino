@@ -1,14 +1,17 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.Account.RegisterModel
-@using Chino.IdentityServer.Extensions.Configurations 
+@using Chino.IdentityServer.Extensions.Configurations
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Account.RegisterModel> L
 @inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
+@inject Chino.IdentityServer.Configures.CountryCodeConfiguration CountryCodes
+@inject CommonLocalizationService CL
 
 @{
     ViewContext.ClientValidationEnabled = true;
     ViewData["Nav_ShowLogin/Out"] = false;
     ViewData["Title"] = L["Title"];
 }
+
 
 <div class="register-page pb-4 mb-4">
     <div class="register-form">
@@ -33,24 +36,17 @@
                     {
                         <div class="form-group">
                             <label asp-for="RegisterDto.UserName" class="visually-hidden">@L["username"]</label>
-                            <input class="form-control input-head" placeholder="@L["username"]" asp-for="RegisterDto.UserName" autofocus>
+                            <input class="form-control input-head" placeholder="@L["username"]" asp-for="RegisterDto.UserName" id="username" autofocus>
                         </div>
                     }
 
                     @*邮箱*@
                     @if (AccountConfiguration.Email.Register)
                     {
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label asp-for="RegisterDto.Email" class="visually-hidden">@L["email"]</label>
-                            @if (AccountConfiguration.UserName.Register)
-                            {
-                                //这儿要判断的的是，如果上面的用户名输入框没显示，意味着邮箱输入框在最上面，就要有圆角了
-                                <input type="email" class="form-control input-middle" placeholder="@L["email"]" asp-for="RegisterDto.Email" autofocus>
-                            }
-                            else
-                            {
-                                <input type="email" class="form-control input-head" placeholder="@L["email"]" asp-for="RegisterDto.Email" autofocus>
-                            }
+                            @*//这儿要判断的的是，如果上面的用户名输入框没显示，意味着邮箱输入框在最上面，就要有圆角了*@
+                            <input type="email" class="form-control @(AccountConfiguration.UserName.Register?"input-middle":"input-head")" placeholder="@L["email"]" asp-for="RegisterDto.Email" id="email" autofocus>
                         </div>
                     }
 
@@ -58,22 +54,30 @@
                     @if (AccountConfiguration.Phone.Register)
                     {
                         <div class="form-group">
-                            <label asp-for="RegisterDto.Phone" class="visually-hidden">@L["phone_number"]</label>
-                            @if (AccountConfiguration.UserName.Register || AccountConfiguration.Email.Register)
-                            {
-                                <input type="tel" class="form-control input-middle" placeholder="@L["phone_number"]" asp-for="RegisterDto.Phone" autofocus>
-                            }
-                            else
-                            {
-                                <input type="tel" class="form-control input-head" placeholder="@L["phone_number"]" asp-for="RegisterDto.Phone" autofocus>
-                            }
+                            <label asp-for="RegisterDto.PhoneNumber" class="visually-hidden">@L["phone_number"]</label>
+                            <input type="tel" class="form-control  @((AccountConfiguration.UserName.Register || AccountConfiguration.Email.Register) ? "input-middle" : "input-head")" id="phoneNumber" placeholder="@L["phone_number"]" asp-for="RegisterDto.PhoneNumber" autofocus>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text input-middle" id="basic-addon1">@L["country_calling_code"] +</span>
+                                <input class="form-control input-middle" list="countryListOptions" placeholder="@L["country_calling_code"]"  id="phoneDialingCode" asp-for="RegisterDto.PhoneDialingCode" autofocus>
+                                <datalist id="countryListOptions">
+                                    @foreach (var country in CountryCodes.Data)
+                                    {
+                                        @*<option value="@country.DialingCode">@CL[country.Name] (@country.DialingCode)</option>*@
+                                        <option value="@country.DialingCodeWithoutPlus">@CL[country.Name] (@country.DialingCode)</option>
+                                    }
+                                </datalist>
+                            </div>
+                            
                         </div>
                     }
 
                     @*口令*@
                     <div class="form-group">
                         <label asp-for="RegisterDto.Password" class="visually-hidden">@L["password"]</label>
-                        <input type="password" class="form-control input-middle" placeholder="@L["password"]" asp-for="RegisterDto.Password" autofocus>
+                        <input type="password" class="form-control input-middle" placeholder="@L["password"]" asp-for="RegisterDto.Password" id="password" autofocus>
                     </div>
                     @*确认口令*@
                     <div class="form-group">
@@ -85,7 +89,7 @@
                     <div class="form-group text-left">
                         <div><span asp-validation-for="RegisterDto.UserName" class="text-danger"></span></div>
                         <div><span asp-validation-for="RegisterDto.Email" class="text-danger"></span></div>
-                        <div><span asp-validation-for="RegisterDto.Phone" class="text-danger"></span></div>
+                        <div><span asp-validation-for="RegisterDto.PhoneNumber" class="text-danger"></span></div>
                         <div><span asp-validation-for="RegisterDto.Password" class="text-danger"></span></div>
                         <div><span asp-validation-for="RegisterDto.ConfirmPassword" class="text-danger"></span></div>
                     </div>
@@ -150,21 +154,22 @@
             border-top-right-radius: 0;
         }
 
-        .register-form .card-footer{
-            font-size:small;
+        .register-form .card-footer {
+            font-size: small;
         }
 
-        .register-form .card-footer a {
-            text-decoration: none;
-        }
+            .register-form .card-footer a {
+                text-decoration: none;
+            }
 
-        .register-form .card-footer a:hover {
-            text-decoration: none;
-        }
-
+                .register-form .card-footer a:hover {
+                    text-decoration: none;
+                }
 </style>
 
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+

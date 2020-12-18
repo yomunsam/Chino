@@ -4,14 +4,16 @@ using Chino.IdentityServer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Chino.IdentityServer.Data.Migrations.Chino.Application
 {
     [DbContext(typeof(ChinoApplicationDbContext))]
-    partial class ChinoApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201218082807_ChangeUserPhoneDialingCode")]
+    partial class ChangeUserPhoneDialingCode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

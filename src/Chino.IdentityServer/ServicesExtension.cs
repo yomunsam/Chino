@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Chino.IdentityServer.Configures;
+using Chino.IdentityServer.Extensions.Configurations;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -90,10 +92,26 @@ namespace Chino.IdentityServer
             }
         }
 
-        public static void AddChinoConfigurations(this IServiceCollection services, IConfiguration configuration)
+        public static void AddChinoConfigurations(this IServiceCollection services, IConfiguration configuration, out ChinoAccountConfiguration chinoAccountConfiguration)
         {
             //Chino Account
-            services.AddSingleton(ChinoAccountConfiguration.GetConfiguration(configuration));
+            chinoAccountConfiguration = ChinoAccountConfiguration.GetConfiguration(configuration);
+            services.AddSingleton(chinoAccountConfiguration);
+
+            services.AddSingleton(CountryCodeConfiguration.GetConfiguration());
+        }
+
+        /// <summary>
+        /// 根据ChinoAccountConfiguration的配置，对Asp .net core Identity 的 identityOptions进行一些设置
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="chinoAccountConfiguration"></param>
+        public static void ApplyIdentityOptionsByChiniAccountConfiguration(this IdentityOptions options, ChinoAccountConfiguration chinoAccountConfiguration)
+        {
+            if(chinoAccountConfiguration.Phone.Register && chinoAccountConfiguration.Phone.RequireConfirmedPhoneNumber)
+            {
+                options.SignIn.RequireConfirmedPhoneNumber = true;
+            }
         }
 
 

@@ -9,6 +9,7 @@ namespace Chino.IdentityServer.DataValidation
     {
         UserName,
         Email,
-        PhoneNumber
+        PhoneNumber,
+        PhoneDialingCode,
     }
 }

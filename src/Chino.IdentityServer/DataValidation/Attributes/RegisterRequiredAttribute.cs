@@ -37,6 +37,10 @@ namespace Chino.IdentityServer.DataValidation.Attributes
                     if (configuration.Phone.RegisterRequire && value.IsNullOrEmpty())
                         return new ValidationResult(localizer["phone_number_required"]);
                     break;
+                case RegisterRequiredType.PhoneDialingCode:
+                    if (configuration.Phone.RegisterRequire && value.IsNullOrEmpty())
+                        return new ValidationResult(localizer["phone_number_dialing_code_required"]);
+                    break;
             }
             
             return ValidationResult.Success;

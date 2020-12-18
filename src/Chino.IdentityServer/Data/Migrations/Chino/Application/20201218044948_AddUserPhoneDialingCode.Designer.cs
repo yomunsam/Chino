@@ -4,14 +4,16 @@ using Chino.IdentityServer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Chino.IdentityServer.Data.Migrations.Chino.Application
 {
     [DbContext(typeof(ChinoApplicationDbContext))]
-    partial class ChinoApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201218044948_AddUserPhoneDialingCode")]
+    partial class AddUserPhoneDialingCode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,8 +57,8 @@ namespace Chino.IdentityServer.Data.Migrations.Chino.Application
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneDialingCode")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PhoneDialingCode")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");

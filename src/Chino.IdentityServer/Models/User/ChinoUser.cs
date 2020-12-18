@@ -8,5 +8,6 @@ namespace Chino.IdentityServer.Models.User
 {
     public class ChinoUser : IdentityUser
     {
+        public string PhoneDialingCode { get; set; }
     }
 }

@@ -5,12 +5,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Dtos.Account;
+using Chino.IdentityServer.Extensions.Configurations;
 using Chino.IdentityServer.Models.User;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
+using Nekonya;
+using Nekonya.Utils.String;
 
 namespace Chino.IdentityServer.Pages.Account
 {
@@ -18,11 +23,13 @@ namespace Chino.IdentityServer.Pages.Account
     public class RegisterModel : PageModel
     {
         private readonly ChinoAccountConfiguration m_AccountConfiguration;
+        private readonly CountryCodeConfiguration m_CountryCode;
         private readonly UserManager<ChinoUser> m_UserManager;
         private readonly SignInManager<ChinoUser> m_SignInManager;
         private readonly IStringLocalizer<RegisterModel> L;
 
         public RegisterModel(ChinoAccountConfiguration chinoAccountConfiguration,
+            CountryCodeConfiguration countryCodeConfiguration,
             UserManager<ChinoUser> userManager,
             SignInManager<ChinoUser> signInManager,
             IStringLocalizer<RegisterModel> localizer)
@@ -31,6 +38,7 @@ namespace Chino.IdentityServer.Pages.Account
             m_UserManager = userManager;
             m_SignInManager = signInManager;
             L = localizer;
+            m_CountryCode = countryCodeConfiguration;
         }
 
         [BindProperty]
@@ -48,21 +56,59 @@ namespace Chino.IdentityServer.Pages.Account
             }
             this.ReturnUrl = returnUrl ?? Url.Content("~/");
 
+            //根据语言尝试推断默认的手机号国家码
+            var locale = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            var current_culture = locale.RequestCulture?.UICulture;
+            if(current_culture != null)
+            {
+                if (m_CountryCode.LCID_Dict.TryGetValue(current_culture.LCID, out var country))
+                {
+                    if (RegisterDto == null)
+                        RegisterDto = new RegisterPageDto();
+                    RegisterDto.PhoneDialingCode = country.DialingCodeWithoutPlus;
+                }
+            }
+
+
             return Page();
         }
 
 
-
+        /// <summary>
+        /// 注册
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostAsync()
         {
             await Task.Yield();
             if (!ModelState.IsValid) return Page();
 
+            if (RegisterDto.PhoneDialingCode.StartsWith('+'))
+                RegisterDto.PhoneDialingCode = RegisterDto.PhoneDialingCode.Substring(1, RegisterDto.PhoneDialingCode.Length - 1);
+
+            //校验DialingCode是否存在
+            if(!m_CountryCode.DialingCodeWithoutPlus_Dict.ContainsKey(RegisterDto.PhoneDialingCode))
+            {
+                ModelState.AddModelError(string.Empty, L["invalid_dialingCode",RegisterDto.PhoneDialingCode]);
+                return Page();
+            }
+
             var user = new ChinoUser
             {
                 UserName = RegisterDto.UserName,
-                Email = RegisterDto.Email
+                Email = RegisterDto.Email,
+                PhoneNumber = string.Format(RegisterDto.PhoneDialingCode, RegisterDto.PhoneNumber),
+                //PhoneDialingCode = RegisterDto.PhoneDialingCode,
             };
+
+            if (m_AccountConfiguration.RegisterByPhoneNumberOnly())
+            {
+                //仅通过手机号登录
+                if(user.UserName.IsNullOrEmpty())
+                {
+                    user.UserName = await this.GetAvailableUserNameByPhoneNumber("tel", RegisterDto.PhoneNumber);
+                }
+            }
 
             //if (!m_AccountConfiguration.UserName.Register)
             //    user.UserName = RegisterDto.Email;
@@ -70,6 +116,27 @@ namespace Chino.IdentityServer.Pages.Account
             var result = await m_UserManager.CreateAsync(user, RegisterDto.Password);
             if (result.Succeeded)
             {
+                //账号验证
+
+                if (m_AccountConfiguration.IsNeedToConfirmEmailAndPhoneWhenRegister())
+                {
+                    //Todo: 同时需要确认Email和手机号的情况
+                }
+                else
+                {
+                    if (m_AccountConfiguration.IsNeedToConfirmEmailWhenRegister())
+                    {
+                        //Todo： 需要确电子邮件认
+                    }
+
+                    if(m_AccountConfiguration.IsNeedToConfirmPhoneNumberWhenRegister())
+                    {
+                        //需要确认手机号
+                        var code = await m_UserManager.GenerateChangePhoneNumberTokenAsync(user, user.PhoneNumber);
+                    }
+                }
+
+
                 await m_SignInManager.SignInAsync(user, false);
                 return LocalRedirect(ReturnUrl);
             }
@@ -99,8 +166,21 @@ namespace Chino.IdentityServer.Pages.Account
 
 
 
-
-
+        /// <summary>
+        /// 根据手机号生成一个可用的（尚未被注册的）用户名字符串
+        /// </summary>
+        /// <param name="prefix">前缀</param>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
+        private async Task<string> GetAvailableUserNameByPhoneNumber(string prefix, string phoneNumber)
+        {
+            string userName = string.Format("{0}{1}", prefix, phoneNumber);
+            while ((await m_UserManager.FindByNameAsync(userName)) != null)
+            {
+                userName = string.Format("{0}{1}{2}", prefix, phoneNumber, StringUtil.GetRandom(4));
+            }
+            return userName;
+        }
 
 
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Data;
 using Chino.IdentityServer.Models.User;
 using Chino.IdentityServer.Resources.DataAnnotation;
@@ -33,6 +34,10 @@ namespace Chino.IdentityServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            ChinoAccountConfiguration chinoAccountConfiguration;
+            services.AddChinoConfigurations(Configuration, out chinoAccountConfiguration);
+
+
             #region I18N
             services.AddLocalization(options =>
             {
@@ -46,12 +51,24 @@ namespace Chino.IdentityServer
                     new CultureInfo("en"),
                     new CultureInfo("zh"),
                     new CultureInfo("zh-CN"),
-                    new CultureInfo("en-US")
+                    new CultureInfo("en-US"),
+                    new CultureInfo("ja-JP"),
+
+                };
+
+                var supportedUICultures = new List<CultureInfo>
+                {
+                    //new CultureInfo("ja"),
+                    new CultureInfo("en"),
+                    new CultureInfo("zh"),
+                    new CultureInfo("zh-CN"),
+                    new CultureInfo("en-US"),
+                    new CultureInfo("ja-JP"),
                 };
 
                 options.DefaultRequestCulture = new RequestCulture("zh-CN");
                 options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures;
+                options.SupportedUICultures = supportedUICultures;
             });
 
             #endregion
@@ -80,10 +97,15 @@ namespace Chino.IdentityServer
 
             services.AddIdentity<ChinoUser, IdentityRole>(options =>
             {
+                options.ApplyIdentityOptionsByChiniAccountConfiguration(chinoAccountConfiguration);
                 Configuration.GetSection("Chino:IdentityOptions").Bind(options);
             })
                 .AddEntityFrameworkStores<ChinoApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            //services.AddSession(options =>
+            //{
+            //});
 
             #region IdentityServer
             var builder = services.AddIdentityServer(options =>
@@ -124,7 +146,6 @@ namespace Chino.IdentityServer
             #endregion
             services.AddAuthentication();
 
-            services.AddChinoConfigurations(Configuration);
 
             //Chino Services
             services.AddSingleton<CommonLocalizationService>();
@@ -146,6 +167,8 @@ namespace Chino.IdentityServer
             }
 
             app.UseHttpsRedirection();
+
+            app.UseRequestLocalization();
 
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
 

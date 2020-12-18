@@ -135,6 +135,9 @@
   <data name="passwd_required" xml:space="preserve">
     <value>口令不可为空</value>
   </data>
+  <data name="phone_number_dialing_code_required" xml:space="preserve">
+    <value>电话国家代码不可为空</value>
+  </data>
   <data name="phone_number_required" xml:space="preserve">
     <value>电话号码不可为空</value>
   </data>
