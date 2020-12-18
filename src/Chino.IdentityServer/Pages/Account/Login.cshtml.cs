@@ -121,6 +121,20 @@ namespace Chino.IdentityServer.Pages.Account
                 if(user != null)
                 {
                     //找到用户了
+
+                    //检查账号是否通过验证
+                    if(m_AccountConfiguration.IsNeedToConfirmPhoneNumberWhenRegister())
+                    {
+                        //注册时候要验证手机号
+                        if (!user.PhoneNumberConfirmed)
+                        {
+                            //没注册，跳转到手机号验证
+                            return RedirectToPage("/Account/Confirmation/Phone",new {
+                                UserId = user.Id
+                            });
+                        }
+                    }
+
                     var result = await m_SignInManager.PasswordSignInAsync(user, LoginDto.Password, LoginDto.RememberLogin, lockoutOnFailure: false);
                     if (result.Succeeded)
                     {

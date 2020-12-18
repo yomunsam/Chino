@@ -10,11 +10,8 @@ namespace Chino.IdentityServer.Pages.Account.Confirmation
     public class PhoneModel : PageModel
     {
 
-        [BindProperty(SupportsGet = true, Name = "phone")]
-        public string PhoneNumber { get; set; }
-
-        [BindProperty(SupportsGet =true, Name = "dial_code")]
-        public string PhoneDialingCode { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string UserId { get; set; }
 
 
         public void OnGet()

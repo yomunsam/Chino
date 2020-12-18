@@ -133,6 +133,11 @@ namespace Chino.IdentityServer.Pages.Account
                     {
                         //需要确认手机号
                         var code = await m_UserManager.GenerateChangePhoneNumberTokenAsync(user, user.PhoneNumber);
+
+                        //发送验证码
+
+                        //重定向
+                        return RedirectToPage("/Account/Confirmation/Phone", new { UserId = user.Id});
                     }
                 }
 
