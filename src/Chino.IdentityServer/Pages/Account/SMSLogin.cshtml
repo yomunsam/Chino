@@ -1,8 +1,8 @@
 ﻿@page
-@model Chino.IdentityServer.Pages.Account.PhoneLoginModel
+@model Chino.IdentityServer.Pages.Account.SMSLoginModel
 @using Chino.IdentityServer.Extensions.Configurations
-@using Chino.IdentityServer.Enums.Account 
-@inject IStringLocalizer<Chino.IdentityServer.Pages.Account.PhoneLoginModel> L
+@using Chino.IdentityServer.Enums.Account
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Account.SMSLoginModel> L
 @inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
 @inject Chino.IdentityServer.Configures.CountryCodeConfiguration CountryCodes
 @inject CommonLocalizationService CL
@@ -12,6 +12,7 @@
     ViewData["Nav_ShowLogin/Out"] = false;
     ViewData["Title"] = L["PageTitle"];
 }
+
 
 <div class="login-page pb-4 mb-4">
 
@@ -28,6 +29,7 @@
                 @*新的选择夹式样标题*@
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
+
                         @if (AccountConfiguration.CanLoginByUserName() || AccountConfiguration.CanLoginByEmail())
                         {
                             <li class="nav-item">
@@ -37,18 +39,18 @@
                                    asp-route-loginType="@((int)ELoginViewType.UserNameOrEmail)">@L["login_by_account"]</a>
                             </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="true" href="#">@L["login_by_phonePassword"]</a>
-                        </li>
-                        @if (AccountConfiguration.CanLoginBySMSVerificationCode())
+                        @if (AccountConfiguration.CanLoginByPhone())
                         {
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   asp-page="/Account/SMSLogin"
+                                   asp-page="/Account/PhoneLogin"
                                    asp-route-returnUrl="@Model.ReturnUrl"
-                                   asp-route-loginType="@((int)ELoginViewType.SMSVerificationCode)">@L["login_by_smsVerificationCode"]</a>
+                                   asp-route-loginType="@((int)ELoginViewType.PhoneAndPassword)">@L["login_by_phonePassword"]</a>
                             </li>
                         }
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true">@L["login_by_smsVerificationCode"]</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-body">
@@ -72,14 +74,14 @@
                             </div>
                         </div>
                         @*登录口令*@
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label asp-for="LoginViewModel.Password" class="visually-hidden">@L["password"]</label>
                             <input type="password" id="password" class="form-control input-end" placeholder="@L["password"]" asp-for="LoginViewModel.Password" autocomplete="off">
-                        </div>
+                        </div>*@
                         <div class="form-group text-left">
                             <div><span asp-validation-for="LoginViewModel.PhoneNumber" class="text-danger"></span></div>
                             <div><span asp-validation-for="LoginViewModel.PhoneDialingCode" class="text-danger"></span></div>
-                            <div><span asp-validation-for="LoginViewModel.Password" class="text-danger"></span></div>
+                            @*<div><span asp-validation-for="LoginViewModel.Password" class="text-danger"></span></div>*@
                         </div>
 
                         @if (Model.AllowRememberLogin)

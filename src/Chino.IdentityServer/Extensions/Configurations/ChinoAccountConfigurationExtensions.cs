@@ -86,7 +86,7 @@ namespace Chino.IdentityServer.Extensions.Configurations
         /// <param name="accountConfiguration"></param>
         /// <param name="localizer"></param>
         /// <returns></returns>
-        public static string GetLoginInputText(this ChinoAccountConfiguration accountConfiguration, CommonLocalizationService localizer)
+        public static string GetLoginInputText(this ChinoAccountConfiguration accountConfiguration, CommonLocalizationService localizer, bool NoPhoneNumber = true)
         {
             bool flag = false;
             string text = "";
@@ -105,7 +105,7 @@ namespace Chino.IdentityServer.Extensions.Configurations
             }
 
             //Phone
-            if (accountConfiguration.Phone.Login)
+            if (accountConfiguration.Phone.Login && !NoPhoneNumber)
             {
                 text += flag? $"/{localizer["phone_number"]}" : localizer["phone_number"];
                 flag = true;
