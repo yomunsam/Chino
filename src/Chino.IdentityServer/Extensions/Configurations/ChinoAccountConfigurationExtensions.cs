@@ -55,6 +55,14 @@ namespace Chino.IdentityServer.Extensions.Configurations
         public static bool IsNeedToConfirmEmailAndPhoneWhenRegister(this ChinoAccountConfiguration configuration)
             => configuration.IsNeedToConfirmEmailWhenRegister() && configuration.IsNeedToConfirmPhoneNumberWhenRegister();
 
+        /// <summary>
+        /// 可使用短信验证码登录
+        /// </summary>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static bool CanLoginBySMSVerificationCode(this ChinoAccountConfiguration configuration)
+            => configuration.Phone.Login && configuration.Phone.SMSLogin;
+
 
         /// <summary>
         /// 是否只有一种登录途径
@@ -70,6 +78,7 @@ namespace Chino.IdentityServer.Extensions.Configurations
 
             return bools.Where(b => b).Count() == 1;
         }
+
 
         /// <summary>
         /// eg: if can login by username only,return :"Username", if can login by username or email , return "Username / Email"

@@ -132,6 +132,9 @@
   <data name="invalid_email_address" xml:space="preserve">
     <value>邮件地址无效</value>
   </data>
+  <data name="invalid_phoneNumber" xml:space="preserve">
+    <value>输入的不是有效的电话号码</value>
+  </data>
   <data name="passwd_required" xml:space="preserve">
     <value>口令不可为空</value>
   </data>

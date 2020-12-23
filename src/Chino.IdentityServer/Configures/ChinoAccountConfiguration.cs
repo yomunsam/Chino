@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Chino.IdentityServer.Enums.Account;
 using Microsoft.Extensions.Configuration;
 
 namespace Chino.IdentityServer.Configures
@@ -9,6 +10,8 @@ namespace Chino.IdentityServer.Configures
     public class ChinoAccountConfiguration
     {
         public bool EnableRegister { get; set; } = true;
+
+        public ELoginViewType DefaultLoginType { get; set; } = ELoginViewType.UserNameOrEmail;
 
         public RegisterAndLoginElement UserName { get; set; } = new RegisterAndLoginElement(register: true, registerRequire: true, login: true);
         public EmailRegisterAndLoginElement Email { get; set; } = new EmailRegisterAndLoginElement(register: true, registerRequire: true, login: true, requireConfirnedEmail: false);
@@ -41,6 +44,10 @@ namespace Chino.IdentityServer.Configures
             /// 需要验证手机号
             /// </summary>
             public bool RequireConfirmedPhoneNumber { get; set; }
+
+            public bool SMSLogin { get; set; } = true;
+
+            public bool PhoneNumberPasswordLogin { get; set; } = true;
 
             public PhoneRegisterAndLoginElement()
             {

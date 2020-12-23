@@ -1,0 +1,182 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Account.PhoneLoginModel
+@using Chino.IdentityServer.Extensions.Configurations
+@using Chino.IdentityServer.Enums.Account 
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Account.PhoneLoginModel> L
+@inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
+@inject Chino.IdentityServer.Configures.CountryCodeConfiguration CountryCodes
+@inject CommonLocalizationService CL
+
+@{
+    ViewContext.ClientValidationEnabled = true;
+    ViewData["Nav_ShowLogin/Out"] = false;
+    ViewData["Title"] = L["PageTitle"];
+}
+
+<div class="login-page pb-4 mb-4">
+
+    <div class="login-form">
+        <div class="lead">
+            <h1 class="h3 mb-3 fw-normal">@L["title_login"]</h1>
+        </div>
+        <partial name="ValidationSummary" />
+
+        @if (Model.EnableLocalLogin)
+        {
+            <div class="card mt-1 shadow text-center">
+
+                @*新的选择夹式样标题*@
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" href="#">@L["login_by_phonePassword"]</a>
+                        </li>
+                        @if (AccountConfiguration.CanLoginByUserName() || AccountConfiguration.CanLoginByEmail())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-page="/Account/Login"
+                                   asp-route-returnUrl="@Model.ReturnUrl"
+                                   asp-route-loginType="@((int)ELoginViewType.UserNameOrEmail)">@L["login_by_account"]</a>
+                            </li>
+                        }
+                        @if (AccountConfiguration.CanLoginBySMSVerificationCode())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">@L["login_by_smsVerificationCode"]</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <form asp-route="Login">
+                        @*输入手机号*@
+                        <div class="form-group">
+                            <label asp-for="LoginViewModel.PhoneNumber" class="visually-hidden">@AccountConfiguration.GetLoginInputText(CL)</label>
+                            <input class="form-control input-head" placeholder="@AccountConfiguration.GetLoginInputText(CL)" asp-for="LoginViewModel.PhoneNumber" autofocus>
+                        </div>
+                        @*手机号国家代码*@
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text input-middle" id="basic-addon1">@L["country_calling_code"] +</span>
+                                <input class="form-control input-middle" list="countryListOptions" placeholder="@L["country_calling_code"]" id="phoneDialingCode" asp-for="LoginViewModel.PhoneDialingCode" autofocus>
+                                <datalist id="countryListOptions">
+                                    @foreach (var country in CountryCodes.Data)
+                                    {
+                                        <option value="@country.DialingCodeWithoutPlus">@CL[country.Name] (@country.DialingCode)</option>
+                                    }
+                                </datalist>
+                            </div>
+                        </div>
+                        @*登录口令*@
+                        <div class="form-group">
+                            <label asp-for="LoginViewModel.Password" class="visually-hidden">@L["password"]</label>
+                            <input type="password" class="form-control input-end" placeholder="@L["password"]" asp-for="LoginViewModel.Password" autocomplete="off">
+                        </div>
+                        <div class="form-group text-left">
+                            <div><span asp-validation-for="LoginViewModel.PhoneNumber" class="text-danger"></span></div>
+                            <div><span asp-validation-for="LoginViewModel.PhoneDialingCode" class="text-danger"></span></div>
+                            <div><span asp-validation-for="LoginViewModel.Password" class="text-danger"></span></div>
+                        </div>
+
+                        @if (Model.AllowRememberLogin)
+                        {
+                            //记住登录勾选框
+                            <div class="checkbox mb-3 mt-2 text-left">
+                                <label>
+                                    <input type="checkbox" asp-for="LoginViewModel.RememberLogin" /> @L["remember_login"]
+                                </label>
+                            </div>
+                        }
+                        <div class="d-grid d-sm-block gap-2 mx-auto">
+                            <button class="btn btn-primary px-5" name="button" value="login">@L["btn_login"]</button>
+                            <button class="btn btn-secondary px-5" formnovalidate name="button" value="cancel">@L["btn_cancel"]</button>
+                            @*  使用class "cancel" 可以跳过客户端的表单验证，或者使用"formnovalidate" *@
+                        </div>
+                    </form>
+
+                </div>
+                <div class="card-footer text-muted">
+                    @if (AccountConfiguration.EnableRegister)
+                    {
+                        <a asp-page="Account/ForgetPassword" class="link-secondary">@L["link_forget_password"]</a> @("|") <a asp-page="/Account/Register" class="link-secondary">@L["link_register"]</a>
+                    }
+                    else
+                    {
+                        <a asp-page="Account/ForgetPassword" class="link-secondary">@L["link_forget_password"]</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+
+</div>
+
+
+<style>
+
+    body {
+        background-color: #f5f5f5;
+    }
+
+
+    .login-form {
+        width: 100%;
+        max-width: 380px;
+        margin: auto;
+    }
+
+
+        .login-form .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+            .login-form .form-control:focus {
+                z-index: 2;
+            }
+
+        .login-form .checkbox {
+            font-weight: 400;
+        }
+
+        .login-form .input-head {
+            margin-bottom: -1px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .login-form .input-middle {
+            margin-bottom: -1px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .login-form .input-end {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .login-form .card-footer {
+            font-size: small;
+        }
+
+            .login-form .card-footer a {
+                text-decoration: none;
+            }
+
+                .login-form .card-footer a:hover {
+                    text-decoration: none;
+                }
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

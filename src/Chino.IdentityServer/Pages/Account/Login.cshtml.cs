@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Dtos.Account;
+using Chino.IdentityServer.Enums.Account;
 using Chino.IdentityServer.Extensions.Configurations;
 using Chino.IdentityServer.Extensions.Oidc;
 using Chino.IdentityServer.Models.User;
@@ -16,7 +14,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
 using Nekonya;
-using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace Chino.IdentityServer.Pages.Account
 {
@@ -63,13 +60,27 @@ namespace Chino.IdentityServer.Pages.Account
         [BindProperty]
         public string IdentityString { get; set; }
 
+        [BindProperty, TempData]
+        public ELoginViewType LoginType { get; set; }
+
         public bool EnableLocalLogin { get; set; } = true;
 
         public bool AllowRememberLogin { get; set; } = true;
 
-        public async Task<IActionResult> OnGet(string returnUrl)
+        public async Task<IActionResult> OnGet(string returnUrl, int? loginType)
         {
-            ReturnUrl = returnUrl;
+            this.ReturnUrl = returnUrl;
+            if (loginType == null)
+                this.LoginType = m_AccountConfiguration.DefaultLoginType;
+            else
+                this.LoginType = (ELoginViewType)Enum.ToObject(typeof(ELoginViewType), loginType.Value);
+
+            switch (this.LoginType)
+            {
+                case ELoginViewType.PhoneAndPassword:
+                    return RedirectToPage("/Account/PhoneLogin", new { returnUrl = returnUrl, loginType = loginType });
+            }
+
             var context = await m_IdsInteraction.GetAuthorizationContextAsync(returnUrl);
             if(context?.IdP != null)
             {

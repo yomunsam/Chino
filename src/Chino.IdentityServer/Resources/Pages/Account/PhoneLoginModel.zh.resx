@@ -123,14 +123,8 @@
   <data name="btn_login" xml:space="preserve">
     <value>登录</value>
   </data>
-  <data name="invalid_credentials_error_message" xml:space="preserve">
-    <value>用户名或口令无效</value>
-  </data>
-  <data name="invalid_return_URL" xml:space="preserve">
-    <value>重定向URL无效：{0}</value>
-  </data>
-  <data name="invalid_xxx" xml:space="preserve">
-    <value>无效的{0}</value>
+  <data name="country_calling_code" xml:space="preserve">
+    <value>电话国家代码</value>
   </data>
   <data name="link_forget_password" xml:space="preserve">
     <value>忘记密码</value>
@@ -147,6 +141,9 @@
   <data name="login_by_smsVerificationCode" xml:space="preserve">
     <value>短信登录</value>
   </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>登录</value>
+  </data>
   <data name="password" xml:space="preserve">
     <value>口令</value>
   </data>
@@ -155,8 +152,5 @@
   </data>
   <data name="title_login" xml:space="preserve">
     <value>登录</value>
-  </data>
-  <data name="xxx_required" xml:space="preserve">
-    <value>{0}不可为空</value>
   </data>
 </root>

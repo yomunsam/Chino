@@ -1,9 +1,11 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.Account.LoginModel
 @using Chino.IdentityServer.Extensions.Configurations 
+@using Chino.IdentityServer.Enums.Account
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Account.LoginModel> L
 @inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
 @inject CommonLocalizationService CL
+
 
 @{
     ViewContext.ClientValidationEnabled = true;
@@ -22,8 +24,33 @@
         @if (Model.EnableLocalLogin)
         {
             <div class="card mt-1 shadow text-center">
-                <div class="card-header">
+                @*旧的固定标题*@
+                @*<div class="card-header">
                     <h3 class="h5">@L["login_by_account"]</h3>
+                </div>*@
+
+                @*新的选择夹式样标题*@
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" href="#">@L["login_by_account"]</a>
+                        </li>
+                        @if (AccountConfiguration.CanLoginByPhone())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" 
+                                   asp-page="/Account/PhoneLogin" 
+                                   asp-route-returnUrl="@Model.ReturnUrl" 
+                                   asp-route-loginType="@((int)ELoginViewType.PhoneAndPassword)">@L["login_by_phonePassword"]</a>
+                            </li>
+                        }
+                        @if (AccountConfiguration.CanLoginBySMSVerificationCode())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">@L["login_by_smsVerificationCode"]</a>
+                            </li>
+                        }
+                    </ul>
                 </div>
                 <div class="card-body">
                     <form asp-route="Login">
