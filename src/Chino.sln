@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.IdentityServer", "Chi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SMS", "SMS", "{2169BA44-7A79-4C51-B926-9B8A5BBD6246}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.SMS.Twilio", "sms\Chino.SMS.Twilio\Chino.SMS.Twilio.csproj", "{A1419E30-07F0-4084-AF55-035134F92F15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.SMS.Twilio", "sms\Chino.SMS.Twilio\Chino.SMS.Twilio.csproj", "{A1419E30-07F0-4084-AF55-035134F92F15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.SMS.Shared", "sms\Chino.SMS.Shared\Chino.SMS.Shared.csproj", "{2388BB03-12B3-4231-8302-6D2B9D0E108F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.SMS.Shared", "sms\Chino.SMS.Shared\Chino.SMS.Shared.csproj", "{2388BB03-12B3-4231-8302-6D2B9D0E108F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
