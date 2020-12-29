@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Chino.IdentityServer.Extensions.User;
+using IdentityServer4.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
+using Nekonya;
 
 namespace Chino.IdentityServer.Pages
 {
@@ -14,18 +17,21 @@ namespace Chino.IdentityServer.Pages
     {
         private readonly IStringLocalizer<IndexModel> mLocalizer;
 
+        public string UserDisplayName { get; set; }
+
         public IndexModel(IStringLocalizer<IndexModel> localizer)
         {
             mLocalizer = localizer;
-            //foreach(var item in localizer.GetAllStrings())
-            //{
-            //    Console.WriteLine("item");
-            //}
         }
 
         public void OnGet()
         {
-            //this.ViewData["Title"] = mLocalizer["Home"];
+            if (this.User.Identity.IsAuthenticated)
+            {
+                UserDisplayName = this.User.GetNickName();
+                if (UserDisplayName.IsNullOrEmpty())
+                    UserDisplayName = this.User.GetDisplayName();
+            }
         }
 
 

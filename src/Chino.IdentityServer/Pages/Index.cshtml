@@ -1,15 +1,25 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.IndexModel
-@inject IStringLocalizer<Chino.IdentityServer.Pages.IndexModel> Localizer
+@inject IStringLocalizer<Chino.IdentityServer.Pages.IndexModel> L
 @inject Chino.IdentityServer.Services.CommonLocalizationService CL
 
 @{
-    this.ViewData["Title"] = Localizer["Home"];
+    this.ViewData["Title"] = L["Home"];
 }
-Hello, World
+@*Hello, World
 <br>
-@CL["hello"]
+@CL["hello"]*@
 
+<div class="col">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card mx-3 my-5 shadow">
+            <div class="card-body">
+                <p>@(this.User.Identity.IsAuthenticated?L["hello_loggedIn", Model.UserDisplayName]:L["hello_anonymous"])</p>
+                <a asp-page="/User/Index" class="btn btn-primary px-4">@L["ToUserPage"]</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--<div class="container">-->
     <!-- data-toggle="collapse"属性表示该链接可以展开或折叠其他元素 -->

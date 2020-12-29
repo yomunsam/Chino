@@ -64,6 +64,11 @@ namespace Chino.IdentityServer.Pages.Account
         public async Task<IActionResult> OnGet(string returnUrl, int? loginType)
         {
             this.ReturnUrl = returnUrl;
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return Redirect(this.ReturnUrl ?? "/");
+            }
+
             if (loginType == null)
                 this.LoginType = m_AccountConfiguration.DefaultLoginType;
             else

@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="hello_anonymous" xml:space="preserve">
-    <value>你好！</value>
+  <data name="Context" xml:space="preserve">
+    <value>糟糕，您可能无权访问该内容或尚未登录。</value>
   </data>
-  <data name="hello_loggedIn" xml:space="preserve">
-    <value>你好,{0}！</value>
+  <data name="GoBack" xml:space="preserve">
+    <value>返回之前的页面</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>首页</value>
+  <data name="ReturnHomePage" xml:space="preserve">
+    <value>前往首页</value>
   </data>
-  <data name="ToUserPage" xml:space="preserve">
-    <value>我的信息</value>
+  <data name="Title" xml:space="preserve">
+    <value>未授权的请求</value>
   </data>
 </root>

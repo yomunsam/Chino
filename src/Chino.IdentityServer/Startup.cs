@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using Chino.IdentityServer.Configures;
+using Chino.IdentityServer.Const;
 using Chino.IdentityServer.Data;
 using Chino.IdentityServer.Models.User;
 using Chino.IdentityServer.Resources.DataAnnotation;
@@ -73,7 +74,10 @@ namespace Chino.IdentityServer
 
             #endregion
 
-            services.AddRazorPages()
+            services.AddRazorPages(options =>
+            {
+                options.Conventions.AuthorizeFolder("/Dashboard", ChinoConst.PolicyName_Dashboard);
+            })
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization(options =>
                 {
@@ -145,6 +149,13 @@ namespace Chino.IdentityServer
 
             #endregion
             services.AddAuthentication();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(ChinoConst.PolicyName_Dashboard, policy =>
+                {
+                    policy.RequireRole(Configuration["Chino:AdminRoleName"]);
+                });
+            });
 
 
             //Chino Services
