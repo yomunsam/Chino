@@ -1,0 +1,61 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy To Server
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ stable ]
+  pull_request:
+    branches: [ stable ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # 准备.NET环境
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.101
+
+      # 恢复.Net依赖包 
+      - name: Restore dependencies
+        working-directory: src
+        run: dotnet restore
+      
+      # 构建
+      - name: Build
+        run: dotnet build --no-restore
+        working-directory: src
+      # 跑单元测试
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+        working-directory: src
+        
+      # 执行.Net发布，得到编译后可发布的二进制文件
+      - name: Publish Binary
+        working-directory: src/Chino.IdentityServer
+        run: dotnet publish -c Release -o deploy --no-restore
+      
+      # 将构建结果通过SSH发布到服务器
+      - name: Deploy To Server
+        uses: garygrossgarten/github-action-scp@v0.7.1
+        with:
+          local: src/Chino.IdentityServer/deploy
+          remote: ${{ secrets.REMOTE_TARGET }}
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
