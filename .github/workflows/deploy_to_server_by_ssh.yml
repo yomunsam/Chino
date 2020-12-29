@@ -59,3 +59,12 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
+
+      # 重启系统服务 
+      - name: Restart service
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: systemctl restart chino
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          password : ${{ secrets.REMOTE_PASSWORD }}
