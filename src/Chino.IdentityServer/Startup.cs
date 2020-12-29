@@ -12,6 +12,7 @@ using Chino.IdentityServer.Services.Roles;
 using Chino.IdentityServer.Services.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
@@ -175,6 +176,14 @@ namespace Chino.IdentityServer
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Chino.IdentityServer v1"));
+            }
+
+            if (Configuration.GetValue<bool>("Chino:EnableForwardedHeaders"))
+            {
+                app.UseForwardedHeaders(new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = ForwardedHeaders.XForwardedFor| ForwardedHeaders.XForwardedProto
+                });
             }
 
             app.UseHttpsRedirection();
