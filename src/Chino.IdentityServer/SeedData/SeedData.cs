@@ -1,25 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json;
+using AutoMapper;
+using Chino.AutoMapper;
 using Chino.IdentityServer.Data;
 using Chino.IdentityServer.Models.User;
+using IdentityModel;
+using IdentityServer4.EntityFramework.DbContexts;
+using IdentityServer4.EntityFramework.Mappers;
 using IdentityServer4.EntityFramework.Storage;
+using IdentityServer4.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using System.IO;
-using System.Text;
-using AutoMapper;
-using Chino.AutoMapper;
-using System.Security.Claims;
-using IdentityModel;
-using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.Models;
-using IdentityServer4.EntityFramework.Mappers;
 
 namespace Chino.IdentityServer.SeedData
 {
@@ -62,8 +59,9 @@ namespace Chino.IdentityServer.SeedData
 
             var chinoAppContext = scope.ServiceProvider.GetService<ChinoApplicationDbContext>();
             var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ChinoUser>>();
+            var roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var mapper = scope.ServiceProvider.GetService<IMapper>();
-            EnsureChinoAppSeedData(ref chinoAppContext, ref userMgr, ref seedDataConfig, ref mapper);
+            EnsureChinoAppSeedData(ref chinoAppContext, ref userMgr, ref seedDataConfig, ref mapper, ref roleMgr);
 
             var idsConfigurationContext = scope.ServiceProvider.GetService<ConfigurationDbContext>();
             var idsPersistedGrantDbContext = scope.ServiceProvider.GetService<PersistedGrantDbContext>();
@@ -71,9 +69,32 @@ namespace Chino.IdentityServer.SeedData
             EnsureIdentityServerSeedData(ref idsConfigurationContext, ref idsPersistedGrantDbContext, ref seedDataConfig);
         }
 
-        private static void EnsureChinoAppSeedData(ref ChinoApplicationDbContext context, ref UserManager<ChinoUser> userMgr , ref SeedDataJsonConfig seedDataJson, ref IMapper mapper)
+        private static void EnsureChinoAppSeedData(ref ChinoApplicationDbContext context, 
+            ref UserManager<ChinoUser> userMgr , 
+            ref SeedDataJsonConfig seedDataJson, 
+            ref IMapper mapper,
+            ref RoleManager<IdentityRole> roleMgr)
         {
             context.Database.Migrate();
+
+            #region Roles Seed
+            if(seedDataJson.Roles != null && seedDataJson.Roles.Count() > 0)
+            {
+                foreach(var roleName in seedDataJson.Roles)
+                {
+                    var role = roleMgr.FindByNameAsync(roleName).Result;
+                    if(role == null)
+                    {
+                        role = new IdentityRole(roleName);
+                        var result = roleMgr.CreateAsync(role).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                    }
+                }
+            }
+            #endregion
 
             #region Users Seed
             if (seedDataJson.Users == null || seedDataJson.Users.Length == 0)
@@ -112,6 +133,21 @@ namespace Chino.IdentityServer.SeedData
                         new Claim(JwtClaimTypes.NickName, _user.NickName),
                         new Claim(JwtClaimTypes.WebSite, _user.WebSite),
                     }).Result;
+
+                    if (!result.Succeeded)
+                    {
+                        throw new Exception(result.Errors.First().Description);
+                    }
+
+                    if(_user.DefaultRoles != null && _user.DefaultRoles.Count > 0)
+                    {
+                        result = userMgr.AddToRolesAsync(userInfo, _user.DefaultRoles).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                    }
+
                 }
             }
 

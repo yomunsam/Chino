@@ -1,6 +1,9 @@
 ﻿@inject Microsoft.Extensions.Configuration.IConfiguration configuration
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment environment
-@using Microsoft.Extensions.Hosting
+@using Chino.IdentityServer.Const
+@{
+    string themeName = Context.Request.Cookies[ChinoConst.ThemeNameCookieKey];
+}
 
 <!DOCTYPE html>
 
@@ -14,7 +17,6 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/lib/bootstrap-select/css/bootstrap-select.min.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css"
@@ -23,10 +25,6 @@
               asp-fallback-test-value="auto"
               integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ"
               crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/css/bootstrap-select.min.css"
-              asp-fallback-href="~/lib/bootstrap-select/css/bootstrap-select.min.css"
-              asp-fallback-test-class="ootstrap-select" asp-fallback-test-property="vertical-align"
-              asp-fallback-test-value="middle" />
     </environment>
 
 </head>
@@ -51,7 +49,6 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="~/lib/vue/vue.js"></script>
-        @*<script src="~/lib/bootstrap-select/js/bootstrap-select.min.js"></script>*@
     </environment>
     <environment exclude="Development">
         @*发布模式下的js引用之类的*@
@@ -66,8 +63,6 @@
                 asp-fallback-src="~/lib/vue/vue.min.js"
                 asp-fallback-test="Vue"
                 crossorigin="anonymous"></script>
-
-        @*<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta/dist/js/bootstrap-select.min.js"></script>*@
     </environment>
 
     @await RenderSectionAsync("Scripts", required: false)

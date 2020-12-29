@@ -13,6 +13,8 @@ namespace Chino.IdentityServer.SeedData
         public User[] Users { get; set; }
         public Client[] Clients { get; set; }
 
+        public IEnumerable<string> Roles { get; set; }
+
         public class User
         {
             public string UserName { get; set; }
@@ -29,7 +31,7 @@ namespace Chino.IdentityServer.SeedData
             public string WebSite { get; set; }
             public string NickName { get; set; }
 
-            public ICollection<string> Roles = new HashSet<string>();
+            public List<string> DefaultRoles { get; set; }
 
             #endregion
         }

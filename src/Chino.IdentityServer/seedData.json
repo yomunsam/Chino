@@ -16,7 +16,13 @@
       "Password": "Abc123456!",
       "Name": "Kafuu Chino",
       "NickName": "Kafuu Chino",
-      "WebSite": "https://chino.moe"
+      "WebSite": "https://chino.moe",
+      "DefaultRoles": [
+        "ChinoAdmin" 
+      ]
     }
+  ],
+  "Roles": [
+    "ChinoAdmin"
   ]
 }
