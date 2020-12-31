@@ -1,8 +1,13 @@
-﻿@inject Microsoft.Extensions.Configuration.IConfiguration configuration
+﻿@using Microsoft.AspNetCore.Localization
+@inject Microsoft.Extensions.Configuration.IConfiguration configuration
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment environment
+@inject Chino.IdentityServer.Services.Localization.IJsonLocalizationService JL
+
 @using Chino.IdentityServer.Const
 @{
     string themeName = Context.Request.Cookies[ChinoConst.ThemeNameCookieKey];
+
+    var currentCulture = Context.Features.Get<IRequestCultureFeature>()?.RequestCulture?.UICulture;
 }
 
 <!DOCTYPE html>
@@ -11,7 +16,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@(ViewData["Title"] ?? "Chino") - @configuration["Chino:PageTitle"]</title>
+    <title>@(ViewData["Title"] ?? "Chino") - @JL[configuration["Chino:PageTitle" ?? "Chino"], currentCulture]</title>
 
     <link rel="stylesheet" href="~/css/chino.css" />
 

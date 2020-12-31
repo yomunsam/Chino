@@ -1,11 +1,14 @@
-﻿@inject Microsoft.Extensions.Configuration.IConfiguration configuration
+﻿@using Microsoft.AspNetCore.Localization
+@inject Microsoft.Extensions.Configuration.IConfiguration configuration
+@inject Chino.IdentityServer.Services.Localization.IJsonLocalizationService JL
 @inject CommonLocalizationService CL
-@{ 
+@{
     ViewData["_dashboard"] = true;
     string pageName = (string)(ViewData["pageName"] ?? "unknow");
 
     bool IsPage(string name) => name == pageName;
 
+    var currentCulture = Context.Features.Get<IRequestCultureFeature>()?.RequestCulture?.UICulture;
 }
 
 
@@ -35,7 +38,8 @@
 <body>
     @*顶部导航栏*@
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a href="/Dashboard" class="navbar-brand col-md-3 col-lg-2 me-0 px-3">@(configuration["Chino:Dashboard:NavTitle"]??"Chino Dashboard")</a>
+        <a href="/Dashboard" class="navbar-brand col-md-3 col-lg-2 me-0 px-3">@JL[(configuration["Chino:Dashboard:NavTitle"] ?? "Chino Dashboard"), currentCulture]</a>
+        @*<a href="/Dashboard" class="navbar-brand col-md-3 col-lg-2 me-0 px-3">@(configuration["Chino:Dashboard:NavTitle"]??"Chino Dashboard")</a>*@
 
         @*在小屏上缩进用的按钮*@
         <button class="navbar-toggler position-absolute d-md-none collapsed"
@@ -128,8 +132,8 @@
             <partial name="Footer" />
         </div>
     </div>
-    
-    
+
+
 
 
     <environment include="Development">

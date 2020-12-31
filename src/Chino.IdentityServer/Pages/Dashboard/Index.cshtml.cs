@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Chino.IdentityServer.Services.Clients;
+using Chino.IdentityServer.Services.Localization;
 using Chino.IdentityServer.Services.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +24,11 @@ namespace Chino.IdentityServer.Pages.Dashboard
         private readonly IUserService m_UserService;
         private readonly IClientService m_ClientService;
 
-        public IndexModel(IUserService usersService, IClientService clientService)
+        public IndexModel(IUserService usersService, IClientService clientService, IJsonLocalizationService jl)
         {
             m_UserService = usersService;
             m_ClientService = clientService;
+
         }
 
 
