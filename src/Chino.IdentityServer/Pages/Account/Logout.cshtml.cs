@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Chino.IdentityServer.Models.User;
+using Chino.EntityFramework.Shared.Entities.User;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
 using IdentityServer4.Services;

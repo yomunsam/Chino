@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
+using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Enums.Account;
-using Chino.IdentityServer.Models.User;
 using Chino.IdentityServer.Services;
 using Chino.IdentityServer.ViewModels.Account;
 using IdentityServer4.Services;
@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
-using SQLitePCL;
 
 namespace Chino.IdentityServer.Pages.Account
 {

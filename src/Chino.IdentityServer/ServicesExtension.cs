@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+using Chino.EntityFramework.Mysql;
+using Chino.EntityFramework.Sqlite;
+using Chino.EntityFramework.SqlServer;
 using Chino.IdentityServer.Configures;
-using Chino.IdentityServer.Extensions.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Nekonya;
 
 namespace Chino.IdentityServer
 {
@@ -19,22 +18,24 @@ namespace Chino.IdentityServer
         {
             string connectionString = configuration.GetConnectionString("ChinoApp");
             string providerType = configuration["Database:ProviderType:Chino:App"] ?? "sqlite";
+            string providerStr = configuration["OverrideDbProvider"];
+            if (!providerStr.IsNullOrEmpty())
+            {
+                providerType = providerStr;
+            }
             switch (providerType.ToLower())
             {
                 case "mysql":
                 case "mariadb":
-                    services.AddDbContext<TAppDbContext>(options =>
-                        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+                    services.RegisterMysqlChinoDatabase<TAppDbContext>(configuration);
                     break;
                 case "sqlite":
                 case "sqlite3":
-                    services.AddDbContext<TAppDbContext>(options =>
-                        options.UseSqlite(connectionString));
+                    services.RegisterSqliteChinoDatabase<TAppDbContext>(configuration);
                     break;
                 case "sqlserver":
                 case "mssql":
-                    services.AddDbContext<TAppDbContext>(options =>
-                        options.UseSqlServer(connectionString));
+                    services.RegisterSqlServerChinoDatabase<TAppDbContext>(configuration);
                     break;
                 default:
                     throw new Exception($"Unknow database provider type: {providerType} - Chino Application");
@@ -46,21 +47,24 @@ namespace Chino.IdentityServer
         {
             string connectionString = configuration.GetConnectionString("IdentityServerConfiguration");
             string providerType = configuration["Database:ProviderType:IdentityServer:Configuration"] ?? "sqlite";
-            string migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-
+            string providerStr = configuration["OverrideDbProvider"];
+            if (!providerStr.IsNullOrEmpty())
+            {
+                providerType = providerStr;
+            }
             switch (providerType.ToLower())
             {
                 case "mysql":
                 case "mariadb":
-                    builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), sql => sql.MigrationsAssembly(migrationsAssembly));
+                    builder.RegisterMysqlIdentityServerConfigurationDatabase(connectionString);
                     break;
                 case "sqlite":
                 case "sqlite3":
-                    builder.UseSqlite(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                    builder.RegisterSqliteIdentityServerConfigurationDatabase(connectionString);
                     break;
                 case "sqlserver":
                 case "mssql":
-                    builder.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                    builder.RegisterSqlServerIdentityServerConfigurationDatabase(connectionString);
                     break;
                 default:
                     throw new Exception($"Unknow database provider type: {providerType} - IdentityServer Configuration");
@@ -71,21 +75,25 @@ namespace Chino.IdentityServer
         {
             string connectionString = configuration.GetConnectionString("IdentityServerOperational");
             string providerType = configuration["Database:ProviderType:IdentityServer:Operational"] ?? "sqlite";
-            string migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+            string providerStr = configuration["OverrideDbProvider"];
+            if (!providerStr.IsNullOrEmpty())
+            {
+                providerType = providerStr;
+            }
 
             switch (providerType.ToLower())
             {
                 case "mysql":
                 case "mariadb":
-                    builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), sql => sql.MigrationsAssembly(migrationsAssembly));
+                    builder.RegisterMysqlIdentityServerOperationalDatabase(connectionString);
                     break;
                 case "sqlite":
                 case "sqlite3":
-                    builder.UseSqlite(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                    builder.RegisteSqliteIdentityServerOperationalDatabase(connectionString);
                     break;
                 case "sqlserver":
                 case "mssql":
-                    builder.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                    builder.RegisterSqlServerIdentityServerOperationalDatabase(connectionString);
                     break;
                 default:
                     throw new Exception($"Unknow database provider type: {providerType} - IdentityServer Operational");

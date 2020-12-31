@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
+using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Extensions.User;
-using Chino.IdentityServer.Models.User;
 using IdentityServer4.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

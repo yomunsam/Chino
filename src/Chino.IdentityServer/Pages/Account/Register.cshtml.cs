@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
+using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Dtos.Account;
 using Chino.IdentityServer.Extensions.Configurations;
-using Chino.IdentityServer.Models.User;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -83,15 +78,27 @@ namespace Chino.IdentityServer.Pages.Account
             await Task.Yield();
             if (!ModelState.IsValid) return Page();
 
-            if (RegisterDto.PhoneDialingCode.StartsWith('+'))
-                RegisterDto.PhoneDialingCode = RegisterDto.PhoneDialingCode.Substring(1, RegisterDto.PhoneDialingCode.Length - 1);
-
-            //校验DialingCode是否存在
-            if(!m_CountryCode.DialingCodeWithoutPlus_Dict.ContainsKey(RegisterDto.PhoneDialingCode))
+            
+            
+            if (m_AccountConfiguration.Phone.Register)
             {
-                ModelState.AddModelError(string.Empty, L["invalid_dialingCode",RegisterDto.PhoneDialingCode]);
-                return Page();
+                if (!RegisterDto.PhoneDialingCode.IsNullOrEmpty())
+                {
+                    if (RegisterDto.PhoneDialingCode.StartsWith('+'))
+                        RegisterDto.PhoneDialingCode = RegisterDto.PhoneDialingCode.Substring(1, RegisterDto.PhoneDialingCode.Length - 1);
+                }
+
+                if (m_AccountConfiguration.Phone.RegisterRequire)
+                {
+                    //校验DialingCode是否存在
+                    if (!m_CountryCode.DialingCodeWithoutPlus_Dict.ContainsKey(RegisterDto.PhoneDialingCode))
+                    {
+                        ModelState.AddModelError(string.Empty, L["invalid_dialingCode", RegisterDto.PhoneDialingCode]);
+                        return Page();
+                    }
+                }
             }
+            
 
             var user = new ChinoUser
             {

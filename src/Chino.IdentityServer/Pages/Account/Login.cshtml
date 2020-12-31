@@ -3,7 +3,7 @@
 @using Chino.IdentityServer.Extensions.Configurations 
 @using Chino.IdentityServer.Enums.Account
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Account.LoginModel> L
-@inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
+@inject Chino.IdentityServer.Services.Account.IAccountService AccountService
 @inject CommonLocalizationService CL
 
 
@@ -35,7 +35,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="true" href="#">@L["login_by_account"]</a>
                         </li>
-                        @if (AccountConfiguration.CanLoginByPhone())
+                        @if (AccountService.EnableLoginByPhone)
                         {
                             <li class="nav-item">
                                 <a class="nav-link" 
@@ -44,7 +44,7 @@
                                    asp-route-loginType="@((int)ELoginViewType.PhoneAndPassword)">@L["login_by_phonePassword"]</a>
                             </li>
                         }
-                        @if (AccountConfiguration.CanLoginBySMSVerificationCode())
+                        @if (AccountService.EnableLoginBySMSVerificationCode)
                         {
                             <li class="nav-item">
                                 <a class="nav-link"
@@ -58,8 +58,8 @@
                 <div class="card-body">
                     <form asp-route="Login">
                         <div class="form-group">
-                            <label asp-for="IdentityString" class="visually-hidden">@AccountConfiguration.GetLoginInputText(CL)</label>
-                            <input class="form-control input-head" id="identityString" placeholder="@AccountConfiguration.GetLoginInputText(CL)" asp-for="IdentityString" autofocus>
+                            <label asp-for="IdentityString" class="visually-hidden">@AccountService.GetLoginLabelText(CL)</label>
+                            <input class="form-control input-head" id="identityString" placeholder="@AccountService.GetLoginLabelText(CL)" asp-for="IdentityString" autofocus>
                         </div>
                         <div class="form-group">
                             <label asp-for="LoginDto.Password" class="visually-hidden">@L["password"]</label>
@@ -87,7 +87,7 @@
 
                 </div>
                 <div class="card-footer text-muted">
-                    @if (AccountConfiguration.EnableRegister)
+                    @if (AccountService.EnableRegister)
                     {
                         <a asp-page="Account/ForgetPassword" class="link-secondary">@L["link_forget_password"]</a> @("|") <a asp-page="/Account/Register" class="link-secondary">@L["link_register"]</a>
                     }

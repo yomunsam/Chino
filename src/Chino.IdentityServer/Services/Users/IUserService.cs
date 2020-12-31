@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Chino.Dtos.PaginatedList;
-using Chino.IdentityServer.Models.User;
+using Chino.EntityFramework.Shared.Entities.User;
 
 namespace Chino.IdentityServer.Services.Users
 {

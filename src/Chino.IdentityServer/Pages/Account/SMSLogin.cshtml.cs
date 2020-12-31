@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Enums.Account;
 using Chino.IdentityServer.Extensions.Configurations;
-using Chino.IdentityServer.Models.User;
 using Chino.IdentityServer.Services;
 using Chino.IdentityServer.ViewModels.Account;
 using IdentityServer4.Services;
