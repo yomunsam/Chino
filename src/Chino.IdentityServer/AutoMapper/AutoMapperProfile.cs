@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using Chino.IdentityServer.Models.User;
+using Chino.EntityFramework.Shared.Entities.User;
+using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.SeedData;
 
 namespace Chino.AutoMapper
@@ -11,6 +12,8 @@ namespace Chino.AutoMapper
             CreateMap<SeedDataJsonConfig.User, ChinoUser>();
             //CreateMap<Meow, MeowDto>();
             //......
+
+            CreateMap<ChinoAccountConfiguration, ChinoAccountConfiguration>();
         }
     }
 }

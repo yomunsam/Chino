@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using AutoMapper;
+using Chino.AutoMapper;
+using Chino.EntityFramework.Shared.Data;
+using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Const;
-using Chino.IdentityServer.Data;
-using Chino.IdentityServer.Models.User;
 using Chino.IdentityServer.Resources.DataAnnotation;
 using Chino.IdentityServer.Services;
+using Chino.IdentityServer.Services.Account;
 using Chino.IdentityServer.Services.Clients;
 using Chino.IdentityServer.Services.Roles;
 using Chino.IdentityServer.Services.Users;
@@ -159,11 +162,16 @@ namespace Chino.IdentityServer
             });
 
 
+            //AutoMapper
+            services.AddAutoMapper(typeof(AutoMapperProfile));
+
+
             //Chino Services
             services.AddSingleton<CommonLocalizationService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddSingleton<IAccountService, AccountService>();
 
         }
 

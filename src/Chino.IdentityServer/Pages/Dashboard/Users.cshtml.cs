@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Chino.Dtos.PaginatedList;
-using Chino.IdentityServer.Models.User;
+using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Services.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

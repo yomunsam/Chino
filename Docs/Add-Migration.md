@@ -2,8 +2,10 @@
 Chino 
 
 ``` powershell
-Add-Migration InitChinoApp -Context ChinoApplicationDbContext -OutputDir Data\Migrations\Chino\Application
+dotnet ef migrations add Init --context ChinoApplicationDbContext --project ../database/Chino.EntityFramework.Mysql --output-dir Migrations/Chino/Application -- --OverrideDbProvider mysql
 ```
+
+
 
 Identity Server
 

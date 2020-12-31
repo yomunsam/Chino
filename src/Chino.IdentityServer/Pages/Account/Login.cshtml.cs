@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
+using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Dtos.Account;
 using Chino.IdentityServer.Enums.Account;
 using Chino.IdentityServer.Extensions.Configurations;
 using Chino.IdentityServer.Extensions.Oidc;
-using Chino.IdentityServer.Models.User;
 using Chino.IdentityServer.Services;
 using IdentityServer4.Events;
 using IdentityServer4.Services;
