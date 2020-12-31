@@ -11,6 +11,7 @@ using Chino.IdentityServer.Resources.DataAnnotation;
 using Chino.IdentityServer.Services;
 using Chino.IdentityServer.Services.Account;
 using Chino.IdentityServer.Services.Clients;
+using Chino.IdentityServer.Services.Localization;
 using Chino.IdentityServer.Services.Roles;
 using Chino.IdentityServer.Services.Users;
 using Microsoft.AspNetCore.Builder;
@@ -172,6 +173,7 @@ namespace Chino.IdentityServer
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddSingleton<IAccountService, AccountService>();
+            services.AddSingleton<IJsonLocalizationService, JsonLocalizationService>();
 
         }
 

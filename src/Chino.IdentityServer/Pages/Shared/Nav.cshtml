@@ -1,12 +1,17 @@
-﻿@inject IConfiguration configuration
+﻿@using Microsoft.AspNetCore.Localization
+@inject IConfiguration configuration
 @inject CommonLocalizationService CL
+@inject Chino.IdentityServer.Services.Localization.IJsonLocalizationService JL
 @inject Chino.IdentityServer.Configures.ChinoAccountConfiguration AccountConfiguration
 
 @using IdentityServer4.Extensions
 
-@{ 
+@{
     string userDisplayName = Context.User?.GetDisplayName();
     bool showSignInOut = (bool)(ViewData["Nav_ShowLogin/Out"] ?? true);
+
+    var currentCulture = Context.Features.Get<IRequestCultureFeature>()?.RequestCulture?.UICulture;
+
 
     bool IsUserLayout()
     {
@@ -22,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
         <div class="container">
             <a class="navbar-brand" asp-area="" asp-page="/Index">
-                @(configuration["Chino:NavTitle"] ?? "Chino")
+                @JL[(configuration["Chino:NavTitle"] ?? "Chino"),currentCulture]
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -62,11 +67,11 @@
                         }
                     }
                     @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-        </li>*@
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>*@
                 </ul>
             </div>
         </div>

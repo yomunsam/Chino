@@ -4,13 +4,16 @@
 @using Microsoft.Extensions.Options
 @using Microsoft.AspNetCore.Builder
 @inject IOptions<RequestLocalizationOptions> LocOptions
+@inject Chino.IdentityServer.Services.Localization.IJsonLocalizationService JL
 
 @{
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
     var cultureItems = LocOptions.Value.SupportedUICultures
-        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
         .OrderBy(item => item.Value)
         .ToList();
+
+    var currentCulture = requestCulture?.RequestCulture?.UICulture;
 
     //设置语言之后的跳转
     var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
@@ -29,25 +32,24 @@
 
 
 <footer class="border-top footer @(IsDashboard() ? "footer-dashboard-width" : "footer-100width") text-muted mt-auto">
-    
+
     <div class="copyright">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <span>Copyright &copy; @configuration["Chino:Footer:Copyright"]</span>
+                    <span>Copyright &copy; @JL[configuration["Chino:Footer:Copyright"],currentCulture]</span>
                 </div>
 
                 <div class="col-md-6">
                     <div class="LocalizationSelecter mt-0 mb-2 mt-md-2 float-md-right float-none">
                         <form id="selectLanguageForm"
                               method="post"
-                              asp-page="/Index" 
+                              asp-page="/Index"
                               asp-page-handler="SetCulture"
-                              asp-route-returnUrl="@returnUrl"
-                              >
-                            <select class="form-select form-control" 
+                              asp-route-returnUrl="@returnUrl">
+                            <select class="form-select form-control"
                                     id="cultureSelect"
-                                    name="culture" 
+                                    name="culture"
                                     asp-for="@requestCulture.RequestCulture.UICulture.Name"
                                     asp-items="cultureItems"></select>
                         </form>

@@ -1,0 +1,10 @@
+﻿{
+  "hello": {
+    "default": "Hello",
+    "zh": "你好"
+  },
+  "Chino_Dashboard": {
+    "default": "Chino Dashboard",
+    "zh": "Chino 面板"
+  }
+}
