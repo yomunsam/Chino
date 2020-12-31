@@ -153,4 +153,10 @@
   <data name="xxx_required" xml:space="preserve">
     <value>{0} is required.</value>
   </data>
+  <data name="login_by_phonePassword" xml:space="preserve">
+    <value>Phone Login</value>
+  </data>
+  <data name="login_by_smsVerificationCode" xml:space="preserve">
+    <value>SMS Login</value>
+  </data>
 </root>

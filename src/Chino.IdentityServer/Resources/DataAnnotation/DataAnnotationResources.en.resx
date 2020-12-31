@@ -141,4 +141,13 @@
   <data name="phone_number_required" xml:space="preserve">
     <value>Phone number is required.</value>
   </data>
+  <data name="invalid_phoneNumber" xml:space="preserve">
+    <value>Phone number is invalid.</value>
+  </data>
+  <data name="phone_number_dialing_code_required" xml:space="preserve">
+    <value>Dialing Code is required.</value>
+  </data>
+  <data name="rolename_required" xml:space="preserve">
+    <value>Role name is required.</value>
+  </data>
 </root>

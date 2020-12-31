@@ -1,0 +1,53 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="btn_cancel" xml:space="preserve">
+        <value>取り消し</value>
+    </data>
+    <data name="btn_login" xml:space="preserve">
+        <value>登録</value>
+    </data>
+    <data name="link_forget_password" xml:space="preserve">
+        <value>パスワードを取得</value>
+    </data>
+    <data name="link_register" xml:space="preserve">
+        <value>アカウントを登録する</value>
+    </data>
+    <data name="login_by_account" xml:space="preserve">
+        <value>アカウント登録</value>
+    </data>
+    <data name="login_by_phonePassword" xml:space="preserve">
+        <value>電話ログイン</value>
+    </data>
+    <data name="login_by_smsVerificationCode" xml:space="preserve">
+        <value>SMSログイン</value>
+    </data>
+    <data name="password" xml:space="preserve">
+        <value>パスワード</value>
+    </data>
+    <data name="remember_login" xml:space="preserve">
+        <value>ログインを覚えます</value>
+    </data>
+    <data name="title_login" xml:space="preserve">
+        <value>ログイン</value>
+    </data>
+    <data name="country_calling_code" xml:space="preserve">
+        <value>ダイヤルコード</value>
+    </data>
+    <data name="PageTitle" xml:space="preserve">
+        <value>ログイン</value>
+    </data>
+    <data name="error_notEnableLoginType" xml:space="preserve">
+        <value>メールの検証コードを使ってアカウントにログインしてはいけません。</value>
+    </data>
+</root>
