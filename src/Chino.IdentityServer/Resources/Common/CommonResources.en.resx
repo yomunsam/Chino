@@ -177,4 +177,10 @@
   <data name="nav_userpage" xml:space="preserve">
     <value>My Home</value>
   </data>
+  <data name="China" xml:space="preserve">
+    <value>China</value>
+  </data>
+  <data name="Japan" xml:space="preserve">
+    <value>Japan</value>
+  </data>
 </root>

@@ -1,9 +1,13 @@
-﻿@inject Microsoft.Extensions.Configuration.IConfiguration configuration
+﻿@using Microsoft.AspNetCore.Localization
+@inject Microsoft.Extensions.Configuration.IConfiguration configuration
 @inject CommonLocalizationService CL
+@inject Chino.IdentityServer.Services.Localization.IJsonLocalizationService JL
 
-@{ 
+@{
     ViewData["_layout"] = "user";
     string pageName = (string)(ViewData["pageName"] ?? "unknow");
+    var currentCulture = Context.Features.Get<IRequestCultureFeature>()?.RequestCulture?.UICulture;
+
 
     bool IsPage(string name) => pageName == name;
 
@@ -16,7 +20,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@(ViewData["Title"] ?? "Chino") - @configuration["Chino:PageTitle"]</title>
+    <title>@(ViewData["Title"] ?? "Chino") - @JL[configuration["Chino:PageTitle"], currentCulture]</title>
 
     <link rel="stylesheet" href="~/css/chino-user.css" />
     <link rel="stylesheet" href="~/css/chino.css" />
@@ -67,12 +71,12 @@
                             <a asp-page="/User/MyAccountData" class="list-group-item list-group-item-action @(IsPage("accountData")?"active":string.Empty)" aria-current="@(IsPage("accountData")?"true":"false")">@CL["user_nav_myAccountData"]</a>
 
                         </div>
-                        
+
                         @*<ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                喵
-                            </li>
-                        </ul>*@
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    喵
+                                </li>
+                            </ul>*@
                     </div>
                 </div>
 

@@ -50,4 +50,10 @@
     <data name="username" xml:space="preserve">
         <value>UserName</value>
     </data>
+    <data name="country_calling_code" xml:space="preserve">
+        <value>Dialing Code</value>
+    </data>
+    <data name="invalid_dialingCode" xml:space="preserve">
+        <value>Dialing Code {0} is invalid.</value>
+    </data>
 </root>

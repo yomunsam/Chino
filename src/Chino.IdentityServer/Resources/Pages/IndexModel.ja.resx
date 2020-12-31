@@ -120,4 +120,13 @@
   <data name="Home" xml:space="preserve">
     <value>ホーム</value>
   </data>
+  <data name="hello_anonymous" xml:space="preserve">
+    <value>こんにちは！</value>
+  </data>
+  <data name="hello_loggedIn" xml:space="preserve">
+    <value>こんにちは,{0}！</value>
+  </data>
+  <data name="ToUserPage" xml:space="preserve">
+    <value>マイプロフィール</value>
+  </data>
 </root>

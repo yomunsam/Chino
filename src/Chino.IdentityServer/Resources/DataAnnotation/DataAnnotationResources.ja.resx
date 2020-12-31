@@ -141,4 +141,13 @@
   <data name="phone_number_required" xml:space="preserve">
     <value>電話番号が必要です。</value>
   </data>
+  <data name="invalid_phoneNumber" xml:space="preserve">
+    <value>電話番号が無効です。</value>
+  </data>
+  <data name="phone_number_dialing_code_required" xml:space="preserve">
+    <value>ダイヤルコードが必要です。</value>
+  </data>
+  <data name="rolename_required" xml:space="preserve">
+    <value>ロール名が必要です。</value>
+  </data>
 </root>

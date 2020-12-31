@@ -50,4 +50,10 @@
     <data name="username" xml:space="preserve">
         <value>ユーザ名</value>
     </data>
+    <data name="country_calling_code" xml:space="preserve">
+        <value>ダイヤルコード</value>
+    </data>
+    <data name="invalid_dialingCode" xml:space="preserve">
+        <value>ダイヤルコード {0} は無効です。</value>
+    </data>
 </root>
