@@ -40,11 +40,10 @@
       <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Pages\IndexModel.ja.resx">
-      <LastGenOutput>IndexModel.zh.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Pages\IndexModel.en.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Pages\IndexModel.zh.resx">
       <Generator></Generator>

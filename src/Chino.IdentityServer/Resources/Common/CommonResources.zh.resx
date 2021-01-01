@@ -126,6 +126,9 @@
   <data name="dashboard_nav_clients" xml:space="preserve">
     <value>客户端</value>
   </data>
+  <data name="dashboard_nav_database" xml:space="preserve">
+    <value>数据库</value>
+  </data>
   <data name="dashboard_nav_identity_resources" xml:space="preserve">
     <value>身份资源</value>
   </data>

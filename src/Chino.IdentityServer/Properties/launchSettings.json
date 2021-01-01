@@ -12,6 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "Dashboard",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -19,6 +20,7 @@
     "Chino.IdentityServer": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "Dashboard",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
