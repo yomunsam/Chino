@@ -52,7 +52,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entity\User\" />
     <Folder Include="wwwroot\lib\clipboardjs\" />
   </ItemGroup>
 
