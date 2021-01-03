@@ -13,13 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.SMS.Shared", "sms\Chi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{DE053AD0-838F-4DAF-980A-DAE850DB5667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.EntityFramework.Mysql", "database\Chino.EntityFramework.Mysql\Chino.EntityFramework.Mysql.csproj", "{AE8698BF-5EF7-4EE2-A2D0-EC99FA1E422A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.EntityFramework.Mysql", "database\Chino.EntityFramework.Mysql\Chino.EntityFramework.Mysql.csproj", "{AE8698BF-5EF7-4EE2-A2D0-EC99FA1E422A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.EntityFramework.Shared", "database\Chino.EntityFramework.Shared\Chino.EntityFramework.Shared.csproj", "{C979C8A8-ACD7-4230-BBBF-DDF0E4EE5872}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.EntityFramework.Shared", "database\Chino.EntityFramework.Shared\Chino.EntityFramework.Shared.csproj", "{C979C8A8-ACD7-4230-BBBF-DDF0E4EE5872}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.EntityFramework.SqlServer", "database\Chino.EntityFramework.SqlServer\Chino.EntityFramework.SqlServer.csproj", "{6BEDF8EA-8D4B-47D0-A65C-CDAF1F97ED5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.EntityFramework.SqlServer", "database\Chino.EntityFramework.SqlServer\Chino.EntityFramework.SqlServer.csproj", "{6BEDF8EA-8D4B-47D0-A65C-CDAF1F97ED5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.EntityFramework.Sqlite", "database\Chino.EntityFramework.Sqlite\Chino.EntityFramework.Sqlite.csproj", "{2E1E52DA-627A-41C6-9651-9E595BAF7039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.EntityFramework.Sqlite", "database\Chino.EntityFramework.Sqlite\Chino.EntityFramework.Sqlite.csproj", "{2E1E52DA-627A-41C6-9651-9E595BAF7039}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

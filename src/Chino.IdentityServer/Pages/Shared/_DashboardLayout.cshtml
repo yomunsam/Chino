@@ -104,6 +104,14 @@
                                 @CL["dashboard_nav_clients"]
                             </a>
                         </li>
+                        @*数据库*@
+                        <li class="nav-item">
+                            <a class="nav-link @(IsPage("database") ? "active" : string.Empty)" asp-page="/Dashboard/Database">
+                                <span class="oi oi-spreadsheet"></span>
+                                @CL["dashboard_nav_database"]
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </nav>

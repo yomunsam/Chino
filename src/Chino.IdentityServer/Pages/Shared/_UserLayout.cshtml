@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Localization
+@using IdentityServer4.Extensions
 @inject Microsoft.Extensions.Configuration.IConfiguration configuration
 @inject CommonLocalizationService CL
 @inject Chino.IdentityServer.Services.Localization.IJsonLocalizationService JL
@@ -8,6 +9,7 @@
     string pageName = (string)(ViewData["pageName"] ?? "unknow");
     var currentCulture = Context.Features.Get<IRequestCultureFeature>()?.RequestCulture?.UICulture;
 
+    string DisplayName = User.GetDisplayName();
 
     bool IsPage(string name) => pageName == name;
 
@@ -54,7 +56,7 @@
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="~/img/default_avatar.png" alt="Admin" class="rounded-circle" width="150">
                                 <div class="mt-3">
-                                    <h4>@(ViewData["DisplayName"] ?? "Unknow Name")</h4>
+                                    <h4>@(DisplayName ?? "Unknow Name")</h4>
                                     <p class="text-secondary mb-1">Desc</p>
                                 </div>
                             </div>

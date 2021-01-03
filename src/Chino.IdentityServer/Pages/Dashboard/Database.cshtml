@@ -1,0 +1,41 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Dashboard.DatabaseModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.DatabaseModel> L
+@{
+    Layout = "_DashboardLayout";
+    ViewData["pageName"] = "database";
+}
+
+<h3 class="h3 mt-3">@L["header-title"]</h3>
+
+<div class="row row-cols-1 row-cols-md-2 g-2 mt-3 mb-5">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                Chino Application Database
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        @L["card-item-canConnect"]
+                        @if (Model.ChinoApp_CanConnect)
+                        {
+                            <span class="badge bg-info rounded-pill">@L["normal"]</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger rounded-pill">@L["abnormal"]</span>
+                        }
+                    </li>
+                    @if (Model.ChinoApp_CanConnect)
+                    {
+                        <li class="list-group-item">
+                            @L[""]
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

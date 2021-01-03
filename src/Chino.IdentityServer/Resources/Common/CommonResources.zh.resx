@@ -120,11 +120,17 @@
   <data name="China" xml:space="preserve">
     <value>中国</value>
   </data>
+  <data name="currentPassword" xml:space="preserve">
+    <value>当前登录口令</value>
+  </data>
   <data name="dashboard_nav_api_resources" xml:space="preserve">
     <value>Api 资源</value>
   </data>
   <data name="dashboard_nav_clients" xml:space="preserve">
     <value>客户端</value>
+  </data>
+  <data name="dashboard_nav_database" xml:space="preserve">
+    <value>数据库</value>
   </data>
   <data name="dashboard_nav_identity_resources" xml:space="preserve">
     <value>身份资源</value>
@@ -144,6 +150,9 @@
   <data name="error1" xml:space="preserve">
     <value>出错了</value>
   </data>
+  <data name="Err_PasswordMismatch" xml:space="preserve">
+    <value>登录口令不正确</value>
+  </data>
   <data name="hello" xml:space="preserve">
     <value>你好</value>
   </data>
@@ -158,6 +167,12 @@
   </data>
   <data name="nav_userpage" xml:space="preserve">
     <value>我的主页</value>
+  </data>
+  <data name="newPassword" xml:space="preserve">
+    <value>新登录口令</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>登录口令</value>
   </data>
   <data name="phone_number" xml:space="preserve">
     <value>电话号码</value>

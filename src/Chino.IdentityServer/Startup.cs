@@ -82,6 +82,7 @@ namespace Chino.IdentityServer
             services.AddRazorPages(options =>
             {
                 options.Conventions.AuthorizeFolder("/Dashboard", ChinoConst.PolicyName_Dashboard);
+                options.Conventions.AuthorizeFolder("/User");
             })
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization(options =>

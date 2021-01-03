@@ -150,4 +150,16 @@
   <data name="rolename_required" xml:space="preserve">
     <value>Role name is required.</value>
   </data>
+  <data name="current_password_required" xml:space="preserve">
+    <value>Current password is required.</value>
+  </data>
+  <data name="invalid_new_confirm_password" xml:space="preserve">
+    <value>The new confirmation password is inconsistent</value>
+  </data>
+  <data name="new_password_required" xml:space="preserve">
+    <value>New password is required</value>
+  </data>
+  <data name="new_confirm_password_required" xml:space="preserve">
+    <value>The confirmation password is required.</value>
+  </data>
 </root>
