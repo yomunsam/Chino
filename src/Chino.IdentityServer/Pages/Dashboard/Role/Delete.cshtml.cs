@@ -3,6 +3,7 @@ using Chino.IdentityServer.Services.Roles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 
 namespace Chino.IdentityServer.Pages.Dashboard.Role
 {
@@ -10,6 +11,7 @@ namespace Chino.IdentityServer.Pages.Dashboard.Role
     public class DeleteModel : PageModel
     {
         private readonly IRoleService m_RoleService;
+        private readonly IConfiguration m_Configuration;
 
         [BindProperty(SupportsGet = true)]
         public string ReturnUrl { get; set; }
@@ -20,9 +22,11 @@ namespace Chino.IdentityServer.Pages.Dashboard.Role
         [BindProperty]
         public string RoleName { get; set; }
 
-        public DeleteModel(IRoleService roleService)
+        public DeleteModel(IRoleService roleService,
+            IConfiguration configuration)
         {
             this.m_RoleService = roleService;
+            this.m_Configuration = configuration;
         }
 
         public void OnGet(string roleName, string roleId)
@@ -34,6 +38,11 @@ namespace Chino.IdentityServer.Pages.Dashboard.Role
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if(this.RoleName == m_Configuration["Chino:AdminRoleName"])
+            {
+                ModelState.AddModelError(string.Empty, "Can't delete chino admin role.");
+                return Page();
+            }
             var result = await m_RoleService.DeleteRole(this.RoleId);
             if (result.Succeeded)
             {

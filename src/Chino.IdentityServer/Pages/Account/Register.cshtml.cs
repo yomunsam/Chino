@@ -75,7 +75,6 @@ namespace Chino.IdentityServer.Pages.Account
         /// <returns></returns>
         public async Task<IActionResult> OnPostAsync()
         {
-            await Task.Yield();
             if (!ModelState.IsValid) return Page();
 
             

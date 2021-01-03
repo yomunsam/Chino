@@ -183,4 +183,19 @@
   <data name="Japan" xml:space="preserve">
     <value>Japan</value>
   </data>
+  <data name="currentPassword" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="dashboard_nav_database" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="Err_PasswordMismatch" xml:space="preserve">
+    <value>Incorrect password.</value>
+  </data>
+  <data name="newPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Password</value>
+  </data>
 </root>

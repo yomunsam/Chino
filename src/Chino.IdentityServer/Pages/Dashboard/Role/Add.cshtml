@@ -4,6 +4,8 @@
 @{
     Layout = "_DashboardLayout";
     ViewData["pageName"] = "roles";
+    ViewContext.ClientValidationEnabled = true;
+
 }
 
 
@@ -28,3 +30,8 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

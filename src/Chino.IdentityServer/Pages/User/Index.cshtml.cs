@@ -35,7 +35,6 @@ namespace Chino.IdentityServer.Pages.User
         {
             var user_info = await m_UserManager.GetUserAsync(User);
             DisplayName = this.User.GetDisplayName();
-            ViewData["DisplayName"] = DisplayName;
             SubjectId = this.User.GetSubjectId();
             UserName = user_info.UserName;
             Email = user_info.Email;

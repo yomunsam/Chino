@@ -69,15 +69,19 @@
 </div>
 
 
-<environment include="Development">
-    @*开发模式下的JS引用之类的*@
-    <script src="~/lib/clipboardjs/clipboard.js"></script>
-</environment>
-<environment exclude="Development">
-    @*发布模式下的js引用之类的*@
-    <script src="~/lib/clipboardjs/clipboard.min.js"></script>
-</environment>
+@section Scripts
+{
+    <environment include="Development">
+        @*开发模式下的JS引用之类的*@
+        <script src="~/lib/clipboardjs/clipboard.js"></script>
+    </environment>
+    <environment exclude="Development">
+        @*发布模式下的js引用之类的*@
+        <script src="~/lib/clipboardjs/clipboard.min.js"></script>
+    </environment>
 
-<script>
-    new ClipboardJS(".btn");
-</script>
+    <script>
+        new ClipboardJS(".btn");
+    </script>
+}
+
