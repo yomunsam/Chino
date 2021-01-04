@@ -117,34 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn_add_user" xml:space="preserve">
-    <value>添加用户</value>
+  <data name="card_header_user_profile" xml:space="preserve">
+    <value>用户信息</value>
   </data>
-  <data name="input_placeholder_search" xml:space="preserve">
-    <value>搜索用户</value>
-  </data>
-  <data name="tips_changePassword" xml:space="preserve">
-    <value>修改用户口令</value>
-  </data>
-  <data name="tips_copy_userId" xml:space="preserve">
-    <value>复制用户ID</value>
-  </data>
-  <data name="tips_delete" xml:space="preserve">
-    <value>删除该用户</value>
-  </data>
-  <data name="tips_email" xml:space="preserve">
-    <value>邮箱</value>
-  </data>
-  <data name="tips_nickname_or_name" xml:space="preserve">
-    <value>用户昵称或姓名</value>
-  </data>
-  <data name="tips_userId" xml:space="preserve">
-    <value>用户ID</value>
-  </data>
-  <data name="tips_username" xml:space="preserve">
-    <value>用户名</value>
-  </data>
-  <data name="tips_viewInfo" xml:space="preserve">
-    <value>查看详情</value>
+  <data name="Manage User Roles" xml:space="preserve">
+    <value>管理用户角色</value>
   </data>
 </root>

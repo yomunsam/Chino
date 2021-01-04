@@ -180,6 +180,9 @@
   <data name="register" xml:space="preserve">
     <value>注册</value>
   </data>
+  <data name="userId" xml:space="preserve">
+    <value>用户ID</value>
+  </data>
   <data name="username" xml:space="preserve">
     <value>用户名</value>
   </data>
