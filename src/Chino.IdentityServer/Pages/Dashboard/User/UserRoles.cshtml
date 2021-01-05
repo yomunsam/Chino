@@ -1,0 +1,89 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Dashboard.User.UserRolesModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.UsersModel> UL
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.User.UserRolesModel> L
+@{
+    Layout = "_DashboardLayout";
+    ViewData["pageName"] = "users";
+}
+
+
+<div class="mt-3 container">
+
+    <div class="card-body mb-3 py-0 px-0">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/Users">@UL["breadcrumb_Users"]</a></li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/User/UserProfile" asp-route-UserId="@Model.UserId">@Model.UserEntity.UserName</a></li>
+                <li class="breadcrumb-item" aria-current="page">@L["userRoles"]</li>
+            </ol>
+        </nav>
+    </div>
+
+    <partial name="ValidationSummary" />
+
+    <div class="card mb-3 shadow-sm">
+        <div class=" card-header">
+            @L["card_header_handle_user_roles"]
+        </div>
+        <div class="card-body">
+
+            <form method="post">
+                <input asp-for="UserId" hidden />
+
+                <div class="mb-3 row">
+                    <label asp-for="AddRoleName" class="col-form-label col-sm-2">@L["label_role"]</label>
+                    <div class="col-sm-10">
+                        <select asp-for="AddRoleName" class="form-select" aria-label="AddRole">
+                            @foreach(var role in @Model.AllRoles)
+                            {
+                                <option value="@role.Name">@role.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary">@L["btn_addRole"]</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="card mb-3 shadow-sm">
+        <div class=" card-header">
+            @L["card_header_user_roles"]
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">@L["role_name"]</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var roleName in Model.UserRoles)
+                    {
+                        <tr>
+                            <th scope="row">@roleName</th>
+                            <td>
+                                <a asp-page="UserRoles" 
+                                   asp-page-handler="DeleteRole" 
+                                   asp-route-RoleName="@roleName"
+                                   asp-route-UserId="@Model.UserId"
+                                   class="btn btn-sm btn-danger"
+                                   title="@L["tips_delete"]"><span class="oi oi-trash"></span></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -69,6 +69,21 @@
 </div>
 
 
+@if (@Model.IsAdmin)
+{
+    <div class="card mb-3">
+        @*<div class="card-header text-right">
+                @L["btn_editUserInfo"]
+            </div>*@
+        <div class="card-body">
+            <a asp-page="/Dashboard/Index" class="btn btn-outline-secondary" >@L["btn_dashboard"]</a>
+        </div>
+
+    </div>
+}
+
+
+
 @section Scripts
 {
     <environment include="Development">

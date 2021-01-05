@@ -1,6 +1,7 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.Dashboard.User.UserProfileModel
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.User.UserProfileModel> L
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.UsersModel> UL
 @{
     Layout = "_DashboardLayout";
     ViewData["pageName"] = "users";
@@ -9,6 +10,16 @@
 
 
 <div class="mt-3 container">
+
+    <div class="card-body mb-3 py-0 px-0">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/Users">@UL["breadcrumb_Users"]</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.UserEntity.UserName</li>
+            </ol>
+        </nav>
+    </div>
+
     <div class="card mb-3 shadow-sm">
         <div class=" card-header">
             @L["card_header_user_profile"]
@@ -16,13 +27,31 @@
         <div class="card-body">
             <partial name="ValidationSummary" />
 
+            <form method="post">
+                <input asp-for="UserId" hidden />
+
+                <div class="mb-3 row">
+                    <label asp-for="UserEntity.Id" class="col-form-label col-sm-2"></label>
+                    <div class="col-sm-10">
+                        <input class="form-control" asp-for="UserEntity.Id" disabled />
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label asp-for="UserEntity.UserName" class="col-form-label col-sm-2"></label>
+                    <div class="col-sm-10">
+                        <input class="form-control" asp-for="UserEntity.UserName" />
+                    </div>
+                    <div><span asp-validation-for="UserEntity.UserName" class="text-danger"></span></div>
+                </div>
+            </form>
             
         </div>
     </div>
 
     <div class="card mt-3 mb-3 shadow-sm">
         <div class="card-body">
-            <a class="btn btn-outline-secondary">@L["Manage User Roles"]</a>
+            <a class="btn btn-outline-secondary" asp-page="UserRoles" asp-route-UserId="@Model.UserId">@L["Manage User Roles"]</a>
         </div>
     </div>
 </div>
