@@ -117,25 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn_dashboard" xml:space="preserve">
-    <value>后台面板</value>
+  <data name="btn_addRole" xml:space="preserve">
+    <value>添加角色</value>
   </data>
-  <data name="btn_editUserInfo" xml:space="preserve">
-    <value>编辑我的信息</value>
+  <data name="card_header_handle_user_roles" xml:space="preserve">
+    <value>操作用户角色</value>
   </data>
-  <data name="label_email" xml:space="preserve">
-    <value>邮箱</value>
+  <data name="card_header_user_roles" xml:space="preserve">
+    <value>用户拥有的角色</value>
   </data>
-  <data name="label_name" xml:space="preserve">
-    <value>您的名字</value>
+  <data name="label_role" xml:space="preserve">
+    <value>角色</value>
   </data>
-  <data name="label_nickName" xml:space="preserve">
-    <value>昵称</value>
+  <data name="role_name" xml:space="preserve">
+    <value>角色名称</value>
   </data>
-  <data name="label_subjectId" xml:space="preserve">
-    <value>用户ID</value>
+  <data name="tips_delete" xml:space="preserve">
+    <value>删除</value>
   </data>
-  <data name="label_userName" xml:space="preserve">
-    <value>用户名</value>
+  <data name="userRoles" xml:space="preserve">
+    <value>用户拥有的角色</value>
   </data>
 </root>

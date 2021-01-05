@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 
 namespace Chino.IdentityServer.Pages.User
 {
@@ -25,11 +26,16 @@ namespace Chino.IdentityServer.Pages.User
         public string UserName { get; set; }
         public string Email { get; set; }
 
-        private readonly UserManager<ChinoUser> m_UserManager;
+        public bool IsAdmin { get; set; } = false;
 
-        public IndexModel(UserManager<ChinoUser> userManager)
+        private readonly UserManager<ChinoUser> m_UserManager;
+        private readonly IConfiguration m_Configuration;
+
+        public IndexModel(UserManager<ChinoUser> userManager,
+            IConfiguration configuration)
         {
             m_UserManager = userManager;
+            this.m_Configuration = configuration;
         }
         public async Task<IActionResult> OnGet()
         {
@@ -41,6 +47,10 @@ namespace Chino.IdentityServer.Pages.User
             NickName = this.User.GetNickName();
 
             ViewData["Title"] = DisplayName ?? "User";
+
+            //判断是否是管理器
+            IsAdmin = this.User.IsInRole(m_Configuration["Chino:AdminRoleName"]);
+
             return Page();
         }
     }
