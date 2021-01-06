@@ -7,6 +7,7 @@ using Chino.IdentityServer.Enums.Account;
 using Chino.IdentityServer.Extensions.Configurations;
 using Chino.IdentityServer.Extensions.Oidc;
 using Chino.IdentityServer.Services;
+using Chino.IdentityServer.ViewModels.Account;
 using IdentityServer4.Events;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
@@ -49,7 +50,7 @@ namespace Chino.IdentityServer.Pages.Account
 
 
         [BindProperty]
-        public LoginPageDto LoginDto { get; set; }
+        public LoginInputModel LoginDto { get; set; }
 
         [BindProperty]
         public string ReturnUrl { get; set; }
