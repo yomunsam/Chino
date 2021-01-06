@@ -3,6 +3,7 @@ using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Dtos.Account;
 using Chino.IdentityServer.Extensions.Configurations;
+using Chino.IdentityServer.ViewModels.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
@@ -37,7 +38,7 @@ namespace Chino.IdentityServer.Pages.Account
         }
 
         [BindProperty]
-        public RegisterPageDto RegisterDto { get; set; }
+        public RegisterViewModel RegisterDto { get; set; }
 
         [BindProperty]
         public string ReturnUrl { get; set; }
@@ -59,7 +60,7 @@ namespace Chino.IdentityServer.Pages.Account
                 if (m_CountryCode.LCID_Dict.TryGetValue(current_culture.LCID, out var country))
                 {
                     if (RegisterDto == null)
-                        RegisterDto = new RegisterPageDto();
+                        RegisterDto = new RegisterViewModel();
                     RegisterDto.PhoneDialingCode = country.DialingCodeWithoutPlus;
                 }
             }

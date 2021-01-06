@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Chino.IdentityServer.Dtos.Account
+namespace Chino.IdentityServer.ViewModels.Account
 {
-    public class LoginPageDto
+    public class LoginInputModel
     {
         [Required(ErrorMessage = "passwd_required")]
         [DataType(DataType.Password)]

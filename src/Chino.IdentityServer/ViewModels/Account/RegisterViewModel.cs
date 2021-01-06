@@ -2,9 +2,9 @@
 using Chino.IdentityServer.DataValidation;
 using Chino.IdentityServer.DataValidation.Attributes;
 
-namespace Chino.IdentityServer.Dtos.Account
+namespace Chino.IdentityServer.ViewModels.Account
 {
-    public class RegisterPageDto
+    public class RegisterViewModel
     {
         //[Required(ErrorMessage = "username_required")]
         [RegisterRequired(RegisterRequiredType.UserName)]
