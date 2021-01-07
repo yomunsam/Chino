@@ -1,0 +1,8 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Dashboard.Client.RedirectUrisModel
+@{
+    Layout = "_DashboardLayout";
+    ViewData["pageName"] = "clients";
+
+    var thisUrl = string.IsNullOrEmpty(Request.Path) ? "~/" : $"~{Request.Path.Value}";
+}

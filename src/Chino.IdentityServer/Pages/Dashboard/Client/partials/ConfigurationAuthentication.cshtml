@@ -1,0 +1,78 @@
+﻿@model Chino.IdentityServer.ViewModels.Dashboard.Client.ConfigurationClientViewModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.Client.ConfigurationModel> L
+
+
+<div class="mb-3 row">
+    <label asp-for="FrontChannelLogoutUri" class="form-label col-sm-3 col-form-label">
+        @L["FrontChannelLogoutUri"]
+        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_FrontChannelLogoutUri"]"></span>
+    </label>
+    <div class="col-sm-9">
+        <input asp-for="FrontChannelLogoutUri" class="form-control" autocomplete="off" />
+    </div>
+    <div><span asp-validation-for="FrontChannelLogoutUri" class="text-danger"></span></div>
+</div>
+
+<div class="mb-3 row">
+    <label asp-for="FrontChannelLogoutSessionRequired" class="form-label col-sm-3 col-form-label">
+        @L["FrontChannelLogoutSessionRequired"]
+        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_FrontChannelLogoutSessionRequired"]"></span>
+    </label>
+    <div class="col-sm-9">
+        <div class="form-check form-switch">
+            <input asp-for="FrontChannelLogoutSessionRequired" class="form-check-input" type="checkbox" autocomplete="off" />
+        </div>
+    </div>
+    <div><span asp-validation-for="FrontChannelLogoutSessionRequired" class="text-danger"></span></div>
+</div>
+
+
+<div class="mb-3 row">
+    <label asp-for="BackChannelLogoutUri" class="form-label col-sm-3 col-form-label">
+        @L["BackChannelLogoutUri"]
+        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_BackChannelLogoutUri"]"></span>
+    </label>
+    <div class="col-sm-9">
+        <input asp-for="BackChannelLogoutUri" class="form-control" autocomplete="off" />
+    </div>
+    <div><span asp-validation-for="BackChannelLogoutUri" class="text-danger"></span></div>
+</div>
+
+<div class="mb-3 row">
+    <label asp-for="BackChannelLogoutSessionRequired" class="form-label col-sm-3 col-form-label">
+        @L["BackChannelLogoutSessionRequired"]
+        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_BackChannelLogoutSessionRequired"]"></span>
+    </label>
+    <div class="col-sm-9">
+        <div class="form-check form-switch">
+            <input asp-for="BackChannelLogoutSessionRequired" class="form-check-input" type="checkbox" autocomplete="off" />
+        </div>
+    </div>
+    <div><span asp-validation-for="BackChannelLogoutSessionRequired" class="text-danger"></span></div>
+</div>
+
+
+<div class="mb-3 row">
+    <label asp-for="EnableLocalLogin" class="form-label col-sm-3 col-form-label">
+        @L["EnableLocalLogin"]
+        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_EnableLocalLogin"]"></span>
+    </label>
+    <div class="col-sm-9">
+        <div class="form-check form-switch">
+            <input asp-for="EnableLocalLogin" class="form-check-input" type="checkbox" autocomplete="off" />
+        </div>
+    </div>
+    <div><span asp-validation-for="EnableLocalLogin" class="text-danger"></span></div>
+</div>
+
+
+<div class="mb-3 row">
+    <label asp-for="UserSsoLifetime" class="form-label col-sm-3 col-form-label">
+        @L["UserSsoLifetime"]
+        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_UserSsoLifetime"]"></span>
+    </label>
+    <div class="col-sm-9">
+        <input asp-for="UserSsoLifetime" class="form-control" autocomplete="off" />
+    </div>
+    <div><span asp-validation-for="UserSsoLifetime" class="text-danger"></span></div>
+</div>

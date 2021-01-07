@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Chino.Dtos.PaginatedList;
@@ -9,7 +7,6 @@ using Chino.IdentityServer.ViewModels.Dashboard.Client;
 using Chino.Utils.PaginatedList;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Entities;
-using IdentityServer4.EntityFramework.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Nekonya;
 

@@ -10,6 +10,7 @@ using Chino.IdentityServer.Const;
 using Chino.IdentityServer.Resources.DataAnnotation;
 using Chino.IdentityServer.Services;
 using Chino.IdentityServer.Services.Account;
+using Chino.IdentityServer.Services.ApiResources;
 using Chino.IdentityServer.Services.Clients;
 using Chino.IdentityServer.Services.Localization;
 using Chino.IdentityServer.Services.Roles;
@@ -173,6 +174,7 @@ namespace Chino.IdentityServer
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IApiResourceService, ApiResourceService>();
             services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<IJsonLocalizationService, JsonLocalizationService>();
 

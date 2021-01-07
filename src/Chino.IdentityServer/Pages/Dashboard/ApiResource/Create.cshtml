@@ -1,0 +1,89 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Dashboard.ApiResource.CreateModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResource.CreateModel> L
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResourcesModel> ApiResL
+@{
+    Layout = "_DashboardLayout";
+    ViewData["pageName"] = "apiResources";
+
+    var thisUrl = string.IsNullOrEmpty(Request.Path) ? "~/" : $"~{Request.Path.Value}";
+}
+
+
+<div class="mt-3 container">
+
+    <div class="card-body mb-3 py-0 px-0">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ApiResL["breadcrumb_ApiRespirces"]</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@L["breadcrumb_create"]</li>
+            </ol>
+        </nav>
+    </div>
+
+    <partial name="ValidationSummary" />
+
+    <div class="card shadow">
+        <div class="card-header">
+            <h6 class="h6">@L["card_header"]</h6>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <input asp-for="ReturnUrl" hidden />
+                @*ID*@
+                @*<div class="mb-3 row">
+                    <label asp-for="ViewModel.ClientId" class="form-label col-sm-3 col-form-label">
+                        @L["ClientId"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_ClientId"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="ViewModel.ClientId" class="form-control" autocomplete="off" />
+                    </div>
+                    <div><span asp-validation-for="ViewModel.ClientId" class="text-danger"></span></div>
+                </div>*@
+
+                @*Name*@
+                @*<div class="mb-3 row">
+                    <label asp-for="ViewModel.ClientName" class="form-label col-sm-3 col-form-label">
+                        @L["ClientName"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_ClientName"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="ViewModel.ClientName" class="form-control" autocomplete="off" />
+                    </div>
+                    <div><span asp-validation-for="ViewModel.ClientName" class="text-danger"></span></div>
+                </div>*@
+
+                @*Desc*@
+                @*<div class="mb-3 row">
+                    <label asp-for="ViewModel.Description" class="form-label col-sm-3 col-form-label">
+                        @L["Description"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Description"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="ViewModel.Description" class="form-control" autocomplete="off" />
+                    </div>
+                    <div><span asp-validation-for="ViewModel.Description" class="text-danger"></span></div>
+                </div>*@
+
+                <button class="btn btn-primary mb-3">@L["btn_create"]</button>
+            </form>
+            
+        </div>
+    </div>
+
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        //启用Tooltips用的
+        let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+}

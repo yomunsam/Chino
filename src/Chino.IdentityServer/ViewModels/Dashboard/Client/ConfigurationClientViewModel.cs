@@ -35,7 +35,18 @@ namespace Chino.IdentityServer.ViewModels.Dashboard.Client
         public bool AllowOfflineAccess { get; set; }
 
         public bool AllowAccessTokensViaBrowser { get; set; }
+        
+        //-------------------------------------------------------------
 
-        public List<string> AllowedScopes { get; set; }
+        public string FrontChannelLogoutUri { get; set; }
+
+        public bool FrontChannelLogoutSessionRequired { get; set; }
+
+        public string BackChannelLogoutUri { get; set; }
+        public bool BackChannelLogoutSessionRequired { get; set; }
+
+        public bool EnableLocalLogin { get; set; }
+
+        public int? UserSsoLifetime { get; set; }
     }
 }
