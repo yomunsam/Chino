@@ -24,6 +24,8 @@ namespace Chino.AutoMapper
                 .ReverseMap();
 
             CreateMap<CreateApiResourceInputModel, IdentityServer4.EntityFramework.Entities.ApiResource>();
+            CreateMap<ConfigurationViewModel, IdentityServer4.EntityFramework.Entities.ApiResource>()
+                .ReverseMap();
         }
     }
 }

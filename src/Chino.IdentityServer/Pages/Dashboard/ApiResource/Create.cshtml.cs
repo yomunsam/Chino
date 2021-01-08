@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Chino.IdentityServer.Exceptions.Common;
 using Chino.IdentityServer.Services.ApiResources;
 using Chino.IdentityServer.Services.Clients;
@@ -20,6 +21,7 @@ namespace Chino.IdentityServer.Pages.Dashboard.ApiResource
     {
         private readonly IApiResourceService m_ApiResourceService;
         private readonly IStringLocalizer<CreateModel> L;
+        private readonly IMapper m_Mapper;
 
         [BindProperty(SupportsGet = true)]
         public string ReturnUrl { get; set; }
@@ -29,28 +31,33 @@ namespace Chino.IdentityServer.Pages.Dashboard.ApiResource
 
 
         public CreateModel(IApiResourceService apiResourceService,
-            IStringLocalizer<CreateModel> localizer)
+            IStringLocalizer<CreateModel> localizer,
+            IMapper mapper)
         {
             this.m_ApiResourceService = apiResourceService;
             this.L = localizer;
+            this.m_Mapper = mapper;
         }
 
         public void OnGet()
         {
+            this.InputModel = new CreateApiResourceInputModel();
+            this.InputModel.Enabled = true;
         }
 
-        //public async Task<IActionResult> OnPostAsync()
-        //{
-        //    try
-        //    {
-        //        var client = await m_ApiResourceService.CreateClient(ViewModel.ClientId, ViewModel.ClientName, ViewModel.Description);
-        //        return LocalRedirect(this.ReturnUrl ?? "~/");
-        //    }
-        //    catch(AlreadyExists)
-        //    {
-        //        this.ModelState.AddModelError(string.Empty, L["id_already_exists", ViewModel.ClientId]);
-        //        return Page();
-        //    }
-        //}
+        public async Task<IActionResult> OnPostAsync()
+        {
+            try
+            {
+                var apiResources = m_Mapper.Map<IdentityServer4.EntityFramework.Entities.ApiResource>(InputModel);
+                var client = await m_ApiResourceService.AddApiResource(apiResources);
+                return LocalRedirect(this.ReturnUrl ?? "~/");
+            }
+            catch (AlreadyExistsException)
+            {
+                this.ModelState.AddModelError(string.Empty, L["name_already_exists", InputModel.Name]);
+                return Page();
+            }
+        }
     }
 }

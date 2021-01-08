@@ -117,28 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="breadcrumb_ApiRespirces" xml:space="preserve">
-    <value>Api资源</value>
-  </data>
-  <data name="btn_add_apiRes" xml:space="preserve">
-    <value>添加Api资源</value>
+  <data name="btn_add_idRes" xml:space="preserve">
+    <value>创建身份资源</value>
   </data>
   <data name="btn_search" xml:space="preserve">
-    <value>搜索Api资源</value>
+    <value>搜索</value>
   </data>
   <data name="btn_tips_configuration" xml:space="preserve">
-    <value>编辑Api资源</value>
+    <value>配置身份资源</value>
   </data>
   <data name="input_placeholder_search" xml:space="preserve">
-    <value>Api资源</value>
-  </data>
-  <data name="th_ApiResourceDisplayName" xml:space="preserve">
-    <value>Api资源显示名</value>
-  </data>
-  <data name="th_ApiResourceName" xml:space="preserve">
-    <value>Api资源名称</value>
+    <value>搜索身份资源</value>
   </data>
   <data name="th_handle" xml:space="preserve">
     <value>操作</value>
+  </data>
+  <data name="th_IdResourceDisplayName" xml:space="preserve">
+    <value>显示名</value>
+  </data>
+  <data name="th_IdResourceName" xml:space="preserve">
+    <value>名称</value>
   </data>
 </root>

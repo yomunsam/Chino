@@ -117,28 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="breadcrumb_ApiRespirces" xml:space="preserve">
-    <value>Api资源</value>
+  <data name="btn_ApiScopes" xml:space="preserve">
+    <value>管理Api作用域</value>
   </data>
-  <data name="btn_add_apiRes" xml:space="preserve">
-    <value>添加Api资源</value>
+  <data name="btn_delete" xml:space="preserve">
+    <value>删除Api资源</value>
   </data>
-  <data name="btn_search" xml:space="preserve">
-    <value>搜索Api资源</value>
+  <data name="btn_Properties" xml:space="preserve">
+    <value>管理Api资源属性</value>
   </data>
-  <data name="btn_tips_configuration" xml:space="preserve">
-    <value>编辑Api资源</value>
+  <data name="btn_save" xml:space="preserve">
+    <value>保存Api资源</value>
   </data>
-  <data name="input_placeholder_search" xml:space="preserve">
-    <value>Api资源</value>
+  <data name="btn_Secrets" xml:space="preserve">
+    <value>管理Api资源密钥</value>
   </data>
-  <data name="th_ApiResourceDisplayName" xml:space="preserve">
-    <value>Api资源显示名</value>
+  <data name="Properties" xml:space="preserve">
+    <value>属性</value>
   </data>
-  <data name="th_ApiResourceName" xml:space="preserve">
-    <value>Api资源名称</value>
+  <data name="Scopes" xml:space="preserve">
+    <value>作用域</value>
   </data>
-  <data name="th_handle" xml:space="preserve">
-    <value>操作</value>
+  <data name="Secrets" xml:space="preserve">
+    <value>密钥</value>
+  </data>
+  <data name="tips_Properties" xml:space="preserve">
+    <value>需要保留任何自定义 Api 资源特定值的字典。</value>
+  </data>
+  <data name="tips_Scopes" xml:space="preserve">
+    <value>API 必须至少有一个作用域。 每个作用域可以有不同的设置。</value>
+  </data>
+  <data name="tips_Secrets" xml:space="preserve">
+    <value>API 密钥用于内省端点。 API 可以使用 API 名称和密钥进行内省验证。</value>
   </data>
 </root>

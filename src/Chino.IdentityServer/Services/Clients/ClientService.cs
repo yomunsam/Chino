@@ -32,7 +32,8 @@ namespace Chino.IdentityServer.Services.Clients
                 .AsNoTracking();
 
             if (!search.IsNullOrEmpty())
-                source = source.Where(client => client.ClientName.ToUpper().Contains(search.ToUpper()));
+                source = source.Where(client => client.ClientName.ToUpper().Contains(search.ToUpper())
+                    || client.ClientId.ToUpper().Contains(search.ToUpper()));
 
             var result = await PaginatedList<Client>.CreateAsync(source, page, size);
             return result.GetDto();
@@ -67,7 +68,7 @@ namespace Chino.IdentityServer.Services.Clients
         public async Task<Client> CreateClient(string clientId, string clientName, string desc)
         {
             if (await m_DbContext.Clients.AnyAsync(client => client.ClientId.Equals(clientId)))
-                throw new AlreadyExists();
+                throw new AlreadyExistsException();
 
             var clientEntity = new Client();
             clientEntity.ClientId = clientId;

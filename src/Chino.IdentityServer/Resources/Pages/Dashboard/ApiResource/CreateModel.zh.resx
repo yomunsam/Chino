@@ -120,7 +120,37 @@
   <data name="breadcrumb_create" xml:space="preserve">
     <value>添加Api资源</value>
   </data>
+  <data name="btn_create" xml:space="preserve">
+    <value>创建Api资源</value>
+  </data>
   <data name="card_header" xml:space="preserve">
     <value>添加Api资源</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>显示名</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="name_already_exists" xml:space="preserve">
+    <value>Api 资源名 {0} 已存在。</value>
+  </data>
+  <data name="tips_Description" xml:space="preserve">
+    <value>该值可以用于例如 在同意屏幕上。</value>
+  </data>
+  <data name="tips_DisplayName" xml:space="preserve">
+    <value>该值可以用于例如 在同意屏幕上。</value>
+  </data>
+  <data name="tips_Enabled" xml:space="preserve">
+    <value>指示此资源是否已启用且可以请求。 默认为 true。</value>
+  </data>
+  <data name="tips_Name" xml:space="preserve">
+    <value>API 的唯一名称。 此值用于自我认证，并将添加到传给受众的访问令牌 access_token 中。</value>
   </data>
 </root>

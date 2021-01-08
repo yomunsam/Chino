@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Chino.Dtos.PaginatedList;
+using Chino.IdentityServer.Exceptions.Common;
+using Chino.IdentityServer.ViewModels.Dashboard.ApiResource;
 using Chino.Utils.PaginatedList;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Entities;
@@ -34,6 +36,40 @@ namespace Chino.IdentityServer.Services.ApiResources
 
             var result = await PaginatedList<ApiResource>.CreateAsync(source, page, size);
             return result.GetDto();
+        }
+
+        public async Task<ApiResource> FindApiResourceByIdAsync(int Id)
+        {
+            return await m_DbContext.ApiResources.FindAsync(Id);
+        }
+
+        /// <summary>
+        /// 添加Api资源
+        /// </summary>
+        /// <param name="apiRes"></param>
+        /// <returns></returns>
+        public async Task<ApiResource> AddApiResource(ApiResource apiRes)
+        {
+            if(await m_DbContext.ApiResources.AnyAsync(api => api.Name == apiRes.Name))
+            {
+                throw new AlreadyExistsException("Name");
+            }
+
+            await m_DbContext.ApiResources.AddAsync(apiRes);
+            await m_DbContext.SaveChangesAsync();
+            return apiRes;
+        }
+
+        public async Task<ApiResource> UpdateApiResourceAsync(int Id, ConfigurationViewModel model)
+        {
+            var apiResEntity = await m_DbContext.ApiResources.FindAsync(Id);
+            if (apiResEntity == null)
+                throw new NotFoundException();
+
+            apiResEntity = m_Mapper.Map(model, apiResEntity);
+
+            await m_DbContext.SaveChangesAsync();
+            return apiResEntity;
         }
 
     }
