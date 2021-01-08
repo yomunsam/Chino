@@ -44,7 +44,7 @@ namespace Chino.IdentityServer.Pages.Dashboard.Client
                 var client = await m_ClientService.CreateClient(ViewModel.ClientId, ViewModel.ClientName, ViewModel.Description);
                 return LocalRedirect(this.ReturnUrl ?? "~/");
             }
-            catch(AlreadyExists)
+            catch(AlreadyExistsException)
             {
                 this.ModelState.AddModelError(string.Empty, L["id_already_exists", ViewModel.ClientId]);
                 return Page();

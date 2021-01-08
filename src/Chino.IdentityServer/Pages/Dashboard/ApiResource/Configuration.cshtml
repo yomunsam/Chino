@@ -1,0 +1,149 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Dashboard.ApiResource.ConfigurationModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResource.ConfigurationModel> L
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResourcesModel> ApiResL
+@{
+    Layout = "_DashboardLayout";
+    ViewData["pageName"] = "apiResources";
+
+    var thisUrl = string.IsNullOrEmpty(Request.Path) ? "~/" : $"~{Request.Path.Value}";
+}
+
+
+<div class="mt-3 container">
+
+    <div class="card-body mb-3 py-0 px-0">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ApiResL["breadcrumb_ApiRespirces"]</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.ViewModel.Name</li>
+            </ol>
+        </nav>
+    </div>
+
+    <partial name="ValidationSummary" />
+
+    <div class="card shadow">
+        <div class="card-header">
+            <h6 class="h6">@L["card_header"]</h6>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                @*<input asp-for="ReturnUrl" hidden />*@
+                <input asp-for="Id" hidden />
+
+                @*Enable*@
+                <div class="mb-3 row">
+                    <label asp-for="ViewModel.Enabled" class="form-label col-sm-3 col-form-label">
+                        @L["Enabled"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Enabled"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-switch">
+                            <input asp-for="ViewModel.Enabled" class="form-check-input" type="checkbox" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div><span asp-validation-for="ViewModel.Enabled" class="text-danger"></span></div>
+                </div>
+
+                @*名称*@
+                <div class="mb-3 row">
+                    <label asp-for="ViewModel.Name" class="form-label col-sm-3 col-form-label">
+                        @L["Name"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Name"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="ViewModel.Name" class="form-control" autocomplete="off" />
+                    </div>
+                    <div><span asp-validation-for="ViewModel.Name" class="text-danger"></span></div>
+                </div>
+
+                @*DisplayName*@
+                <div class="mb-3 row">
+                    <label asp-for="ViewModel.DisplayName" class="form-label col-sm-3 col-form-label">
+                        @L["DisplayName"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_DisplayName"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="ViewModel.DisplayName" class="form-control" autocomplete="off" />
+                    </div>
+                    <div><span asp-validation-for="ViewModel.DisplayName" class="text-danger"></span></div>
+                </div>
+
+                @*描述*@
+                <div class="mb-3 row">
+                    <label asp-for="ViewModel.Description" class="form-label col-sm-3 col-form-label">
+                        @L["Description"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Description"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="ViewModel.Description" class="form-control" autocomplete="off" />
+                    </div>
+                    <div><span asp-validation-for="ViewModel.Description" class="text-danger"></span></div>
+                </div>
+
+                @*Scopes*@
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3 col-form-label">
+                        @L["Scopes"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Scopes"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <a href="#" class="btn btn-primary">@L["btn_ApiScopes"]</a>
+                    </div>
+                </div>
+
+                @*Secrets*@
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3 col-form-label">
+                        @L["Secrets"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Secrets"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <a href="#" class="btn btn-primary">@L["btn_Secrets"]</a>
+                    </div>
+                </div>
+
+                @*Properties*@
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3 col-form-label">
+                        @L["Properties"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Properties"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <a href="#" class="btn btn-primary">@L["btn_Properties"]</a>
+                    </div>
+                </div>
+
+
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3 col-form-label">
+
+                    </label>
+                    <div class="col-sm-9">
+                        <button class="btn btn-primary">@L["btn_save"]</button>
+                        <a href="#" class="btn btn-danger">@L["btn_delete"]</a>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        //启用Tooltips用的
+        let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+}

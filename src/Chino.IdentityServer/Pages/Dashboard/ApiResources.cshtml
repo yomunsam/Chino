@@ -1,12 +1,13 @@
 ﻿@page
-@model Chino.IdentityServer.Pages.Dashboard.ClientsModel
-@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ClientsModel> L
+@model Chino.IdentityServer.Pages.Dashboard.ApiResourcesModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResourcesModel> L
 @{
     Layout = "_DashboardLayout";
-    ViewData["pageName"] = "clients";
+    ViewData["pageName"] = "apiResources";
 
     var thisUrl = string.IsNullOrEmpty(Request.Path) ? "~/" : $"~{Request.Path.Value}";
 }
+
 
 <div class="mt-3 container">
     <div class="row">
@@ -23,7 +24,7 @@
                         <button type="submit" class="btn btn-primary">@L["btn_search"]</button>
                     </div>
                 </form>
-                <a class="btn btn-outline-primary ml-2" asp-page="Client/Create" asp-route-ReturnUrl="@thisUrl">@L["btn_add_client"]</a>
+                <a class="btn btn-outline-primary ml-2" asp-page="ApiResource/Create" asp-route-ReturnUrl="@thisUrl">@L["btn_add_apiRes"]</a>
             </div>
 
             @*列表在这儿*@
@@ -31,20 +32,20 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">@L["th_clientId"]</th>
-                            <th scope="col">@L["th_clientName"]</th>
+                            <th scope="col">@L["th_ApiResourceName"]</th>
+                            <th scope="col">@L["th_ApiResourceDisplayName"]</th>
                             <th scope="col">@L["th_handle"]</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var client in Model.Clients.Data)
+                        @foreach (var apiRes in Model.ApiResources.Data)
                         {
                             <tr>
-                                <td>@client.ClientId</td>
-                                <td>@client.ClientName</td>
+                                <td>@apiRes.Name</td>
+                                <td>@apiRes.DisplayName</td>
                                 <td>
                                     @*<a href="#" class="btn btn-secondary" title="@L["tips_usersInRole"]"><span class="oi oi-people"></span></a>*@
-                                    <a asp-page="/Dashboard/Client/Configuration" asp-route-ClientId="@client.Id" class="btn btn-primary btn-sm" title="@L["btn_tips_configuration"]"><span class="oi oi-pencil"></span></a>
+                                    <a asp-page="/Dashboard/ApiResource/Configuration" asp-route-Id="@apiRes.Id" class="btn btn-primary btn-sm" title="@L["btn_tips_configuration"]"><span class="oi oi-pencil"></span></a>
                                     @*<a asp-page="/Dashboard/Role/Delete" asp-route-ReturnUrl="@thisUrl" asp-route-roleName="@role.Name" asp-route-roleId="@role.Id" class="btn btn-danger ml-1" title="@L["btn_tips_del"]"><span class="oi oi-x"></span></a>*@
                                 </td>
                             </tr>
@@ -57,32 +58,32 @@
             @*分页*@
             <nav>
                 <ul class="pagination">
-                    <li class="page-item @(Model.Clients.PageIndex <= 1 ? "disabled" : string.Empty)">
-                        <a class="page-link" href="?page=@(Model.Clients.TotalPages -1)&search=@Model.SearchText" aria-label="Previous">
+                    <li class="page-item @(Model.ApiResources.PageIndex <= 1 ? "disabled" : string.Empty)">
+                        <a class="page-link" href="?page=@(Model.ApiResources.TotalPages -1)&search=@Model.SearchText" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    @if (Model.Clients.TotalPages > 6)
+                    @if (Model.ApiResources.TotalPages > 6)
                     {
                         //不能完全显示
                         <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
                         <li class="page-item"><a class="page-link">··</a></li>
-                        <li class="page-item"><a class="page-link" href="?page=@(Model.Clients.TotalPages -1)&search=@Model.SearchText">@(Model.Clients.TotalPages -1)</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">@(Model.Clients.TotalPages)</a></li>
-                        <li class="page-item"><a class="page-link" href="?page=@(Model.Clients.TotalPages + 1)&search=@Model.SearchText">@(Model.Clients.TotalPages + 1)</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=@(Model.ApiResources.TotalPages -1)&search=@Model.SearchText">@(Model.ApiResources.TotalPages -1)</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">@(Model.ApiResources.TotalPages)</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=@(Model.ApiResources.TotalPages + 1)&search=@Model.SearchText">@(Model.ApiResources.TotalPages + 1)</a></li>
                         <li class="page-item"><a class="page-link">··</a></li>
-                        <li class="page-item"><a class="page-link" href="?page=@(Model.Clients.TotalPages)&search=@Model.SearchText">@Model.Clients.TotalPages</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=@(Model.ApiResources.TotalPages)&search=@Model.SearchText">@Model.ApiResources.TotalPages</a></li>
                     }
                     else
                     {
                         //完全显示
-                        for (int i = 1; i <= Model.Clients.TotalPages; i++)
+                        for (int i = 1; i <= Model.ApiResources.TotalPages; i++)
                         {
-                            <li class="page-item @(Model.Clients.PageIndex == i ? "active" : string.Empty)"><a class="page-link" href="@(Model.Clients.PageIndex == i ? "#" : $"?page={i}&search={Model.SearchText}")">@i</a></li>
+                            <li class="page-item @(Model.ApiResources.PageIndex == i ? "active" : string.Empty)"><a class="page-link" href="@(Model.ApiResources.PageIndex == i ? "#" : $"?page={i}&search={Model.SearchText}")">@i</a></li>
                         }
                     }
 
-                    <li class="page-item @(Model.Clients.PageIndex == Model.Clients.TotalPages ? "disabled" : string.Empty)">
+                    <li class="page-item @(Model.ApiResources.PageIndex == Model.ApiResources.TotalPages ? "disabled" : string.Empty)">
                         <a class="page-link" href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
