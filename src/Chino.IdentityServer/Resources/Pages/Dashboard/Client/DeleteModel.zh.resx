@@ -117,31 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="breadcrumb_Clients" xml:space="preserve">
-    <value>客户端</value>
-  </data>
-  <data name="btn_add_client" xml:space="preserve">
-    <value>添加客户端</value>
-  </data>
-  <data name="btn_search" xml:space="preserve">
-    <value>搜索</value>
-  </data>
-  <data name="btn_tips_configuration" xml:space="preserve">
-    <value>配置客户端</value>
-  </data>
-  <data name="btn_tips_del" xml:space="preserve">
+  <data name="breadcrumb_delete" xml:space="preserve">
     <value>删除客户端</value>
   </data>
-  <data name="input_placeholder_search" xml:space="preserve">
-    <value>搜索客户端</value>
+  <data name="btn_del" xml:space="preserve">
+    <value>删除</value>
   </data>
-  <data name="th_clientId" xml:space="preserve">
+  <data name="card-header" xml:space="preserve">
+    <value>删除客户端</value>
+  </data>
+  <data name="ClientId" xml:space="preserve">
     <value>客户端ID标识</value>
   </data>
-  <data name="th_clientName" xml:space="preserve">
+  <data name="ClientName" xml:space="preserve">
     <value>客户端名称</value>
   </data>
-  <data name="th_handle" xml:space="preserve">
-    <value>操作</value>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
   </data>
 </root>

@@ -178,7 +178,7 @@
                         </div>
                     </div>
 
-                    @*RedirectUris 重定向URL*@
+                    @*RedirectUris 重定向URI*@
                     <div class="mb-3 row">
                         <label class="col-sm-3 col-form-label">
                             @L["RedirectUris"]
@@ -223,6 +223,7 @@
         <div class="card shadow-sm my-3">
             <div class="card-body">
                 <button type="submit" name="button" value="save" class="btn btn-primary">@L["btn_save"]</button>
+                <a asp-page="Delete" asp-route-ReturnUrl="~/Dashboard/Clients" asp-route-Id="@Model.ClientId" class="btn btn-danger">@L["btn_del"]</a>
             </div>
         </div>
         

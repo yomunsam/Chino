@@ -120,6 +120,9 @@
   <data name="AllowAccessTokensViaBrowser" xml:space="preserve">
     <value>允许通过浏览器访问Token</value>
   </data>
+  <data name="AllowedGrantTypes" xml:space="preserve">
+    <value>允许的授权类型</value>
+  </data>
   <data name="AllowedScopes" xml:space="preserve">
     <value>允许的Scopes</value>
   </data>
@@ -134,6 +137,18 @@
   </data>
   <data name="BackChannelLogoutUri" xml:space="preserve">
     <value>后端通道登出URI</value>
+  </data>
+  <data name="btn_AllowedGrantTypes" xml:space="preserve">
+    <value>管理允许的授权类型</value>
+  </data>
+  <data name="btn_AllowedScopes" xml:space="preserve">
+    <value>管理允许的作用域</value>
+  </data>
+  <data name="btn_del" xml:space="preserve">
+    <value>删除客户端</value>
+  </data>
+  <data name="btn_RedirectUris" xml:space="preserve">
+    <value>管理重定向URI</value>
   </data>
   <data name="btn_save" xml:space="preserve">
     <value>保存客户端</value>
@@ -167,6 +182,9 @@
   </data>
   <data name="FrontChannelLogoutUri" xml:space="preserve">
     <value>前端通道登出URI</value>
+  </data>
+  <data name="RedirectUris" xml:space="preserve">
+    <value>重定向URI</value>
   </data>
   <data name="RequireClientSecret" xml:space="preserve">
     <value>需要客户端密钥</value>

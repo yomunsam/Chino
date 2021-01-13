@@ -64,6 +64,16 @@ namespace Chino.IdentityServer.Services.Clients
             return clientEntity;
         }
 
+        public async Task DeleteClientById(int Id)
+        {
+            var client = await m_DbContext.Clients.FindAsync(Id);
+            if (client == null)
+                throw new NotFoundException();
+
+            m_DbContext.Clients.Remove(client);
+            await m_DbContext.SaveChangesAsync();
+        }
+
 
         public async Task<Client> CreateClient(string clientId, string clientName, string desc)
         {

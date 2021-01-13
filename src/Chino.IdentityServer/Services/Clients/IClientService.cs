@@ -11,6 +11,7 @@ namespace Chino.IdentityServer.Services.Clients
     public interface IClientService
     {
         Task<Client> CreateClient(string clientId, string clientName, string desc);
+        Task DeleteClientById(int Id);
         Task<Client> GetClientAsync(int Id);
         Task<PaginatedListDto<Client>> GetClientsAsync(int page = 1, int size = 25, string search = null);
         Task<long> GetClientsTotalCount();
