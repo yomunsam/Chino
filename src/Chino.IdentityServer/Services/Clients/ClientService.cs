@@ -44,6 +44,33 @@ namespace Chino.IdentityServer.Services.Clients
             return await m_DbContext.Clients.FindAsync(Id);
         }
 
+
+        public async Task<Client> GetClientAndAllowedCorsOrigins(int clientId)
+        {
+            var client = await m_DbContext.Clients.FindAsync(clientId);
+            if(client != null)
+            {
+                await m_DbContext.Entry(client)
+                    .Collection(c => c.AllowedCorsOrigins)
+                    .LoadAsync();
+            }
+
+            return client;
+        }
+
+        public async Task<Client> GetClientAndAllowedGrantTypes(int clientId)
+        {
+            var client = await m_DbContext.Clients.FindAsync(clientId);
+            if (client != null)
+            {
+                await m_DbContext.Entry(client)
+                    .Collection(c => c.AllowedGrantTypes)
+                    .LoadAsync();
+            }
+
+            return client;
+        }
+
         public Task<long> GetClientsTotalCount()
         {
             return m_DbContext.Clients.LongCountAsync();
@@ -62,6 +89,24 @@ namespace Chino.IdentityServer.Services.Clients
             await m_DbContext.SaveChangesAsync();
 
             return clientEntity;
+        }
+
+        public async Task<Client> Update(Client client)
+        {
+            m_DbContext.Attach(client);
+            await m_DbContext.SaveChangesAsync();
+            return client;
+        }
+
+        public async Task<Client> DeleteClientById(int Id)
+        {
+            var client = await m_DbContext.Clients.FindAsync(Id);
+            if (client == null)
+                throw new NotFoundException();
+
+            m_DbContext.Clients.Remove(client);
+            await m_DbContext.SaveChangesAsync();
+            return client;
         }
 
 

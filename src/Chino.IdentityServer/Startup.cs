@@ -16,6 +16,7 @@ using Chino.IdentityServer.Services.IdentityResources;
 using Chino.IdentityServer.Services.Localization;
 using Chino.IdentityServer.Services.Roles;
 using Chino.IdentityServer.Services.Users;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -133,7 +134,9 @@ namespace Chino.IdentityServer
                 {
                     LoginUrl = "/Account/Login",
                     LogoutUrl = "/Account/Logout",
-                    LoginReturnUrlParameter = "returnUrl"
+                    LoginReturnUrlParameter = "returnUrl",
+                    ErrorUrl= "~/Error/IdentityService",
+                    ErrorIdParameter = "Id"
                 };
             })
                 .AddConfigurationStore(options =>
@@ -152,7 +155,6 @@ namespace Chino.IdentityServer
             {
                 builder.AddDeveloperSigningCredential();
             }
-
 
 
             #endregion

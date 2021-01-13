@@ -117,31 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="breadcrumb_ApiRespirces" xml:space="preserve">
-    <value>Api资源</value>
+  <data name="breadcrumb_grantType" xml:space="preserve">
+    <value>允许的授权类型</value>
   </data>
-  <data name="btn_add_apiRes" xml:space="preserve">
-    <value>添加Api资源</value>
+  <data name="btn_add" xml:space="preserve">
+    <value>添加</value>
   </data>
-  <data name="btn_search" xml:space="preserve">
-    <value>搜索Api资源</value>
+  <data name="card_header_addGrantType" xml:space="preserve">
+    <value>添加新的授权类型</value>
   </data>
-  <data name="btn_tips_configuration" xml:space="preserve">
-    <value>编辑Api资源</value>
+  <data name="label_grant_type" xml:space="preserve">
+    <value>授权类型</value>
   </data>
-  <data name="btn_tips_del" xml:space="preserve">
-    <value>删除Api资源</value>
-  </data>
-  <data name="input_placeholder_search" xml:space="preserve">
-    <value>Api资源</value>
-  </data>
-  <data name="th_ApiResourceDisplayName" xml:space="preserve">
-    <value>Api资源显示名</value>
-  </data>
-  <data name="th_ApiResourceName" xml:space="preserve">
-    <value>Api资源名称</value>
-  </data>
-  <data name="th_handle" xml:space="preserve">
-    <value>操作</value>
+  <data name="Suggested items" xml:space="preserve">
+    <value>建议项</value>
   </data>
 </root>

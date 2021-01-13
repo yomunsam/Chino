@@ -178,7 +178,7 @@
                         </div>
                     </div>
 
-                    @*RedirectUris 重定向URL*@
+                    @*RedirectUris 重定向URI*@
                     <div class="mb-3 row">
                         <label class="col-sm-3 col-form-label">
                             @L["RedirectUris"]
@@ -200,7 +200,16 @@
                         </div>
                     </div>
 
-
+                    @*允许的跨域来源*@
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">
+                            @L["AllowedCorsOrigins"]
+                            <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_AllowedCorsOrigins"]"></span>
+                        </label>
+                        <div class="col-sm-9">
+                            <a class="btn btn-secondary" target="_blank" asp-page="AllowedCorsOrigins" asp-route-Id="@Model.ClientId">@L["btn_AllowedCorsOrigins"]</a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -223,6 +232,7 @@
         <div class="card shadow-sm my-3">
             <div class="card-body">
                 <button type="submit" name="button" value="save" class="btn btn-primary">@L["btn_save"]</button>
+                <a asp-page="Delete" asp-route-ReturnUrl="~/Dashboard/Clients" asp-route-Id="@Model.ClientId" class="btn btn-danger">@L["btn_del"]</a>
             </div>
         </div>
         

@@ -129,6 +129,9 @@
   <data name="btn_tips_configuration" xml:space="preserve">
     <value>配置客户端</value>
   </data>
+  <data name="btn_tips_del" xml:space="preserve">
+    <value>删除客户端</value>
+  </data>
   <data name="input_placeholder_search" xml:space="preserve">
     <value>搜索客户端</value>
   </data>

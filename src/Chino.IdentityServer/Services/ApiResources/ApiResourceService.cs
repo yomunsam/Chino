@@ -38,9 +38,19 @@ namespace Chino.IdentityServer.Services.ApiResources
             return result.GetDto();
         }
 
-        public async Task<ApiResource> FindApiResourceByIdAsync(int Id)
+        public async Task<ApiResource> FindByIdAsync(int Id)
         {
             return await m_DbContext.ApiResources.FindAsync(Id);
+        }
+
+        public async Task DeleteByIdAsync(int Id)
+        {
+            var apiRes = await m_DbContext.ApiResources.FindAsync(Id);
+            if (apiRes == null)
+                throw new NotFoundException();
+
+            m_DbContext.ApiResources.Remove(apiRes);
+            await m_DbContext.SaveChangesAsync();
         }
 
         /// <summary>

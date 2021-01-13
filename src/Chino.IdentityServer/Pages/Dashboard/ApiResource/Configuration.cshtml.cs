@@ -33,7 +33,7 @@ namespace Chino.IdentityServer.Pages.Dashboard.ApiResource
 
         public async Task<IActionResult> OnGetAsync()
         {
-            ApiResourceEntity = await m_ApiResource.FindApiResourceByIdAsync(this.Id);
+            ApiResourceEntity = await m_ApiResource.FindByIdAsync(this.Id);
             if (ApiResourceEntity == null)
                 return NotFound();
 

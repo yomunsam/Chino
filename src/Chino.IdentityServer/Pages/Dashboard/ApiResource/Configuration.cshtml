@@ -122,7 +122,7 @@
                     </label>
                     <div class="col-sm-9">
                         <button class="btn btn-primary">@L["btn_save"]</button>
-                        <a href="#" class="btn btn-danger">@L["btn_delete"]</a>
+                        <a asp-page="Delete" asp-route-ReturnUrl="~/Dashboard/ApiResources" asp-route-Id="@Model.Id" class="btn btn-danger">@L["btn_delete"]</a>
                     </div>
                 </div>
 

@@ -132,6 +132,21 @@
   <data name="btn_Secrets" xml:space="preserve">
     <value>管理Api资源密钥</value>
   </data>
+  <data name="card_header" xml:space="preserve">
+    <value>配置Api资源</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Api资源显示名</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Api资源名</value>
+  </data>
   <data name="Properties" xml:space="preserve">
     <value>属性</value>
   </data>

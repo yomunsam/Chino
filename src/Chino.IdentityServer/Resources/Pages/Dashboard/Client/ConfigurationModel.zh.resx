@@ -120,6 +120,12 @@
   <data name="AllowAccessTokensViaBrowser" xml:space="preserve">
     <value>允许通过浏览器访问Token</value>
   </data>
+  <data name="AllowedCorsOrigins" xml:space="preserve">
+    <value>允许跨域来源</value>
+  </data>
+  <data name="AllowedGrantTypes" xml:space="preserve">
+    <value>允许的授权类型</value>
+  </data>
   <data name="AllowedScopes" xml:space="preserve">
     <value>允许的Scopes</value>
   </data>
@@ -134,6 +140,21 @@
   </data>
   <data name="BackChannelLogoutUri" xml:space="preserve">
     <value>后端通道登出URI</value>
+  </data>
+  <data name="btn_AllowedCorsOrigins" xml:space="preserve">
+    <value>管理允许的跨域来源</value>
+  </data>
+  <data name="btn_AllowedGrantTypes" xml:space="preserve">
+    <value>管理允许的授权类型</value>
+  </data>
+  <data name="btn_AllowedScopes" xml:space="preserve">
+    <value>管理允许的作用域</value>
+  </data>
+  <data name="btn_del" xml:space="preserve">
+    <value>删除客户端</value>
+  </data>
+  <data name="btn_RedirectUris" xml:space="preserve">
+    <value>管理重定向URI</value>
   </data>
   <data name="btn_save" xml:space="preserve">
     <value>保存客户端</value>
@@ -168,6 +189,9 @@
   <data name="FrontChannelLogoutUri" xml:space="preserve">
     <value>前端通道登出URI</value>
   </data>
+  <data name="RedirectUris" xml:space="preserve">
+    <value>重定向URI</value>
+  </data>
   <data name="RequireClientSecret" xml:space="preserve">
     <value>需要客户端密钥</value>
   </data>
@@ -185,6 +209,9 @@
   </data>
   <data name="tips_AllowAccessTokensViaBrowser" xml:space="preserve">
     <value>指定是否允许此客户端通过浏览器接收访问令牌 access_token。 这对于强化允许多种响应类型的流是有用的（例如，通过禁止应该使用代码身份令牌 id_token 的混合流客户端来添加令牌响应类型并因此将令牌泄漏到浏览器。）</value>
+  </data>
+  <data name="tips_AllowedCorsOrigins" xml:space="preserve">
+    <value>指定客户端允许的跨域来源</value>
   </data>
   <data name="tips_AllowedScopes" xml:space="preserve">
     <value>管理允许的Scopes</value>

@@ -1,0 +1,113 @@
+﻿@page
+@model Chino.IdentityServer.Pages.Error.IdentityServiceModel
+@using Nekonya;
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Error.IdentityServiceModel> L
+@{
+    ViewData["Title"] = L["Title"];
+    ViewData["Nav_ShowLogin/Out"] = false;
+}
+
+<div class="pb-5 mb-3 mb-md-5">
+    <div class="card shadow m-2 m-md-5">
+        <div class="card-body">
+            <div class="card-title">
+                @L["error_title"]
+            </div>
+            <div class="alert alert-danger" role="alert">
+                @L["error_context_main"]
+                <strong><em>@(Model.ErrorMsg?.Error ?? "Unknow Error")</em></strong>
+            </div>
+        </div>
+    </div>
+
+
+    @if (Model.ShowDetail)
+    {
+        //细节信息
+        <div class="card shadow mx-2 mx-md-5 mb-3 p-0">
+            <div class="card-header">
+                <h6 class="h6">@L["error_detail_title"]</h6>
+            </div>
+            <div class="card-body">
+
+                @*错误描述*@
+                <div class="row mb-2">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">@L["ErrorDescription"]</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ErrorMsg.ErrorDescription)
+                    </div>
+                </div>
+                <hr />
+
+                @*RequestId*@
+                <div class="row mb-2">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">@L["RequestId"]</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ErrorMsg.RequestId)
+                    </div>
+                </div>
+                <hr />
+
+                @*RequestId*@
+                <div class="row mb-2">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">@L["RedirectUri"]</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ErrorMsg.RedirectUri)
+                    </div>
+                </div>
+                <hr />
+
+                @*DisplayMode*@
+                <div class="row mb-2">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">@L["DisplayMode"]</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ErrorMsg.DisplayMode)
+                    </div>
+                </div>
+                <hr />
+
+                @*ClientId*@
+                <div class="row mb-2">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">@L["ClientId"]</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ErrorMsg.ClientId)
+                    </div>
+                </div>
+                <hr />
+
+                @*ResponseMode*@
+                <div class="row mb-2">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">@L["ResponseMode"]</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ErrorMsg.ResponseMode)
+                    </div>
+                </div>
+                <hr />
+
+                @*UiLocales*@
+                <div class="row mb-2">
+                    <div class="col-sm-3">
+                        <h6 class="mb-0">@L["UI Locales"]</h6>
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ErrorMsg.UiLocales)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
