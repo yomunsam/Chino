@@ -11,7 +11,8 @@ namespace Chino.IdentityServer.Services.ApiResources
     public interface IApiResourceService
     {
         Task<ApiResource> AddApiResource(ApiResource apiRes);
-        Task<ApiResource> FindApiResourceByIdAsync(int Id);
+        Task DeleteByIdAsync(int Id);
+        Task<ApiResource> FindByIdAsync(int Id);
         Task<PaginatedListDto<ApiResource>> GetApiResourcesAsync(int page = 1, int size = 25, string search = null);
         Task<ApiResource> UpdateApiResourceAsync(int Id, ConfigurationViewModel model);
     }

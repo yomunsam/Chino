@@ -46,7 +46,7 @@
                                 <td>
                                     @*<a href="#" class="btn btn-secondary" title="@L["tips_usersInRole"]"><span class="oi oi-people"></span></a>*@
                                     <a asp-page="/Dashboard/ApiResource/Configuration" asp-route-Id="@apiRes.Id" class="btn btn-primary btn-sm" title="@L["btn_tips_configuration"]"><span class="oi oi-pencil"></span></a>
-                                    @*<a asp-page="/Dashboard/Role/Delete" asp-route-ReturnUrl="@thisUrl" asp-route-roleName="@role.Name" asp-route-roleId="@role.Id" class="btn btn-danger ml-1" title="@L["btn_tips_del"]"><span class="oi oi-x"></span></a>*@
+                                    <a asp-page="/Dashboard/ApiResource/Delete" asp-route-ReturnUrl="@thisUrl" asp-route-Id="@apiRes.Id" class="btn btn-danger btn-sm" title="@L["btn_tips_del"]"><span class="oi oi-x"></span></a>
                                 </td>
                             </tr>
                         }
