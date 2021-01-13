@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Chino.IdentityServer.Exceptions.Common;
 using Chino.IdentityServer.Services.Clients;
+using IdentityServer4.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -46,7 +47,13 @@ namespace Chino.IdentityServer.Pages.Dashboard.Client
         {
             try
             {
-                await m_ClientService.DeleteClientById(this.Id);
+                var client = await m_ClientService.DeleteClientById(this.Id);
+                m_Logger.LogInformation("Client \"{0}\" (clientID:{1}, description:{2}) was deleted by user \"{3}\"({4})",
+                    client.ClientName,
+                    client.ClientId,
+                    client.Description,
+                    this.User.GetSubjectId(),
+                    this.User.GetDisplayName());
                 return LocalRedirect(this.ReturnUrl ?? "~/");
             }
             catch (NotFoundException)

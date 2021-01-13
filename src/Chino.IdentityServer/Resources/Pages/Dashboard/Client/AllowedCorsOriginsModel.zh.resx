@@ -117,127 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllowAccessTokensViaBrowser" xml:space="preserve">
-    <value>允许通过浏览器访问Token</value>
+  <data name="breadcrumb_cors" xml:space="preserve">
+    <value>允许的跨域来源</value>
   </data>
-  <data name="AllowedCorsOrigins" xml:space="preserve">
-    <value>允许跨域来源</value>
+  <data name="btn_add" xml:space="preserve">
+    <value>添加</value>
   </data>
-  <data name="AllowedGrantTypes" xml:space="preserve">
-    <value>允许的授权类型</value>
+  <data name="card-header-addCors" xml:space="preserve">
+    <value>添加允许的跨域来源</value>
   </data>
-  <data name="AllowedScopes" xml:space="preserve">
-    <value>允许的Scopes</value>
+  <data name="card-header-cors" xml:space="preserve">
+    <value>当前允许的跨域来源</value>
   </data>
-  <data name="AllowOfflineAccess" xml:space="preserve">
-    <value>允许离线访问</value>
-  </data>
-  <data name="AllowPlainTextPkce" xml:space="preserve">
-    <value>允许纯文本Pkce</value>
-  </data>
-  <data name="BackChannelLogoutSessionRequired" xml:space="preserve">
-    <value>需要前端通道注销会话</value>
-  </data>
-  <data name="BackChannelLogoutUri" xml:space="preserve">
-    <value>后端通道登出URI</value>
-  </data>
-  <data name="btn_AllowedCorsOrigins" xml:space="preserve">
-    <value>管理允许的跨域来源</value>
-  </data>
-  <data name="btn_AllowedGrantTypes" xml:space="preserve">
-    <value>管理允许的授权类型</value>
-  </data>
-  <data name="btn_AllowedScopes" xml:space="preserve">
-    <value>管理允许的作用域</value>
-  </data>
-  <data name="btn_del" xml:space="preserve">
-    <value>删除客户端</value>
-  </data>
-  <data name="btn_RedirectUris" xml:space="preserve">
-    <value>管理重定向URI</value>
-  </data>
-  <data name="btn_save" xml:space="preserve">
-    <value>保存客户端</value>
-  </data>
-  <data name="card-header-allowedScopes" xml:space="preserve">
-    <value>允许的作用域</value>
-  </data>
-  <data name="card_header_client_authentication_area" xml:space="preserve">
-    <value>授权和登出</value>
-  </data>
-  <data name="card_header_client_names" xml:space="preserve">
-    <value>客户端名称</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>描述</value>
-  </data>
-  <data name="Enabled" xml:space="preserve">
-    <value>启用</value>
-  </data>
-  <data name="EnableLocalLogin" xml:space="preserve">
-    <value>启用本地登录</value>
-  </data>
-  <data name="form-client-id" xml:space="preserve">
-    <value>客户端ID标识</value>
-  </data>
-  <data name="form-client-name" xml:space="preserve">
-    <value>客户端名称</value>
-  </data>
-  <data name="FrontChannelLogoutSessionRequired" xml:space="preserve">
-    <value>需要前端通道登出会话</value>
-  </data>
-  <data name="FrontChannelLogoutUri" xml:space="preserve">
-    <value>前端通道登出URI</value>
-  </data>
-  <data name="RedirectUris" xml:space="preserve">
-    <value>重定向URI</value>
-  </data>
-  <data name="RequireClientSecret" xml:space="preserve">
-    <value>需要客户端密钥</value>
-  </data>
-  <data name="RequirePkce" xml:space="preserve">
-    <value>需要Pkce</value>
-  </data>
-  <data name="tab-authentication" xml:space="preserve">
-    <value>授权和登出</value>
-  </data>
-  <data name="tab-basics" xml:space="preserve">
-    <value>基础</value>
-  </data>
-  <data name="tab-name" xml:space="preserve">
-    <value>名称</value>
-  </data>
-  <data name="tips_AllowAccessTokensViaBrowser" xml:space="preserve">
-    <value>指定是否允许此客户端通过浏览器接收访问令牌 access_token。 这对于强化允许多种响应类型的流是有用的（例如，通过禁止应该使用代码身份令牌 id_token 的混合流客户端来添加令牌响应类型并因此将令牌泄漏到浏览器。）</value>
-  </data>
-  <data name="tips_AllowedCorsOrigins" xml:space="preserve">
-    <value>指定客户端允许的跨域来源</value>
-  </data>
-  <data name="tips_AllowedScopes" xml:space="preserve">
-    <value>管理允许的Scopes</value>
-  </data>
-  <data name="tips_AllowOfflineAccess" xml:space="preserve">
-    <value>决定客户端是否可以请求offline_access作用域来请求 refresh_token</value>
-  </data>
-  <data name="tips_AllowPlainTextPkce" xml:space="preserve">
-    <value>默认为false，不推荐</value>
-  </data>
-  <data name="tips_Enable" xml:space="preserve">
-    <value>是否启用该客户端，默认启用</value>
-  </data>
-  <data name="tips_FrontChannelLogoutSessionRequired" xml:space="preserve">
-    <value>指定是否应将用户的会话标识发送到 FrontChannelLogoutUri。 默认为 true。</value>
-  </data>
-  <data name="tips_FrontChannelLogoutUri" xml:space="preserve">
-    <value>详情参考文档，通知客户端用于已注销用的</value>
-  </data>
-  <data name="tips_RequireClientSecret" xml:space="preserve">
-    <value>指定该客户端是否需要传递Secret才能从Token端点请求Token（默认为true）</value>
-  </data>
-  <data name="tips_RequirePkce" xml:space="preserve">
-    <value>请自行搜索学习Pkce是个啥，是授权码流程用的，三言两语说不清楚</value>
-  </data>
-  <data name="UserSsoLifetime" xml:space="preserve">
-    <value>用户SSO生命周期</value>
+  <data name="label_cors_origin" xml:space="preserve">
+    <value>允许新的跨域来源</value>
   </data>
 </root>

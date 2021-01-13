@@ -3,6 +3,8 @@
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ClientsModel> ClientL
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.Client.DeleteModel> L
 @{
+    Layout = "_DashboardLayout";
+    ViewData["pageName"] = "clients";
 }
 
 <div class="mt-3 container">
