@@ -134,7 +134,9 @@ namespace Chino.IdentityServer
                 {
                     LoginUrl = "/Account/Login",
                     LogoutUrl = "/Account/Logout",
-                    LoginReturnUrlParameter = "returnUrl"
+                    LoginReturnUrlParameter = "returnUrl",
+                    ErrorUrl= "~/Error/IdentityService",
+                    ErrorIdParameter = "Id"
                 };
             })
                 .AddConfigurationStore(options =>

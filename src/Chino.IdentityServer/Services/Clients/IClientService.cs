@@ -16,6 +16,13 @@ namespace Chino.IdentityServer.Services.Clients
         /// <param name="clientId"></param>
         /// <returns></returns>
         Task<Client> GetClientAndAllowedCorsOrigins(int clientId);
+
+        /// <summary>
+        /// 获取包含了“允许的授权类型”信息的客户端信息
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <returns></returns>
+        Task<Client> GetClientAndAllowedGrantTypes(int clientId);
         Task<Client> GetClientAsync(int Id);
         Task<PaginatedListDto<Client>> GetClientsAsync(int page = 1, int size = 25, string search = null);
         Task<long> GetClientsTotalCount();

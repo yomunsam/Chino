@@ -58,6 +58,19 @@ namespace Chino.IdentityServer.Services.Clients
             return client;
         }
 
+        public async Task<Client> GetClientAndAllowedGrantTypes(int clientId)
+        {
+            var client = await m_DbContext.Clients.FindAsync(clientId);
+            if (client != null)
+            {
+                await m_DbContext.Entry(client)
+                    .Collection(c => c.AllowedGrantTypes)
+                    .LoadAsync();
+            }
+
+            return client;
+        }
+
         public Task<long> GetClientsTotalCount()
         {
             return m_DbContext.Clients.LongCountAsync();
