@@ -123,6 +123,9 @@
   <data name="btn_add" xml:space="preserve">
     <value>添加</value>
   </data>
+  <data name="card-header-allowwedGrantTypes" xml:space="preserve">
+    <value>已允许的授权类型</value>
+  </data>
   <data name="card_header_addGrantType" xml:space="preserve">
     <value>添加新的授权类型</value>
   </data>

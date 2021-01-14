@@ -4,7 +4,7 @@ using Chino.IdentityServer.DataValidation.Attributes;
 
 namespace Chino.IdentityServer.ViewModels.Account
 {
-    public class RegisterViewModel
+    public class RegisterInputModel
     {
         //[Required(ErrorMessage = "username_required")]
         [RegisterRequired(RegisterRequiredType.UserName)]

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Chino.IdentityServer.Services.Clients;
+using IdentityServer4.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
@@ -86,6 +87,14 @@ namespace Chino.IdentityServer.Pages.Dashboard.Client
             {
                 ClientEntity.AllowedCorsOrigins.Remove(cor);
                 await m_ClientService.Update(this.ClientEntity);
+
+                m_Logger.LogInformation("Client \"{0}\" (clientID:{1}, description:{2}) 's AllowedCorsOrigins \"{3}\" was deleted by user \"{4}\"({5})",
+                    ClientEntity.ClientName,
+                    ClientEntity.ClientId,
+                    ClientEntity.Description,
+                    cor.Origin,
+                    this.User.GetSubjectId(),
+                    this.User.GetDisplayName());
             }
 
             return Page();

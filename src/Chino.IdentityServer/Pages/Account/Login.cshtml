@@ -21,7 +21,7 @@
         </div>
         <partial name="ValidationSummary" />
 
-        @if (Model.EnableLocalLogin)
+        @if (Model.LoginViewModel.EnableLocalLogin)
         {
             <div class="card mt-1 shadow text-center">
                 @*旧的固定标题*@
@@ -70,7 +70,7 @@
                             <div><span asp-validation-for="LoginDto.Password" class="text-danger"></span></div>
                         </div>
 
-                        @if (Model.AllowRememberLogin)
+                        @if (Model.LoginViewModel.AllowRememberLogin)
                         {
                             <div class="checkbox mb-3 mt-2 text-left">
                                 <label>
@@ -98,6 +98,28 @@
                 </div>
             </div>
         }
+        
+        @if (Model.LoginViewModel.VisibleExternalProviders.Any())
+        {
+            <div class="card mt-4 mb-2 shadow text-center">
+                <div class="card-body">
+                    <div class="card-title">
+                        @L["Login with another account"]
+                    </div>
+                    <form id="external-account" asp-page="./External/ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div class="d-grid gap-3 d-md-block">
+                            @foreach (var provider in Model.LoginViewModel.VisibleExternalProviders)
+                            {
+                                <button class="btn btn-outline-secondary" type="submit" name="provider" value="@provider.AuthenticationScheme">
+                                    @provider.DisplayName
+                                </button>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+
     </div>
     
     

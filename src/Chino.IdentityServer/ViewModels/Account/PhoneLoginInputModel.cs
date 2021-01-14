@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Chino.IdentityServer.ViewModels.Account
 {
-    public class PhoneLoginViewModel
+    public class PhoneLoginInputModel
     {
         /// <summary>
         /// 手机号

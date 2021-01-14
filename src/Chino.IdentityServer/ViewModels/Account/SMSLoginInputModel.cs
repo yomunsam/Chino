@@ -2,7 +2,7 @@
 
 namespace Chino.IdentityServer.ViewModels.Account
 {
-    public class SMSLoginViewModel
+    public class SMSLoginInputModel
     {
         /// <summary>
         /// 手机号

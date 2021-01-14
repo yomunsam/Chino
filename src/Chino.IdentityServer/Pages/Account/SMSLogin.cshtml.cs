@@ -38,7 +38,7 @@ namespace Chino.IdentityServer.Pages.Account
         public ELoginViewType LoginType { get; set; }
 
         [BindProperty]
-        public SMSLoginViewModel LoginViewModel { get; set; }
+        public SMSLoginInputModel LoginViewModel { get; set; }
 
         public bool EnableLocalLogin { get; set; } = true;
 
