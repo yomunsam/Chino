@@ -3,6 +3,7 @@ using Chino.EntityFramework.Mysql;
 using Chino.EntityFramework.Sqlite;
 using Chino.EntityFramework.SqlServer;
 using Chino.IdentityServer.Configures;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -122,6 +123,23 @@ namespace Chino.IdentityServer
             }
         }
 
+        /// <summary>
+        /// 添加外部身份验证提供程序
+        /// </summary>
+        /// <param name="builder"></param>
+        public static void AddExternalAuthProviders(this AuthenticationBuilder builder, IConfiguration configuration)
+        {
+            //Github
+            if (configuration.GetValue<bool>("ExternalAuthProviders:Github:Enable"))
+            {
+                builder.AddGitHub(options =>
+                {
+                    options.ClientId = configuration["ExternalAuthProviders:Github:ClientId"];
+                    options.ClientSecret = configuration["ExternalAuthProviders:Github:ClientSecret"];
+                    options.Scope.Add("user:email");
+                });
+            }
+        }
 
     }
 }

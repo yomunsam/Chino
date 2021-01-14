@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Configures;
@@ -10,6 +11,7 @@ using Chino.IdentityServer.Services;
 using Chino.IdentityServer.ViewModels.Account;
 using IdentityServer4.Events;
 using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -29,6 +31,7 @@ namespace Chino.IdentityServer.Pages.Account
         private readonly IEventService m_IdsEvent;
         private readonly IStringLocalizer<LoginModel> L;
         private readonly ChinoAccountConfiguration m_AccountConfiguration;
+        private readonly IAuthenticationSchemeProvider m_AuthenticationSchemeProvider;
         private readonly CommonLocalizationService CL;
 
         public LoginModel(IIdentityServerInteractionService identityServerInteractionService,
@@ -37,7 +40,8 @@ namespace Chino.IdentityServer.Pages.Account
             IEventService idsEvent,
             IStringLocalizer<LoginModel> localizer,
             CommonLocalizationService cl,
-            ChinoAccountConfiguration accountConfiguration)
+            ChinoAccountConfiguration accountConfiguration,
+            IAuthenticationSchemeProvider authenticationSchemeProvider)
         {
             m_IdsInteraction = identityServerInteractionService;
             m_SignInManager = signInManager;
@@ -45,6 +49,7 @@ namespace Chino.IdentityServer.Pages.Account
             m_IdsEvent = idsEvent;
             L = localizer;
             m_AccountConfiguration = accountConfiguration;
+            this.m_AuthenticationSchemeProvider = authenticationSchemeProvider;
             CL = cl;
         }
 
@@ -64,11 +69,12 @@ namespace Chino.IdentityServer.Pages.Account
         [BindProperty, TempData]
         public ELoginViewType LoginType { get; set; }
 
-        public bool EnableLocalLogin { get; set; } = true;
+        public LoginViewModel LoginViewModel { get; set; }
 
-        public bool AllowRememberLogin { get; set; } = true;
+        [TempData]
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGet(string returnUrl, int? loginType)
+        public async Task<IActionResult> OnGetAsync(string returnUrl, int? loginType)
         {
             this.ReturnUrl = returnUrl;
 
@@ -88,13 +94,13 @@ namespace Chino.IdentityServer.Pages.Account
                     return RedirectToPage("/Account/PhoneLogin", new { returnUrl = returnUrl, loginType = loginType });
             }
 
-            var context = await m_IdsInteraction.GetAuthorizationContextAsync(returnUrl);
-            if(context?.IdP != null)
+
+            if (!string.IsNullOrEmpty(ErrorMessage))
             {
-                AllowRememberLogin = false;
-                IdentityString = context?.LoginHint;
+                ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
+            LoginViewModel = await BuildLoginViewModelAsync(returnUrl);
 
             return Page();
         }
@@ -217,6 +223,59 @@ namespace Chino.IdentityServer.Pages.Account
             }
 
             return user;
+        }
+
+
+        private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
+        {
+            var context = await m_IdsInteraction.GetAuthorizationContextAsync(returnUrl);
+            if(context?.IdP != null && await m_AuthenticationSchemeProvider.GetSchemeAsync(context.IdP) != null)
+            {
+                var local = context.IdP == IdentityServer4.IdentityServerConstants.LocalIdentityProvider;
+                var vm = new LoginViewModel
+                {
+                    EnableLocalLogin = local
+                };
+
+                this.ReturnUrl = returnUrl;
+                this.IdentityString = context?.LoginHint;
+
+                if (!local)
+                {
+                    vm.ExternalProviders = new[] { new ExternalProviderDto { AuthenticationScheme = context.IdP } };
+                }
+
+                return vm;
+            }
+
+            var schemes = await m_AuthenticationSchemeProvider.GetAllSchemesAsync();
+            var providers = schemes
+                .Where(x => x.DisplayName != null)
+                .Select(x => new ExternalProviderDto
+                {
+                    DisplayName = x.DisplayName ?? x.Name,
+                    AuthenticationScheme = x.Name
+                }).ToList();
+
+            var allowLocal = true;
+            if(context?.Client != null)
+            {
+                allowLocal = context.Client.EnableLocalLogin;
+                if(context.Client.IdentityProviderRestrictions != null && context.Client.IdentityProviderRestrictions.Any())
+                {
+                    providers = providers
+                        .Where(provider => context.Client.IdentityProviderRestrictions.Contains(provider.AuthenticationScheme))
+                        .ToList();
+                }
+            }
+
+            this.ReturnUrl = returnUrl;
+            this.IdentityString = context?.LoginHint;
+            return new LoginViewModel
+            {
+                EnableLocalLogin = allowLocal,
+                ExternalProviders = providers.ToArray()
+            };
         }
 
     }

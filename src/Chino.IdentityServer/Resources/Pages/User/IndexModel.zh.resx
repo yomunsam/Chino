@@ -120,6 +120,9 @@
   <data name="btn_dashboard" xml:space="preserve">
     <value>后台面板</value>
   </data>
+  <data name="btn_Discovery" xml:space="preserve">
+    <value>发现文档</value>
+  </data>
   <data name="btn_editUserInfo" xml:space="preserve">
     <value>编辑我的信息</value>
   </data>

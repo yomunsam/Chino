@@ -138,6 +138,9 @@
   <data name="link_register" xml:space="preserve">
     <value>注册新用户</value>
   </data>
+  <data name="Login with another account" xml:space="preserve">
+    <value>使用其他账号登录</value>
+  </data>
   <data name="login_by_account" xml:space="preserve">
     <value>账号登录</value>
   </data>

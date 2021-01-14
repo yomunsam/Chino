@@ -38,7 +38,7 @@ namespace Chino.IdentityServer.Pages.Account
         }
 
         [BindProperty]
-        public RegisterViewModel RegisterDto { get; set; }
+        public RegisterInputModel RegisterDto { get; set; }
 
         [BindProperty]
         public string ReturnUrl { get; set; }
@@ -60,7 +60,7 @@ namespace Chino.IdentityServer.Pages.Account
                 if (m_CountryCode.LCID_Dict.TryGetValue(current_culture.LCID, out var country))
                 {
                     if (RegisterDto == null)
-                        RegisterDto = new RegisterViewModel();
+                        RegisterDto = new RegisterInputModel();
                     RegisterDto.PhoneDialingCode = country.DialingCodeWithoutPlus;
                 }
             }

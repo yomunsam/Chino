@@ -1,11 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Chino.IdentityServer.Services.Clients;
+using IdentityServer4.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Nekonya;
 
 namespace Chino.IdentityServer.Pages.Dashboard.Client
 {
@@ -56,6 +57,74 @@ namespace Chino.IdentityServer.Pages.Dashboard.Client
             return Page();
         }
 
-        
+        /// <summary>
+        /// 直接Post用来添加允许的授权类型。
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> OnPostAsync(string grantType)
+        {
+            if (grantType.IsNullOrEmpty())
+            {
+                this.ModelState.AddModelError(string.Empty, "Grant type name can't be empty.");
+                this.ClientEntity = await m_ClientService.GetClientAndAllowedGrantTypes(this.Id);
+                if (ClientEntity == null)
+                    return NotFound();
+                return Page();
+            }
+
+            this.ClientEntity = await m_ClientService.GetClientAndAllowedGrantTypes(this.Id);
+            if (ClientEntity == null)
+                return NotFound();
+
+            if (ClientEntity.AllowedGrantTypes.Any(gt => gt.GrantType.Equals(grantType)))
+                return Page(); //已经存在了，不处理
+
+            //处理添加
+            ClientEntity.AllowedGrantTypes.Add(new IdentityServer4.EntityFramework.Entities.ClientGrantType
+            {
+                GrantType = grantType
+            });
+            await m_ClientService.Update(ClientEntity);
+
+            foreach (var item in ClientEntity.AllowedGrantTypes)
+            {
+                if (SuggestedItem.Contains(item.GrantType))
+                    SuggestedItem.Remove(item.GrantType);
+            }
+            return Page();
+        }
+
+        /// <summary>
+        /// 删除某个子项的话，调用这里
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> OnGetDeletItemAsync(int gtId)
+        {
+            this.ClientEntity = await m_ClientService.GetClientAndAllowedGrantTypes(this.Id);
+            if (ClientEntity == null)
+                return NotFound();
+            var grantType = ClientEntity.AllowedGrantTypes.FirstOrDefault(gt => gt.Id == gtId);
+            if (grantType != null)
+            {
+                ClientEntity.AllowedGrantTypes.Remove(grantType);
+                await m_ClientService.Update(this.ClientEntity);
+
+                m_Logger.LogInformation("Client \"{0}\" (clientID:{1}, description:{2}) 's AllowedGrantType \"{3}\" was deleted by user \"{4}\"({5})",
+                    ClientEntity.ClientName,
+                    ClientEntity.ClientId,
+                    ClientEntity.Description,
+                    grantType.GrantType,
+                    this.User.GetSubjectId(),
+                    this.User.GetDisplayName());
+            }
+
+
+            foreach (var item in ClientEntity.AllowedGrantTypes)
+            {
+                if (SuggestedItem.Contains(item.GrantType))
+                    SuggestedItem.Remove(item.GrantType);
+            }
+            return Page();
+        }
     }
 }

@@ -18,14 +18,14 @@
     //设置语言之后的跳转
     var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
 
-    bool IsDashboard()
-    {
-        var isDashboard = ViewData["_dashboard"];
-        if (isDashboard != null)
-            return (bool)isDashboard;
-        else
-            return false;
-    }
+    //bool IsDashboard()
+    //{
+    //    var isDashboard = ViewData["_dashboard"];
+    //    if (isDashboard != null)
+    //        return (bool)isDashboard;
+    //    else
+    //        return false;
+    //}
 }
 
 <link rel="stylesheet" href="~/css/chino-dashboard-footer.css" />

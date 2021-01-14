@@ -158,7 +158,8 @@ namespace Chino.IdentityServer
 
 
             #endregion
-            services.AddAuthentication();
+            services.AddAuthentication()
+                .AddExternalAuthProviders(this.Configuration);
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(ChinoConst.PolicyName_Dashboard, policy =>
