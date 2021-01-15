@@ -117,28 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="breadcrumb_IdRes" xml:space="preserve">
-    <value>身份资源</value>
+  <data name="breadcrumb_userClaims" xml:space="preserve">
+    <value>用户声明</value>
   </data>
-  <data name="btn_add_idRes" xml:space="preserve">
-    <value>创建身份资源</value>
+  <data name="btn_add" xml:space="preserve">
+    <value>添加</value>
   </data>
-  <data name="btn_search" xml:space="preserve">
-    <value>搜索</value>
+  <data name="card-header-userClaims" xml:space="preserve">
+    <value>当前用户声明</value>
   </data>
-  <data name="btn_tips_configuration" xml:space="preserve">
-    <value>配置身份资源</value>
+  <data name="card_header_addUserClaims" xml:space="preserve">
+    <value>添加用户声明（Claim）</value>
   </data>
-  <data name="input_placeholder_search" xml:space="preserve">
-    <value>搜索身份资源</value>
-  </data>
-  <data name="th_handle" xml:space="preserve">
-    <value>操作</value>
-  </data>
-  <data name="th_IdResourceDisplayName" xml:space="preserve">
-    <value>显示名</value>
-  </data>
-  <data name="th_IdResourceName" xml:space="preserve">
-    <value>名称</value>
+  <data name="label_UserClaims" xml:space="preserve">
+    <value>用户声明</value>
   </data>
 </root>

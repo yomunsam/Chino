@@ -9,7 +9,9 @@ namespace Chino.IdentityServer.Services.IdentityResources
 {
     public interface IIdentityResouceService
     {
-        Task<IdentityResource> GetIdentityResourceAsync(int Id);
+        Task<IdentityResource> GetAsync(int Id);
         Task<PaginatedListDto<IdentityResource>> GetIdentityResourcesAsync(int page = 1, int size = 25, string search = null);
+        Task<IdentityResource> GetWithUserClaimsAsync(int Id);
+        Task<IdentityResource> UpdateAsync(IdentityResource identityResource);
     }
 }

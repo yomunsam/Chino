@@ -220,6 +220,18 @@ namespace Chino.IdentityServer.SeedData
                 }
                 configurationContext.SaveChanges();
             }
+
+            if (!configurationContext.IdentityResources.Any())
+            {
+                if(seedDataJson.IdentityResources != null)
+                {
+                    foreach (var resource in seedDataJson.IdentityResources)
+                    {
+                        configurationContext.IdentityResources.Add(resource.ToEntity());
+                    }
+                    configurationContext.SaveChanges();
+                }
+            }
         }
 
     }

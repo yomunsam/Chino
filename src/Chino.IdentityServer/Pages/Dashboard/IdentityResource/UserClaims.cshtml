@@ -1,13 +1,12 @@
 ﻿@page
-@model Chino.IdentityServer.Pages.Dashboard.Client.RedirectUrisModel
-@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ClientsModel> ClientL
-@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.Client.RedirectUrisModel> L
+@model Chino.IdentityServer.Pages.Dashboard.IdentityResource.UserClaimsModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.IdentityResource.UserClaimsModel> L
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.IdentityResourcesModel> IdResL
 @{
     Layout = "_DashboardLayout";
-    ViewData["pageName"] = "clients";
-
-    var thisUrl = string.IsNullOrEmpty(Request.Path) ? "~/" : $"~{Request.Path.Value}";
+    ViewData["pageName"] = "identityResources";
 }
+
 
 <div class="mt-3 container">
 
@@ -15,9 +14,9 @@
     <div class="card-body mb-3 py-0 px-0">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ClientL["breadcrumb_Clients"]</a></li>
-                <li class="breadcrumb-item">@Model.ClientEntity.ClientName</li>
-                <li class="breadcrumb-item active" aria-current="page">@L["breadcrumb_redirectUris"]</li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/IdentityResources">@IdResL["breadcrumb_IdRes"]</a></li>
+                <li class="breadcrumb-item">@Model.IdentityResourceEntity.Name</li>
+                <li class="breadcrumb-item active" aria-current="page">@L["breadcrumb_userClaims"]</li>
             </ol>
         </nav>
     </div>
@@ -27,20 +26,20 @@
     @*卡片：添加跨域*@
     <div class="card mb-3">
         <div class="card-header">
-            <h6 class="h6">@L["card_header_addredirectUri"]</h6>
+            <h6 class="h6">@L["card_header_addUserClaims"]</h6>
         </div>
         <div class="card-body">
             <form method="post">
                 @*隐藏内容*@
-                <input asp-for="ReturnUrl" hidden />
+                @*<input asp-for="ReturnUrl" hidden />*@
                 <input asp-for="Id" hidden />
 
                 <div class="mb-3 row">
                     <label class="form-label col-sm-3 col-form-label">
-                        @L["label_redirectUri"]
+                        @L["label_UserClaims"]
                     </label>
                     <div class="col-sm-9">
-                        <input name="redirectUri" id="newRedirectUri" class="form-control" autocomplete="off" />
+                        <input name="userClaim" id="newUserClaim" class="form-control" autocomplete="off" />
                     </div>
                 </div>
 
@@ -52,19 +51,18 @@
     @*卡片：已有跨域来源列表（就不分页了吧）*@
     <div class="card mb-3">
         <div class="card-header">
-            <h6 class="h6">@L["card_header_redirectUris"]</h6>
+            <h6 class="h6">@L["card-header-userClaims"]</h6>
         </div>
         <div class="card-body">
             <ul class="list-group-flush">
-                @foreach (var redirectUri in Model.ClientEntity.RedirectUris)
+                @foreach (var uClaim in Model.IdentityResourceEntity.UserClaims)
                 {
                     <li class="list-group-item">
-                        <a asp-page="RedirectUris"
+                        <a asp-page="UserClaims"
                            asp-page-handler="DeletItem"
                            asp-route-Id="@Model.Id"
-                           asp-route-ReturnUrl="@Model.ReturnUrl"
-                           asp-route-redirectUriId="@redirectUri.Id" class="btn btn-danger btn-sm py-1 px-3 mr-3"><span class="oi oi-x"></span></a>
-                        @redirectUri.RedirectUri
+                           asp-route-claimId="@uClaim.Id" class="btn btn-danger btn-sm py-1 px-3 mr-3"><span class="oi oi-x"></span></a>
+                        @uClaim.Type
                     </li>
                 }
             </ul>

@@ -58,6 +58,32 @@ namespace Chino.IdentityServer.Services.Clients
             return client;
         }
 
+        public async Task<Client> GetClientAndAllowedScopes(int clientId)
+        {
+            var client = await m_DbContext.Clients.FindAsync(clientId);
+            if (client != null)
+            {
+                await m_DbContext.Entry(client)
+                    .Collection(c => c.AllowedScopes)
+                    .LoadAsync();
+            }
+
+            return client;
+        }
+
+        public async Task<Client> GetClientAndRedirectUris(int clientId)
+        {
+            var client = await m_DbContext.Clients.FindAsync(clientId);
+            if (client != null)
+            {
+                await m_DbContext.Entry(client)
+                    .Collection(c => c.RedirectUris)
+                    .LoadAsync();
+            }
+
+            return client;
+        }
+
         public async Task<Client> GetClientAndAllowedGrantTypes(int clientId)
         {
             var client = await m_DbContext.Clients.FindAsync(clientId);

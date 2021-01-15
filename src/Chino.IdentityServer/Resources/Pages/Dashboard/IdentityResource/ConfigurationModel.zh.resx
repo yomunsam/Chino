@@ -117,28 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="breadcrumb_IdRes" xml:space="preserve">
-    <value>身份资源</value>
+  <data name="btn_delete" xml:space="preserve">
+    <value>删除</value>
   </data>
-  <data name="btn_add_idRes" xml:space="preserve">
-    <value>创建身份资源</value>
+  <data name="btn_Properties" xml:space="preserve">
+    <value>管理身份资源属性</value>
   </data>
-  <data name="btn_search" xml:space="preserve">
-    <value>搜索</value>
+  <data name="btn_save" xml:space="preserve">
+    <value>保存</value>
   </data>
-  <data name="btn_tips_configuration" xml:space="preserve">
+  <data name="btn_UserClaims" xml:space="preserve">
+    <value>管理用户声明</value>
+  </data>
+  <data name="card_header" xml:space="preserve">
     <value>配置身份资源</value>
   </data>
-  <data name="input_placeholder_search" xml:space="preserve">
-    <value>搜索身份资源</value>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
   </data>
-  <data name="th_handle" xml:space="preserve">
-    <value>操作</value>
-  </data>
-  <data name="th_IdResourceDisplayName" xml:space="preserve">
+  <data name="DisplayName" xml:space="preserve">
     <value>显示名</value>
   </data>
-  <data name="th_IdResourceName" xml:space="preserve">
+  <data name="Emphasize" xml:space="preserve">
+    <value>强调</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="Name" xml:space="preserve">
     <value>名称</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>属性</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>必须</value>
+  </data>
+  <data name="ShowInDiscoveryDocument" xml:space="preserve">
+    <value>在发现文档中展示</value>
+  </data>
+  <data name="tips_Emphasize" xml:space="preserve">
+    <value>指定同意屏幕是否会强调此作用域（如果同意屏幕要实现此类功能）。 将此设置用于敏感或重要作用域。 默认为 false。</value>
+  </data>
+  <data name="tips_Enabled" xml:space="preserve">
+    <value>指示该资源是否可被请求</value>
+  </data>
+  <data name="tips_Name" xml:space="preserve">
+    <value>身份资源的唯一名称。 这是客户端将用于授权请求中的作用域参数的值。</value>
+  </data>
+  <data name="tips_Properties" xml:space="preserve">
+    <value>需要保留任何自定义身份资源特定值的字典。</value>
+  </data>
+  <data name="tips_Required" xml:space="preserve">
+    <value>指定用户是否可以在同意屏幕上取消选择作用域（如果同意屏幕要实现此类功能）。 默认为 false。</value>
+  </data>
+  <data name="tips_ShowInDiscoveryDocument" xml:space="preserve">
+    <value>用于配置是否显示在发现文档中</value>
+  </data>
+  <data name="tips_UserClaims" xml:space="preserve">
+    <value>UserClaims.列表中的claims内容会包含在id_token中</value>
+  </data>
+  <data name="UserClaims" xml:space="preserve">
+    <value>用户声明</value>
   </data>
 </root>
