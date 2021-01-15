@@ -1,6 +1,6 @@
 ﻿@page
 @model Chino.IdentityServer.Pages.Dashboard.Client.AllowedScopesModel
-@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.Client.ConfigurationModel> L
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.Client.AllowedScopesModel> L
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ClientsModel> ClientL
 @{
     Layout = "_DashboardLayout";
@@ -11,28 +11,104 @@
 
 
 <div class="mt-3 container">
+
+    @*面包屑*@
     <div class="card-body mb-3 py-0 px-0">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ClientL["breadcrumb_Clients"]</a></li>
-                <li class="breadcrumb-item active" aria-current="page">@Model.ClientEntity.ClientId</li>
+                <li class="breadcrumb-item">@Model.ClientEntity.ClientName</li>
+                <li class="breadcrumb-item active" aria-current="page">@L["breadcrumb_allowedScopes"]</li>
             </ol>
         </nav>
     </div>
 
     <partial name="ValidationSummary" />
 
-
-    <div class="card">
+    @*卡片：添加跨域*@
+    <div class="card mb-3">
         <div class="card-header">
-            <h6 class="h6">@L["card-header-allowedScopes"]</h6>
+            <h6 class="h6">@L["card_header_addscopes"]</h6>
         </div>
         <div class="card-body">
             <form method="post">
-                <div class="mb-3 row">
+                @*隐藏内容*@
+                <input asp-for="ReturnUrl" hidden />
+                <input asp-for="Id" hidden />
 
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3 col-form-label">
+                        @L["label_scope"]
+                    </label>
+                    <div class="col-sm-9 input-group">
+                        <input name="scope" id="newScope" class="form-control" autocomplete="off" />
+                        <button class="btn btn-sm btn-secondary"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#suggestedCollapse"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#suggestedCollapse"
+                                aria-expanded="false" aria-controls="suggestedCollapse">
+                            @L["Suggested items"]
+                        </button>
+                    </div>
+                    <div class="collapse" id="suggestedCollapse">
+                        <div class="card mt-2">
+                            <div class="card-body">
+                                @foreach (var item in Model.SuggestedScopes)
+                                {
+                                    <button type="button" class="btn btn-secondary btn-sm mb-2 suggestedBtn" value="@item">@item</button>
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <button class="btn btn-primary" type="submit">@L["btn_add"]</button>
             </form>
         </div>
     </div>
+
+    @*卡片：已有跨域来源列表（就不分页了吧）*@
+    <div class="card mb-3">
+        <div class="card-header">
+            <h6 class="h6">@L["card_header_allowedScopes"]</h6>
+        </div>
+        <div class="card-body">
+            <ul class="list-group-flush">
+                @foreach (var allowedScope in Model.ClientEntity.AllowedScopes)
+                {
+                    <li class="list-group-item">
+                        <a asp-page="AllowedScopes"
+                           asp-page-handler="DeletItem"
+                           asp-route-Id="@Model.Id"
+                           asp-route-ReturnUrl="@Model.ReturnUrl"
+                           asp-route-scopeId="@allowedScope.Id" class="btn btn-danger btn-sm py-1 px-3 mr-3"><span class="oi oi-x"></span></a>
+                        @allowedScope.Scope
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
 </div>
+
+
+
+@section Scripts {
+    <script>
+        window.onload = function () {
+            //处理按钮们
+            let input_grantType = document.getElementById('newScope');
+            let suggestedButtons = document.getElementsByClassName('suggestedBtn');
+
+            if (input_grantType && suggestedButtons) {
+                for (i = 0; i < suggestedButtons.length; i++) {
+                    let btn = suggestedButtons[i];
+                    btn.addEventListener("click", function () {
+                        input_grantType.value = btn.value;
+                    });
+                }
+            }
+        }
+    </script>
+}

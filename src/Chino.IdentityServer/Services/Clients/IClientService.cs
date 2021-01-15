@@ -23,6 +23,8 @@ namespace Chino.IdentityServer.Services.Clients
         /// <param name="clientId"></param>
         /// <returns></returns>
         Task<Client> GetClientAndAllowedGrantTypes(int clientId);
+        Task<Client> GetClientAndAllowedScopes(int clientId);
+        Task<Client> GetClientAndRedirectUris(int clientId);
         Task<Client> GetClientAsync(int Id);
         Task<PaginatedListDto<Client>> GetClientsAsync(int page = 1, int size = 25, string search = null);
         Task<long> GetClientsTotalCount();

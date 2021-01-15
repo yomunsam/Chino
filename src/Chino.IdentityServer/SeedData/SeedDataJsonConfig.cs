@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.Models;
 
 namespace Chino.IdentityServer.SeedData
 {
@@ -14,6 +15,8 @@ namespace Chino.IdentityServer.SeedData
         public Client[] Clients { get; set; }
 
         public IEnumerable<string> Roles { get; set; }
+
+        public IEnumerable<IdentityResource> IdentityResources { get; set; }
 
         public class User
         {

@@ -40,9 +40,29 @@ namespace Chino.IdentityServer.Services.IdentityResources
         }
 
 
-        public async Task<IdentityResource> GetIdentityResourceAsync(int Id)
+        public async Task<IdentityResource> GetAsync(int Id)
         {
             return await m_DbContext.IdentityResources.FindAsync(Id);
+        }
+
+
+        public async Task<IdentityResource> GetWithUserClaimsAsync(int Id)
+        {
+            var idRes = await m_DbContext.IdentityResources.FindAsync(Id);
+            if(idRes != null)
+            {
+                await m_DbContext.Entry(idRes)
+                    .Collection(idr => idr.UserClaims)
+                    .LoadAsync();
+            }
+            return idRes;
+        }
+
+        public async Task<IdentityResource> UpdateAsync(IdentityResource identityResource)
+        {
+            m_DbContext.Attach(identityResource);
+            await m_DbContext.SaveChangesAsync();
+            return identityResource;
         }
 
     }

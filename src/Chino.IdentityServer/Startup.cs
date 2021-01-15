@@ -14,17 +14,14 @@ using Chino.IdentityServer.Services.ApiResources;
 using Chino.IdentityServer.Services.Clients;
 using Chino.IdentityServer.Services.IdentityResources;
 using Chino.IdentityServer.Services.Localization;
+using Chino.IdentityServer.Services.Oidc;
 using Chino.IdentityServer.Services.Roles;
 using Chino.IdentityServer.Services.Users;
-using IdentityServer4.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -138,7 +135,7 @@ namespace Chino.IdentityServer
                     LoginUrl = "/Account/Login",
                     LogoutUrl = "/Account/Logout",
                     LoginReturnUrlParameter = "returnUrl",
-                    ErrorUrl= "~/Error/IdentityService",
+                    ErrorUrl = "~/Error/IdentityService",
                     ErrorIdParameter = "Id"
                 };
             })
@@ -152,6 +149,7 @@ namespace Chino.IdentityServer
 
                     options.EnableTokenCleanup = true;
                 })
+                .AddProfileService<ChinoProfileService>() //这个服务用来给IdentityServer获取Chino的用户Claims
                 .AddAspNetIdentity<ChinoUser>();
 
             if (Environment.IsDevelopment())

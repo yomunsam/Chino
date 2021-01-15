@@ -117,28 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="breadcrumb_IdRes" xml:space="preserve">
-    <value>身份资源</value>
+  <data name="breadcrumb_allowedScopes" xml:space="preserve">
+    <value>允许的作用域</value>
   </data>
-  <data name="btn_add_idRes" xml:space="preserve">
-    <value>创建身份资源</value>
+  <data name="btn_add" xml:space="preserve">
+    <value>添加</value>
   </data>
-  <data name="btn_search" xml:space="preserve">
-    <value>搜索</value>
+  <data name="card_header_addscopes" xml:space="preserve">
+    <value>添加新的作用域</value>
   </data>
-  <data name="btn_tips_configuration" xml:space="preserve">
-    <value>配置身份资源</value>
+  <data name="card_header_allowedScopes" xml:space="preserve">
+    <value>已允许的作用域</value>
   </data>
-  <data name="input_placeholder_search" xml:space="preserve">
-    <value>搜索身份资源</value>
+  <data name="label_scope" xml:space="preserve">
+    <value>作用域</value>
   </data>
-  <data name="th_handle" xml:space="preserve">
-    <value>操作</value>
-  </data>
-  <data name="th_IdResourceDisplayName" xml:space="preserve">
-    <value>显示名</value>
-  </data>
-  <data name="th_IdResourceName" xml:space="preserve">
-    <value>名称</value>
+  <data name="Suggested items" xml:space="preserve">
+    <value>建议项</value>
   </data>
 </root>
