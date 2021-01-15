@@ -117,91 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="China" xml:space="preserve">
-    <value>中国</value>
+  <data name="card_header_personalData" xml:space="preserve">
+    <value>我的个人数据</value>
   </data>
-  <data name="currentPassword" xml:space="preserve">
-    <value>当前登录口令</value>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
   </data>
-  <data name="dashboard_nav_api_resources" xml:space="preserve">
-    <value>Api 资源</value>
+  <data name="Deleting this data will permanently remove your account, and this cannot be recovered." xml:space="preserve">
+    <value>删除此数据将永久删除您的帐户，并且无法恢复。</value>
   </data>
-  <data name="dashboard_nav_clients" xml:space="preserve">
-    <value>客户端</value>
+  <data name="Download" xml:space="preserve">
+    <value>下载</value>
   </data>
-  <data name="dashboard_nav_database" xml:space="preserve">
-    <value>数据库</value>
+  <data name="You can't delete your personal data at the moment. Maybe your account has administrator rights" xml:space="preserve">
+    <value>您暂时无法删除您的个人数据，可能是由于您的账户拥有管理员权限。</value>
   </data>
-  <data name="dashboard_nav_identity_resources" xml:space="preserve">
-    <value>身份资源</value>
-  </data>
-  <data name="dashboard_nav_overview" xml:space="preserve">
-    <value>面板总览</value>
-  </data>
-  <data name="dashboard_nav_roles" xml:space="preserve">
-    <value>角色</value>
-  </data>
-  <data name="dashboard_nav_users" xml:space="preserve">
-    <value>用户</value>
-  </data>
-  <data name="email" xml:space="preserve">
-    <value>邮箱</value>
-  </data>
-  <data name="error1" xml:space="preserve">
-    <value>出错了</value>
-  </data>
-  <data name="Err_PasswordMismatch" xml:space="preserve">
-    <value>登录口令不正确</value>
-  </data>
-  <data name="hello" xml:space="preserve">
-    <value>你好</value>
-  </data>
-  <data name="Japan" xml:space="preserve">
-    <value>日本</value>
-  </data>
-  <data name="login" xml:space="preserve">
-    <value>登录</value>
-  </data>
-  <data name="logout" xml:space="preserve">
-    <value>退出登录</value>
-  </data>
-  <data name="nav_userpage" xml:space="preserve">
-    <value>我的主页</value>
-  </data>
-  <data name="newPassword" xml:space="preserve">
-    <value>新登录口令</value>
-  </data>
-  <data name="password" xml:space="preserve">
-    <value>登录口令</value>
-  </data>
-  <data name="phone_number" xml:space="preserve">
-    <value>电话号码</value>
-  </data>
-  <data name="register" xml:space="preserve">
-    <value>注册</value>
-  </data>
-  <data name="userId" xml:space="preserve">
-    <value>用户ID</value>
-  </data>
-  <data name="username" xml:space="preserve">
-    <value>用户名</value>
-  </data>
-  <data name="user_nav_externalLogin" xml:space="preserve">
-    <value>外部登录</value>
-  </data>
-  <data name="user_nav_grants" xml:space="preserve">
-    <value>我的授权</value>
-  </data>
-  <data name="user_nav_infos" xml:space="preserve">
-    <value>个人信息</value>
-  </data>
-  <data name="user_nav_myAccountData" xml:space="preserve">
-    <value>我的账号数据</value>
-  </data>
-  <data name="user_nav_passwd" xml:space="preserve">
-    <value>修改登录口令</value>
-  </data>
-  <data name="user_nav_twoFactorAuthentication" xml:space="preserve">
-    <value>双因素认证</value>
+  <data name="Your account contains personal data that you have given us. This page allows you to download or delete that data." xml:space="preserve">
+    <value>您的帐户包含您提供给我们的个人数据。此页面允许您下载或删除该数据。</value>
   </data>
 </root>
