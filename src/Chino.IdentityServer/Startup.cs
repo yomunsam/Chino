@@ -22,6 +22,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -172,6 +175,13 @@ namespace Chino.IdentityServer
             //AutoMapper
             services.AddAutoMapper(typeof(AutoMapperProfile));
 
+            //IUrlHelper
+            //services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            //services.AddScoped<IUrlHelper>(factory =>
+            //{
+            //    var actionContext = factory.GetService<IActionContextAccessor>().ActionContext;
+            //    return new UrlHelper(actionContext);
+            //});
 
             //Chino Services
             services.AddSingleton<CommonLocalizationService>();
@@ -180,6 +190,7 @@ namespace Chino.IdentityServer
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IApiResourceService, ApiResourceService>();
             services.AddScoped<IIdentityResouceService, IdentityResourceService>();
+            services.AddScoped<IUserAvatarService, UserAvatarService>();
             services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<IJsonLocalizationService, JsonLocalizationService>();
 

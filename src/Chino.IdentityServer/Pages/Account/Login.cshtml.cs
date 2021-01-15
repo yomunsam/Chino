@@ -197,7 +197,7 @@ namespace Chino.IdentityServer.Pages.Account
                 ModelState.AddModelError(string.Empty, L["invalid_credentials_error_message"]);
             }
 
-
+            LoginViewModel = await BuildLoginViewModelAsync(this.ReturnUrl);
             return Page();
         }
 

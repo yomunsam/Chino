@@ -13,5 +13,6 @@ namespace Chino.IdentityServer.Const
         /// 可访问Dashboard的策略
         /// </summary>
         public const string PolicyName_Dashboard = "Policy_Dashboard";
+
     }
 }
