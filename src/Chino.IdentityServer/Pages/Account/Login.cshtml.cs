@@ -154,7 +154,8 @@ namespace Chino.IdentityServer.Pages.Account
                         {
                             //没注册，跳转到手机号验证
                             return RedirectToPage("/Account/Confirmation/Phone",new {
-                                UserId = user.Id
+                                UserId = user.Id,
+                                ReturnUrl = this.ReturnUrl
                             });
                         }
                     }

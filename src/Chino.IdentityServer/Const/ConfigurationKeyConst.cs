@@ -19,5 +19,15 @@ namespace Chino.IdentityServer.Const
 
         public const string GravatarDefaultImageType = "Gravatar:DefaultAvatar:Type";
         public const string GravatarDefaultImageUrl = "Gravatar:DefaultAvatar:Url";
+
+        /// <summary>
+        /// 短信服务提供者
+        /// </summary>
+        public const string SMSProvider = "SMS:Provider";
+
+        /// <summary>
+        /// 发送短信验证码的间隔
+        /// </summary>
+        public const string SendSMSVerificationCodeInterval = "SMS:SendSMSVerificationCodeInterval";
     }
 }

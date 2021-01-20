@@ -3,6 +3,11 @@ using Chino.EntityFramework.Mysql;
 using Chino.EntityFramework.Sqlite;
 using Chino.EntityFramework.SqlServer;
 using Chino.IdentityServer.Configures;
+using Chino.IdentityServer.Const;
+using Chino.SMS.Aliyun;
+using Chino.SMS.Mock;
+using Chino.SMS.Shared;
+using Chino.SMS.Twilio;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -139,6 +144,27 @@ namespace Chino.IdentityServer
                     options.Scope.Add("user:email");
                 });
             }
+        }
+
+        public static void AddSMSService(this IServiceCollection services, IConfiguration configuration)
+        {
+            string provider = configuration[ConfigurationKeyConst.SMSProvider]?.ToLower() ?? "mock";
+
+            switch (provider)
+            {
+                default:
+                    throw new Exception("Unknow SMS Provider:" + provider);
+                case "mock":
+                    services.AddSingleton<IChinoSMSService, ChinoSMSMock>();
+                    break;
+                case "twilio":
+                    services.AddSingleton<IChinoSMSService, ChinoSMSTwilio>();
+                    break;
+                case "aliyun":
+                    services.AddSingleton<IChinoSMSService, ChinoSMSAliyun>();
+                    break;
+            }
+
         }
 
     }

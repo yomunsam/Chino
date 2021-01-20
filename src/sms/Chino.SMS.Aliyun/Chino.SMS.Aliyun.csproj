@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Twilio" Version="5.52.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Chino.SMS.Shared\Chino.SMS.Shared.csproj" />
   </ItemGroup>
 

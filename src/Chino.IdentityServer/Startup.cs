@@ -173,6 +173,9 @@ namespace Chino.IdentityServer
             //AutoMapper
             services.AddAutoMapper(typeof(AutoMapperProfile));
 
+            //内存缓存
+            services.AddMemoryCache();
+
             //IUrlHelper
             //services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             //services.AddScoped<IUrlHelper>(factory =>
@@ -180,6 +183,7 @@ namespace Chino.IdentityServer
             //    var actionContext = factory.GetService<IActionContextAccessor>().ActionContext;
             //    return new UrlHelper(actionContext);
             //});
+
 
             //Chino Services
             services.AddSingleton<CommonLocalizationService>();
@@ -191,6 +195,8 @@ namespace Chino.IdentityServer
             services.AddScoped<IUserAvatarService, UserAvatarService>();
             services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<IJsonLocalizationService, JsonLocalizationService>();
+
+            services.AddSMSService(Configuration); //短信服务
 
         }
 

@@ -21,6 +21,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="5.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Nekonya.Common" Version="1.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
@@ -62,6 +63,8 @@
     <ProjectReference Include="..\database\Chino.EntityFramework.Shared\Chino.EntityFramework.Shared.csproj" />
     <ProjectReference Include="..\database\Chino.EntityFramework.Sqlite\Chino.EntityFramework.Sqlite.csproj" />
     <ProjectReference Include="..\database\Chino.EntityFramework.SqlServer\Chino.EntityFramework.SqlServer.csproj" />
+    <ProjectReference Include="..\sms\Chino.SMS.Aliyun\Chino.SMS.Aliyun.csproj" />
+    <ProjectReference Include="..\sms\Chino.SMS.Mock\Chino.SMS.Mock.csproj" />
     <ProjectReference Include="..\sms\Chino.SMS.Shared\Chino.SMS.Shared.csproj" />
     <ProjectReference Include="..\sms\Chino.SMS.Twilio\Chino.SMS.Twilio.csproj" />
   </ItemGroup>

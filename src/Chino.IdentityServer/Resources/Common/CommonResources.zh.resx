@@ -120,6 +120,9 @@
   <data name="China" xml:space="preserve">
     <value>中国</value>
   </data>
+  <data name="country_calling_code" xml:space="preserve">
+    <value>电话国家代码</value>
+  </data>
   <data name="currentPassword" xml:space="preserve">
     <value>当前登录口令</value>
   </data>
@@ -203,5 +206,8 @@
   </data>
   <data name="user_nav_twoFactorAuthentication" xml:space="preserve">
     <value>双因素认证</value>
+  </data>
+  <data name="Verification Code" xml:space="preserve">
+    <value>验证码</value>
   </data>
 </root>

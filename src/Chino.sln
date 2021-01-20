@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.EntityFramework.SqlSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.EntityFramework.Sqlite", "database\Chino.EntityFramework.Sqlite\Chino.EntityFramework.Sqlite.csproj", "{2E1E52DA-627A-41C6-9651-9E595BAF7039}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.SMS.Aliyun", "sms\Chino.SMS.Aliyun\Chino.SMS.Aliyun.csproj", "{C22DE664-95F6-4E4B-9D2D-14915374A919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.SMS.Mock", "sms\Chino.SMS.Mock\Chino.SMS.Mock.csproj", "{58033B6F-C054-4BB9-905F-156BA1A11F5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{2E1E52DA-627A-41C6-9651-9E595BAF7039}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E1E52DA-627A-41C6-9651-9E595BAF7039}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E1E52DA-627A-41C6-9651-9E595BAF7039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C22DE664-95F6-4E4B-9D2D-14915374A919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C22DE664-95F6-4E4B-9D2D-14915374A919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C22DE664-95F6-4E4B-9D2D-14915374A919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C22DE664-95F6-4E4B-9D2D-14915374A919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58033B6F-C054-4BB9-905F-156BA1A11F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58033B6F-C054-4BB9-905F-156BA1A11F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58033B6F-C054-4BB9-905F-156BA1A11F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58033B6F-C054-4BB9-905F-156BA1A11F5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +78,8 @@ Global
 		{C979C8A8-ACD7-4230-BBBF-DDF0E4EE5872} = {DE053AD0-838F-4DAF-980A-DAE850DB5667}
 		{6BEDF8EA-8D4B-47D0-A65C-CDAF1F97ED5C} = {DE053AD0-838F-4DAF-980A-DAE850DB5667}
 		{2E1E52DA-627A-41C6-9651-9E595BAF7039} = {DE053AD0-838F-4DAF-980A-DAE850DB5667}
+		{C22DE664-95F6-4E4B-9D2D-14915374A919} = {2169BA44-7A79-4C51-B926-9B8A5BBD6246}
+		{58033B6F-C054-4BB9-905F-156BA1A11F5D} = {2169BA44-7A79-4C51-B926-9B8A5BBD6246}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1CCFC44A-CD1D-40BB-8B6A-1F0AADC5B915}
