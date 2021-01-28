@@ -54,7 +54,6 @@
 
   <ItemGroup>
     <Folder Include="Dtos\IdentityResources\" />
-    <Folder Include="Services\ApiScopes\" />
     <Folder Include="wwwroot\lib\clipboardjs\" />
   </ItemGroup>
 

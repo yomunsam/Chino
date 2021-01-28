@@ -1,4 +1,5 @@
-﻿using System.Linq;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Chino.Dtos.PaginatedList;
@@ -79,6 +80,25 @@ namespace Chino.IdentityServer.Services.ApiResources
             apiResEntity = m_Mapper.Map(model, apiResEntity);
 
             await m_DbContext.SaveChangesAsync();
+            return apiResEntity;
+        }
+
+        /// <summary>
+        /// 获取加载了Scopes关联数据的Api资源对象
+        /// </summary>
+        /// <param name="apiResId"></param>
+        /// <returns></returns>
+        public async Task<ApiResource> GetResWithScopes(int Id)
+        {
+            var apiResEntity = await m_DbContext.ApiResources.FindAsync(Id);
+            if(apiResEntity != null)
+            {
+                await m_DbContext.Entry(apiResEntity)
+                    .Collection(res => res.Scopes)
+                    .LoadAsync();
+            }
+
+
             return apiResEntity;
         }
 

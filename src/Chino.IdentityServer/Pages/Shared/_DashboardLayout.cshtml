@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Localization
 @inject Microsoft.Extensions.Configuration.IConfiguration configuration
 @inject Chino.IdentityServer.Services.Localization.IJsonLocalizationService JL
 @inject CommonLocalizationService CL
@@ -95,6 +95,13 @@
                             <a class="nav-link @(IsPage("apiResources") ? "active" : string.Empty)" asp-page="/Dashboard/ApiResources">
                                 <span class="oi oi-cloud"></span>
                                 @CL["dashboard_nav_api_resources"]
+                            </a>
+                        </li>
+                        @*Api作用域*@
+                        <li class="nav-item">
+                            <a class="nav-link @(IsPage("apiScopes") ? "active" : string.Empty)" asp-page="/Dashboard/ApiScopes">
+                                <span class="oi oi-cloud"></span>
+                                @CL["dashboard_nav_api_scopes"]
                             </a>
                         </li>
                         @*客户端*@

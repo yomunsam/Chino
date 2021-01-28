@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -128,6 +128,9 @@
   </data>
   <data name="dashboard_nav_api_resources" xml:space="preserve">
     <value>Api 资源</value>
+  </data>
+  <data name="dashboard_nav_api_scopes" xml:space="preserve">
+    <value>Api 作用域</value>
   </data>
   <data name="dashboard_nav_clients" xml:space="preserve">
     <value>客户端</value>

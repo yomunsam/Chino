@@ -11,6 +11,7 @@ using Chino.IdentityServer.Resources.DataAnnotation;
 using Chino.IdentityServer.Services;
 using Chino.IdentityServer.Services.Account;
 using Chino.IdentityServer.Services.ApiResources;
+using Chino.IdentityServer.Services.ApiScopes;
 using Chino.IdentityServer.Services.Clients;
 using Chino.IdentityServer.Services.IdentityResources;
 using Chino.IdentityServer.Services.Localization;
@@ -149,7 +150,7 @@ namespace Chino.IdentityServer
 
                     options.EnableTokenCleanup = true;
                 })
-                .AddProfileService<ChinoProfileService>() //这个服务用来给IdentityServer获取Chino的用户Claims
+                .AddProfileService<ChinoProfileService>() //杩欎釜鏈嶅姟鐢ㄦ潵缁橧dentityServer鑾峰彇Chino鐨勭敤鎴稢laims
                 .AddAspNetIdentity<ChinoUser>();
 
             if (Environment.IsDevelopment())
@@ -173,7 +174,7 @@ namespace Chino.IdentityServer
             //AutoMapper
             services.AddAutoMapper(typeof(AutoMapperProfile));
 
-            //内存缓存
+            //鍐呭瓨缂撳瓨
             services.AddMemoryCache();
 
             //IUrlHelper
@@ -191,12 +192,13 @@ namespace Chino.IdentityServer
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IApiResourceService, ApiResourceService>();
+            services.AddScoped<IApiScopeService, ApiScopeService>();
             services.AddScoped<IIdentityResouceService, IdentityResourceService>();
             services.AddScoped<IUserAvatarService, UserAvatarService>();
             services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<IJsonLocalizationService, JsonLocalizationService>();
 
-            services.AddSMSService(Configuration); //短信服务
+            services.AddSMSService(Configuration); //鐭俊鏈嶅姟
 
         }
 

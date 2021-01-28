@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model Chino.IdentityServer.Pages.Dashboard.ApiResource.ConfigurationModel
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResource.ConfigurationModel> L
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResourcesModel> ApiResL
@@ -89,7 +89,7 @@
                         <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Scopes"]"></span>
                     </label>
                     <div class="col-sm-9">
-                        <a href="#" class="btn btn-primary">@L["btn_ApiScopes"]</a>
+                        <a asp-page="ApiScopes" asp-route-Id="@Model.Id" target="_blank" class="btn btn-primary">@L["btn_ApiScopes"]</a>
                     </div>
                 </div>
 

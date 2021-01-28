@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +14,7 @@ namespace Chino.IdentityServer.Services.ApiResources
         Task DeleteByIdAsync(int Id);
         Task<ApiResource> FindByIdAsync(int Id);
         Task<PaginatedListDto<ApiResource>> GetApiResourcesAsync(int page = 1, int size = 25, string search = null);
+        Task<ApiResource> GetResWithScopes(int Id);
         Task<ApiResource> UpdateApiResourceAsync(int Id, ConfigurationViewModel model);
     }
 }

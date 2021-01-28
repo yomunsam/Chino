@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.EntityFramework.SqlSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.EntityFramework.Sqlite", "database\Chino.EntityFramework.Sqlite\Chino.EntityFramework.Sqlite.csproj", "{2E1E52DA-627A-41C6-9651-9E595BAF7039}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.SMS.Aliyun", "sms\Chino.SMS.Aliyun\Chino.SMS.Aliyun.csproj", "{C22DE664-95F6-4E4B-9D2D-14915374A919}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.SMS.Aliyun", "sms\Chino.SMS.Aliyun\Chino.SMS.Aliyun.csproj", "{C22DE664-95F6-4E4B-9D2D-14915374A919}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chino.SMS.Mock", "sms\Chino.SMS.Mock\Chino.SMS.Mock.csproj", "{58033B6F-C054-4BB9-905F-156BA1A11F5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chino.SMS.Mock", "sms\Chino.SMS.Mock\Chino.SMS.Mock.csproj", "{58033B6F-C054-4BB9-905F-156BA1A11F5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
