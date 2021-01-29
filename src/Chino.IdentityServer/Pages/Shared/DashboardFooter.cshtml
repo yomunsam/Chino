@@ -1,4 +1,4 @@
-﻿@inject IConfiguration configuration
+@inject IConfiguration configuration
 @using Nekonya
 @using Microsoft.AspNetCore.Localization
 @using Microsoft.Extensions.Options
@@ -16,7 +16,7 @@
     var currentCulture = requestCulture?.RequestCulture?.UICulture;
 
     //设置语言之后的跳转
-    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{(Context.Request.QueryString.HasValue ? Context.Request.QueryString : string.Empty)}";
 
     //bool IsDashboard()
     //{

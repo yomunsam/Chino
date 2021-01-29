@@ -5,8 +5,11 @@
 @{
     Layout = "_DashboardLayout";
     ViewData["pageName"] = "apiResources";
+
+    var thisUrl = string.IsNullOrEmpty(Request.Path) ? "~/" : $"~{Request.Path.Value}{(Request.QueryString.HasValue ? Request.QueryString.Value : string.Empty)}";
 }
 
+@*页面 Api资源下的Api作用域列表（和创建功能）*@
 
 <div class="mt-3 container">
 
@@ -14,8 +17,8 @@
     <div class="card-body mb-3 py-0 px-0">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ApiResL["breadcrumb_ApiRespirces"]</a></li>
-                <li class="breadcrumb-item">@Model.ApiResEntity.Name</li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/ApiResources">@ApiResL["breadcrumb_ApiResources"]</a></li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/ApiResource/Configuration" asp-route-Id="@Model.Id">@Model.ApiResEntity.Name</a></li>
                 <li class="breadcrumb-item active" aria-current="page">@L["breadcrumb_apiScopes"]</li>
             </ol>
         </nav>
@@ -23,10 +26,10 @@
 
     <partial name="ValidationSummary" />
 
-    @*卡片：添加跨域*@
+    @*卡片：添加Api作用域*@
     <div class="card mb-3">
         <div class="card-header">
-            <h6 class="h6">@L["card_header_addUserClaims"]</h6>
+            <h6 class="h6">@L["card_header_addScopeInResource"]</h6>
         </div>
         <div class="card-body">
             <form method="post">
@@ -34,14 +37,85 @@
                 @*<input asp-for="ReturnUrl" hidden />*@
                 <input asp-for="Id" hidden />
 
+                @*Enable*@
                 <div class="mb-3 row">
-                    <label class="form-label col-sm-3 col-form-label">
-                        @L["label_UserClaims"]
+                    <label asp-for="CreateInputModel.Enabled" class="form-label col-sm-3 col-form-label">
+                        @L["Enabled"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Enabled"]"></span>
                     </label>
                     <div class="col-sm-9">
-                        <input name="userClaim" id="newUserClaim" class="form-control" autocomplete="off" />
+                        <div class="form-check form-switch">
+                            <input asp-for="CreateInputModel.Enabled" class="form-check-input" type="checkbox" autocomplete="off" />
+                        </div>
                     </div>
+                    <div><span asp-validation-for="CreateInputModel.Enabled" class="text-danger"></span></div>
                 </div>
+
+                @*名称*@
+                <div class="mb-3 row">
+                    <label asp-for="CreateInputModel.Name" class="form-label col-sm-3 col-form-label">
+                        @L["Name"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Name"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="CreateInputModel.Name" class="form-control" autocomplete="off" />
+                    </div>
+                    <div><span asp-validation-for="CreateInputModel.Name" class="text-danger"></span></div>
+                </div>
+
+                @*DisplayName*@
+                <div class="mb-3 row">
+                    <label asp-for="CreateInputModel.DisplayName" class="form-label col-sm-3 col-form-label">
+                        @L["DisplayName"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_DisplayName"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="CreateInputModel.DisplayName" class="form-control" autocomplete="off" />
+                    </div>
+                    <div><span asp-validation-for="CreateInputModel.DisplayName" class="text-danger"></span></div>
+                </div>
+
+                @*描述*@
+                <div class="mb-3 row">
+                    <label asp-for="CreateInputModel.Description" class="form-label col-sm-3 col-form-label">
+                        @L["Description"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Description"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="CreateInputModel.Description" class="form-control" autocomplete="off" />
+                    </div>
+                    <div><span asp-validation-for="CreateInputModel.Description" class="text-danger"></span></div>
+                </div>
+
+
+                @*Required*@
+                <div class="mb-3 row">
+                    <label asp-for="CreateInputModel.Required" class="form-label col-sm-3 col-form-label">
+                        @L["Required"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Required"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-switch">
+                            <input asp-for="CreateInputModel.Required" class="form-check-input" type="checkbox" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div><span asp-validation-for="CreateInputModel.Required" class="text-danger"></span></div>
+                </div>
+
+                @*强调*@
+                <div class="mb-3 row">
+                    <label asp-for="CreateInputModel.Emphasize" class="form-label col-sm-3 col-form-label">
+                        @L["Emphasize"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Emphasize"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-switch">
+                            <input asp-for="CreateInputModel.Emphasize" class="form-check-input" type="checkbox" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div><span asp-validation-for="CreateInputModel.Emphasize" class="text-danger"></span></div>
+                </div>
+
 
                 <button class="btn btn-primary" type="submit">@L["btn_add"]</button>
             </form>
@@ -58,15 +132,14 @@
                 @foreach (var scope in Model.ApiResEntity.Scopes)
                 {
                     <li class="list-group-item">
-                        <a asp-page="UserClaims"
-                           asp-page-handler="DeletItem"
+                        <a asp-page="Scope/Delete"
+                           asp-route-ReturnUrl="@thisUrl"
                            asp-route-Id="@Model.Id"
-                           asp-route-claimId="@scope.Id" class="btn btn-danger btn-sm py-1 px-3 mr-3"><span class="oi oi-x"></span></a>
+                           asp-route-ScopeId="@scope.Id" class="btn btn-danger btn-sm py-1 px-3 mr-3"><span class="oi oi-x"></span></a>
 
-                        <a asp-page="UserClaims"
-                           asp-page-handler="DeletItem"
+                        <a asp-page="Scope/Configuration"
                            asp-route-Id="@Model.Id"
-                           asp-route-claimId="@scope.Id" class="btn btn-primary btn-sm py-1 px-3 mr-3"><span class="oi oi-pencil"></span></a>
+                           asp-route-Scope="@scope.Scope" class="btn btn-primary btn-sm py-1 px-3 mr-3"><span class="oi oi-pencil"></span></a>
                         @scope.Scope
                     </li>
                 }

@@ -15,7 +15,7 @@
     <div class="card-body mb-3 py-0 px-0">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ApiResL["breadcrumb_ApiRespirces"]</a></li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ApiResL["breadcrumb_ApiResources"]</a></li>
                 <li class="breadcrumb-item active" aria-current="page">@Model.ViewModel.Name</li>
             </ol>
         </nav>
@@ -89,7 +89,7 @@
                         <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Scopes"]"></span>
                     </label>
                     <div class="col-sm-9">
-                        <a asp-page="ApiScopes" asp-route-Id="@Model.Id" target="_blank" class="btn btn-primary">@L["btn_ApiScopes"]</a>
+                        <a asp-page="ApiScopes" asp-route-Id="@Model.Id" class="btn btn-primary">@L["btn_ApiScopes"]</a>
                     </div>
                 </div>
 

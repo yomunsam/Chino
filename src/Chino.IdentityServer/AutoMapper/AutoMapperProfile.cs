@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Chino.EntityFramework.Shared.Entities.User;
 using Chino.IdentityServer.Configures;
 using Chino.IdentityServer.Dtos.Account;
@@ -29,6 +29,9 @@ namespace Chino.AutoMapper
                 .ReverseMap();
 
             CreateMap<IdResConfigurationViewModel, IdentityServer4.EntityFramework.Entities.IdentityResource>()
+                .ReverseMap();
+
+            CreateMap<CreateUpdateScopeInApiResourceInputModel, IdentityServer4.EntityFramework.Entities.ApiScope>()
                 .ReverseMap();
         }
     }

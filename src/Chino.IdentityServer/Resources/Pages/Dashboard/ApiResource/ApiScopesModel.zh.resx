@@ -117,31 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="breadcrumb_ApiResources" xml:space="preserve">
-    <value>Api资源</value>
+  <data name="breadcrumb_apiScopes" xml:space="preserve">
+    <value>Api Scopes</value>
   </data>
-  <data name="btn_add_apiRes" xml:space="preserve">
-    <value>添加Api资源</value>
+  <data name="btn_add" xml:space="preserve">
+    <value>创建作用域</value>
   </data>
-  <data name="btn_search" xml:space="preserve">
-    <value>搜索Api资源</value>
+  <data name="card_header_addScopeInResource" xml:space="preserve">
+    <value>向Api资源创建作用域</value>
   </data>
-  <data name="btn_tips_configuration" xml:space="preserve">
-    <value>编辑Api资源</value>
+  <data name="card_header_scopes" xml:space="preserve">
+    <value>Api资源的Api作用域</value>
   </data>
-  <data name="btn_tips_del" xml:space="preserve">
-    <value>删除Api资源</value>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
   </data>
-  <data name="input_placeholder_search" xml:space="preserve">
-    <value>Api资源</value>
+  <data name="DisplayName" xml:space="preserve">
+    <value>显示名</value>
   </data>
-  <data name="th_ApiResourceDisplayName" xml:space="preserve">
-    <value>Api资源显示名</value>
+  <data name="Emphasize" xml:space="preserve">
+    <value>强调</value>
   </data>
-  <data name="th_ApiResourceName" xml:space="preserve">
-    <value>Api资源名称</value>
+  <data name="Enabled" xml:space="preserve">
+    <value>启用</value>
   </data>
-  <data name="th_handle" xml:space="preserve">
-    <value>操作</value>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>必须的</value>
+  </data>
+  <data name="tips_Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="tips_DisplayName" xml:space="preserve">
+    <value>显示名</value>
+  </data>
+  <data name="tips_Emphasize" xml:space="preserve">
+    <value>可能会在授权屏幕强调</value>
+  </data>
+  <data name="tips_Enabled" xml:space="preserve">
+    <value>是否启用该作用域</value>
+  </data>
+  <data name="tips_Name" xml:space="preserve">
+    <value>Api Scope name</value>
+  </data>
+  <data name="tips_Required" xml:space="preserve">
+    <value>必须的</value>
   </data>
 </root>

@@ -1,6 +1,6 @@
 @page
-@model Chino.IdentityServer.Pages.Dashboard.ApiResource.CreateModel
-@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResource.CreateModel> L
+@model Chino.IdentityServer.Pages.Dashboard.ApiResource.Scope.ConfigurationModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResource.Scope.ConfigurationModel> L
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResourcesModel> ApiResL
 @{
     Layout = "_DashboardLayout";
@@ -9,27 +9,36 @@
     var thisUrl = string.IsNullOrEmpty(Request.Path) ? "~/" : $"~{Request.Path.Value}";
 }
 
+@*Api资源 中的 Api作用域 编辑页面*@
+
 
 <div class="mt-3 container">
 
+    @*面包屑*@
     <div class="card-body mb-3 py-0 px-0">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ApiResL["breadcrumb_ApiResources"]</a></li>
-                <li class="breadcrumb-item active" aria-current="page">@L["breadcrumb_create"]</li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/ApiResources">@ApiResL["breadcrumb_ApiResources"]</a></li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/ApiResource/Configuration" asp-route-Id="@Model.Id">@Model.ApiResEntity.Name</a></li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/ApiResource/ApiScopes" asp-route-Id="@Model.Id">@L["breadcrumb_apiScopes"]</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.InputModel.Name</li>
             </ol>
         </nav>
     </div>
 
     <partial name="ValidationSummary" />
 
-    <div class="card shadow">
+    @*卡片：配置Api Scope*@
+    <div class="card mb-3">
         <div class="card-header">
-            <h6 class="h6">@L["card_header"]</h6>
+            <h6 class="h6">@L["card_header_conf"]</h6>
         </div>
         <div class="card-body">
             <form method="post">
-                <input asp-for="ReturnUrl" hidden />
+                @*隐藏内容*@
+                @*<input asp-for="ReturnUrl" hidden />*@
+                <input asp-for="Id" hidden />
+                <input asp-for="Scope" hidden />
 
                 @*Enable*@
                 <div class="mb-3 row">
@@ -82,25 +91,40 @@
                 </div>
 
 
+                @*Required*@
+                <div class="mb-3 row">
+                    <label asp-for="InputModel.Required" class="form-label col-sm-3 col-form-label">
+                        @L["Required"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Required"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-switch">
+                            <input asp-for="InputModel.Required" class="form-check-input" type="checkbox" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div><span asp-validation-for="InputModel.Required" class="text-danger"></span></div>
+                </div>
 
-                <button class="btn btn-primary mb-3">@L["btn_create"]</button>
+                @*强调*@
+                <div class="mb-3 row">
+                    <label asp-for="InputModel.Emphasize" class="form-label col-sm-3 col-form-label">
+                        @L["Emphasize"]
+                        <span class="oi oi-comment-square ml-2" data-bs-toggle="tooltip" data-bs-placement="top" title="@L["tips_Emphasize"]"></span>
+                    </label>
+                    <div class="col-sm-9">
+                        <div class="form-check form-switch">
+                            <input asp-for="InputModel.Emphasize" class="form-check-input" type="checkbox" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div><span asp-validation-for="InputModel.Emphasize" class="text-danger"></span></div>
+                </div>
+
+
+                <button class="btn btn-primary" type="submit">@L["btn_save"]</button>
+                <a asp-page="Delete" asp-route-ReturnUrl="~/Dashboard/ApiResource/ApiScopes?Id=@Model.Id" asp-route-Id="@Model.Id" asp-route-ScopeId="@Model.ScopeId" class="btn btn-danger">@L["btn_delete"]</a>
             </form>
-            
         </div>
     </div>
 
-
+    
 </div>
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    <script>
-        //启用Tooltips用的
-        let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-    </script>
-}

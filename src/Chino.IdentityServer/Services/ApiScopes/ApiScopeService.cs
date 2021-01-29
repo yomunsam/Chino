@@ -42,6 +42,12 @@ namespace Chino.IdentityServer.Services.ApiScopes
             return await m_DbContext.ApiScopes.FindAsync(Id);
         }
 
+        public async Task<ApiScope> FindByName(string scopeName)
+        {
+            string scope = scopeName.ToUpper();
+            return await m_DbContext.ApiScopes.Where(s => s.Name.ToUpper().Equals(scope)).FirstOrDefaultAsync();
+        }
+
 
     }
 }

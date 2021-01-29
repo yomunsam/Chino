@@ -9,6 +9,7 @@ namespace Chino.IdentityServer.Services.ApiScopes
 {
     public interface IApiScopeService
     {
+        Task<ApiScope> FindByName(string scopeName);
         Task<ApiScope> GetAsync(int Id);
         Task<PaginatedListDto<ApiScope>> GetListAsync(int page = 1, int size = 25, string search = null);
     }

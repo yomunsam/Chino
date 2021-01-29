@@ -117,31 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="breadcrumb_ApiResources" xml:space="preserve">
-    <value>Api资源</value>
+  <data name="Api Resource Name" xml:space="preserve">
+    <value>所属Api资源的名称</value>
   </data>
-  <data name="btn_add_apiRes" xml:space="preserve">
-    <value>添加Api资源</value>
+  <data name="breadcrumb_apiScopes" xml:space="preserve">
+    <value>Api作用域</value>
   </data>
-  <data name="btn_search" xml:space="preserve">
-    <value>搜索Api资源</value>
+  <data name="breadcrumb_delete" xml:space="preserve">
+    <value>删除Api作用域</value>
   </data>
-  <data name="btn_tips_configuration" xml:space="preserve">
-    <value>编辑Api资源</value>
+  <data name="btn_del" xml:space="preserve">
+    <value>执行删除</value>
   </data>
-  <data name="btn_tips_del" xml:space="preserve">
-    <value>删除Api资源</value>
-  </data>
-  <data name="input_placeholder_search" xml:space="preserve">
-    <value>Api资源</value>
-  </data>
-  <data name="th_ApiResourceDisplayName" xml:space="preserve">
-    <value>Api资源显示名</value>
-  </data>
-  <data name="th_ApiResourceName" xml:space="preserve">
-    <value>Api资源名称</value>
-  </data>
-  <data name="th_handle" xml:space="preserve">
-    <value>操作</value>
+  <data name="Scope Name" xml:space="preserve">
+    <value>作用域名称</value>
   </data>
 </root>

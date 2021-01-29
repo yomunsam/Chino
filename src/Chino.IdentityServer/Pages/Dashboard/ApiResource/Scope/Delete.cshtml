@@ -1,0 +1,62 @@
+@page
+@model Chino.IdentityServer.Pages.Dashboard.ApiResource.Scope.DeleteModel
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResourcesModel> ApiResL
+@inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResource.Scope.DeleteModel> L
+@{
+    Layout = "_DashboardLayout";
+    ViewData["pageName"] = "apiResources";
+}
+
+@*删除Api Resource 中的 Api 作用域*@
+
+<div class="mt-3 container">
+
+    @*面包屑*@
+    <div class="card-body mb-3 py-0 px-0">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/ApiResources">@ApiResL["breadcrumb_ApiResources"]</a></li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/ApiResource/Configuration" asp-route-Id="@Model.Id">@Model.ApiResourceEntity.Name</a></li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/ApiResource/ApiScopes" asp-route-Id="@Model.Id">@L["breadcrumb_apiScopes"]</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@L["breadcrumb_delete"]</li>
+            </ol>
+        </nav>
+    </div>
+
+    <partial name="ValidationSummary" />
+
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h6 class="h6">@L["card-header"]</h6>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                @*隐藏内容*@
+                <input asp-for="ReturnUrl" hidden />
+                <input asp-for="Id" hidden />
+                <input asp-for="ScopeId" hidden />
+
+                <div class="mb-3 row">
+                    <label asp-for="ApiResourceScopeEntity.Scope" class="form-label col-sm-3 col-form-label">
+                        @L["Scope Name"]
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="ApiResourceScopeEntity.Scope" class="form-control" autocomplete="off" disabled />
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label asp-for="ApiResourceEntity.Name" class="form-label col-sm-3 col-form-label">
+                        @L["Api Resource Name"]
+                    </label>
+                    <div class="col-sm-9">
+                        <input asp-for="ApiResourceEntity.Name" class="form-control" autocomplete="off" disabled />
+                    </div>
+                </div>
+
+                <button class="btn btn-danger" type="submit">@L["btn_del"]</button>
+            </form>
+        </div>
+    </div>
+</div>

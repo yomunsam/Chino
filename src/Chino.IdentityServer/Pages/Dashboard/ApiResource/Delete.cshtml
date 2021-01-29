@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model Chino.IdentityServer.Pages.Dashboard.ApiResource.DeleteModel
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResourcesModel> ApiResL
 @inject IStringLocalizer<Chino.IdentityServer.Pages.Dashboard.ApiResource.DeleteModel> L
@@ -12,7 +12,7 @@
     <div class="card-body mb-3 py-0 px-0">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ApiResL["breadcrumb_ApiRespirces"]</a></li>
+                <li class="breadcrumb-item"><a asp-page="/Dashboard/Clients">@ApiResL["breadcrumb_ApiResources"]</a></li>
                 <li class="breadcrumb-item active" aria-current="page">@L["breadcrumb_delete"]</li>
             </ol>
         </nav>
